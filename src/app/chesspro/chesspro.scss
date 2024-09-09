@@ -1,0 +1,117 @@
+.registration-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border: 2px solid #000;
+  font-family: 'Arial', sans-serif;
+   
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .logo {
+      height: 200px;
+      width: 200px;
+    }
+
+    .school-title {
+      height: 200px;
+      width: 700px;
+    }
+  }
+
+  h2 {
+    font-size: 34px;
+    text-align: center;
+  }
+
+  .program-description {
+    margin: 20px 0;
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .training-info {
+    background-color: #F05727;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+
+    p {
+      font-size: 16px;
+      margin: 5px 0;
+    }
+
+    strong {
+      font-size: 26px;
+    }
+  }
+
+  .registration-form {
+    .input-group {
+      margin-bottom: 15px;
+
+      label {
+        font-size: 14px;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .input-row {
+        display: flex;
+        gap: 10px;
+
+        input {
+          flex: 1;
+        }
+      }
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+
+      button {
+        padding: 10px 20px;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+
+        &.payment-button {
+          background-color: #F05727;
+          color: white;
+        }
+
+        &.assistance-button {
+          background-color: #FFCC00;
+          color: #000;
+        }
+      }
+    }
+  }
+}
+
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
