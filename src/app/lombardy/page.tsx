@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
-import './chesspro.scss';
+import './lombardy.scss';
 
-const ChessRegistration = () => {
+const lombardy = () => {
   return (
     <div className="registration-container">
          <div className="header">
@@ -14,7 +14,7 @@ const ChessRegistration = () => {
     height="150"
   />
   <img
-    src="/images/schoolname.png"
+    src="/images/schoolname1.png"
     alt="Mount Pleasant Elementary School"
     className="school-title"
     width="200"
@@ -103,4 +103,4 @@ const ChessRegistration = () => {
   );
 };
 
-export default ChessRegistration;
+export default lombardy;
