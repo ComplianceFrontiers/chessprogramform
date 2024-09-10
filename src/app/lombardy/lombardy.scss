@@ -117,9 +117,13 @@
         /* Ensure buttons are side by side on smaller screens */
         flex-direction: row; /* Set direction to row */
         justify-content: space-between; /* Distribute buttons evenly */
+        gap: 10px; /* Space between buttons */
+        
+        button {
+          width: calc(50% - 5px); /* Adjust width to fit two buttons side by side with spacing */
+        }
       }
     }
-    
   }
 
   /* Loading gif styles */
@@ -157,10 +161,6 @@
       p, strong {
         font-size: 16px;
       }
-    }
-
-    .button-group {
-      flex-direction: column;
     }
   }
 }
