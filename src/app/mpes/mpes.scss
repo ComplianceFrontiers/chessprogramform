@@ -86,10 +86,11 @@
 
     .button-group {
       display: flex;
+      flex-wrap: wrap; /* Allow buttons to wrap if they don't fit */
       justify-content: center; /* Center align buttons */
       gap: 10px;
       margin-top: 20px;
-
+    
       button {
         padding: 10px 20px;
         font-size: 14px;
@@ -98,18 +99,27 @@
         border-radius: 5px;
         width: 100%; /* Full width on small screens */
         max-width: 200px;
-
+    
         &.payment-button {
           background-color: #F05727;
           color: white;
         }
-
+    
         &.assistance-button {
           background-color: #FFCC00;
           color: #000;
         }
       }
     }
+    
+    @media screen and (max-width: 768px) {
+      .button-group {
+        /* Ensure buttons are side by side on smaller screens */
+        flex-direction: row; /* Set direction to row */
+        justify-content: space-between; /* Distribute buttons evenly */
+      }
+    }
+    
   }
 
   /* Loading gif styles */
