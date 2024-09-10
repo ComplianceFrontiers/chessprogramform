@@ -30,6 +30,8 @@ interface FormData {
   email: string;
   phone: string;
   address: Address;
+  RequestFinancialAssistance: boolean;
+  SchoolName: string;
 }
 
 const Admin: React.FC = () => {
@@ -64,6 +66,8 @@ const Admin: React.FC = () => {
               <th>Email</th>
               <th>Phone</th>
               <th>Address</th>
+              <th>Financial Assistance</th>
+              <th>School Name</th>
             </tr>
           </thead>
           <tbody>
@@ -78,6 +82,8 @@ const Admin: React.FC = () => {
                   {form.address.line_1}, {form.address.line_2} <br />
                   {form.address.city}, {form.address.state} - {form.address.zip_code}
                 </td>
+                <td>{form.RequestFinancialAssistance ? 'Yes' : 'No'}</td>
+                <td>{form.SchoolName}</td>
               </tr>
             ))}
           </tbody>
