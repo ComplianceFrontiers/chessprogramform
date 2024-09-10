@@ -49,13 +49,13 @@ const ChessRegistration = () => {
           width="150"
           height="150"
         />
-        <img
+        {/* <img
           src="/images/schoolname.png"
           alt="Mount Pleasant Elementary School"
           className="school-title"
           width="200"
           height="150"
-        />
+        /> */}
       </div>
 
       <h2>Chess Program: Fall 2024</h2>
