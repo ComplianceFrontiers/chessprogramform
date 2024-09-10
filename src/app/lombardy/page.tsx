@@ -21,21 +21,28 @@ const ChessRegistration = () => {
     zip_code: '',
   });
 
-  const handleChange = (e:any) => {
+  const [loading, setLoading] = useState(false);
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
     });
   };
+  
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await axios.post('http://127.0.0.1:80/submit_form', formData);
       alert(response.data.message);
     } catch (error) {
       console.error('There was an error submitting the form!', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -198,8 +205,8 @@ const ChessRegistration = () => {
         </div>
 
         <div className="button-group">
-          <button type="submit" className="payment-button">Make Payment</button>
-          <button type="button" className="assistance-button">Request Financial Assistance</button>
+          <button type="submit" className="payment-button" disabled={loading}>Make Payment</button>
+          <button type="button" className="assistance-button" disabled={loading}>Request Financial Assistance</button>
         </div>
       </form>
     </div>

@@ -5,7 +5,6 @@
   background-color: white;
   border: 2px solid #000;
   font-family: 'Arial', sans-serif;
-   
 
   .header {
     display: flex;
@@ -14,24 +13,24 @@
     margin-bottom: 20px;
 
     .logo {
-      height: 200px;
-      width: 200px;
+      height: 100px;
+      width: 100px;
     }
 
     .school-title {
-      height: 200px;
-      width: 700px;
+      height: 100px;
+      width: 400px;
     }
   }
 
   h2 {
-    font-size: 34px;
+    font-size: 28px;
     text-align: center;
   }
 
   .program-description {
     margin: 20px 0;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.5;
     text-align: center;
   }
@@ -49,7 +48,7 @@
     }
 
     strong {
-      font-size: 26px;
+      font-size: 24px;
     }
   }
 
@@ -75,6 +74,7 @@
 
       .input-row {
         display: flex;
+        flex-direction: column; /* Adjusted for mobile */
         gap: 10px;
 
         input {
@@ -85,7 +85,8 @@
 
     .button-group {
       display: flex;
-      justify-content: space-between;
+      justify-content: center; /* Center align buttons */
+      gap: 10px;
       margin-top: 20px;
 
       button {
@@ -94,6 +95,8 @@
         border: none;
         cursor: pointer;
         border-radius: 5px;
+        width: 100%; /* Full width on small screens */
+        max-width: 200px;
 
         &.payment-button {
           background-color: #F05727;
@@ -107,11 +110,46 @@
       }
     }
   }
-}
 
-/* Global reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  /* Loading gif styles */
+  .loading-spinner {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .loading {
+    display: flex;
+  }
+
+  @media screen and (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: center;
+
+      .logo, .school-title {
+        height: 80px;
+        width: auto;
+      }
+    }
+
+    h2 {
+      font-size: 24px;
+    }
+
+    .program-description {
+      font-size: 16px;
+    }
+
+    .training-info {
+      p, strong {
+        font-size: 16px;
+      }
+    }
+
+    .button-group {
+      flex-direction: column;
+    }
+  }
 }
