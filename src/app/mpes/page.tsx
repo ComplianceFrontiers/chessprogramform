@@ -48,7 +48,7 @@ const ChessRegistration = () => {
         const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
         if (response2.status === 201) {
           // Redirect to the specified URL
-          window.location.href = 'https://buy.stripe.com/3cs4jw8xYePG6Qg9AA';
+          window.location.href = 'https://buy.stripe.com/5kA6rE8xY22U3E44gi';
         }
       }
     } catch (error) {
