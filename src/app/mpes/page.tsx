@@ -59,12 +59,13 @@ const ChessRegistration = () => {
   
 
   const handleFinancialAssistance = async () => {
+    formData.RequestFinancialAssistance=true
     setLoading(true);
     try {
       // First API call
       const response1 = await axios.post('https://backend-chess-tau.vercel.app/send-email-form', formData);
       if (response1.status === 200) {
-        formData.RequestFinancialAssistance=true
+        
         // Second API call
         const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
         if (response2.status === 201) {
