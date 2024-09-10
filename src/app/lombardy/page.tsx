@@ -34,117 +34,138 @@ const ChessRegistration = () => {
   
   
 
-
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setLoading(true);
     try {
-      const response = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
-      alert(response.data.message);
+      // First API call
+      const response1 = await axios.post('https://backend-chess-tau.vercel.app/send-email-form', formData);
+      if (response1.status === 200) {
+        // Second API call
+        const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
+        if (response2.status === 201) {
+          // Redirect to the specified URL
+          window.location.href = 'https://buy.stripe.com/3cs4jw8xYePG6Qg9AA';
+        }
+      }
     } catch (error) {
-      console.error('There was an error submitting the form!', error);
+      console.error('There was an error requesting financial assistance or submitting the form!', error);
     } finally {
       setLoading(false);
     }
   };
+  
 
   const handleFinancialAssistance = async () => {
     setLoading(true);
     try {
-      const response = await axios.post('https://backend-chess-tau.vercel.app/send-email-form', formData);
-      if (response.status === 200) {
-        setShowThankYou(true);
-        setTimeout(() => {
-          setShowThankYou(false);
-        }, 4000); // Hide the image after 4 seconds
+      // First API call
+      const response1 = await axios.post('https://backend-chess-tau.vercel.app/send-email-form', formData);
+      if (response1.status === 200) {
+        // Second API call
+        const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
+        if (response2.status === 201) {
+          setShowThankYou(true);
+          setTimeout(() => {
+            setShowThankYou(false);
+          }, 4000);
+        }
       }
     } catch (error) {
-      console.error('There was an error requesting financial assistance!', error);
+      console.error('There was an error requesting financial assistance or submitting the form!', error);
     } finally {
       setLoading(false);
     }
   };
+  
 
   return (
     <div className="registration-container">
+      {loading && (
+        <div className="loading-overlay">
+          <img src="/images/loading.gif" alt="Loading..." />
+        </div>
+      )}
+
       {showThankYou && (
         <div className="thank-you-overlay">
           <img src="/images/thankyou.png" alt="Thank You" />
         </div>
       )}
 
-      <div className="header">
-        <img
-          src="/images/chesspro.png"
-          alt="Delaware Chess Champs Logo"
-          className="logo"
-          width="150"
-          height="150"
-        />
-        <img
-          src="/images/schoolname1.png"
-          alt="Mount Pleasant Elementary School"
-          className="school-title"
-          width="200"
-          height="150"
-        />
-      </div>
-
-      <h2>Chess Program: Fall 2024</h2>
-
-      <p className="program-description">
-        The Chess After-School Program gives students a fun and engaging way to learn the game while building critical thinking and problem-solving skills.
-        Through interactive lessons and games, students will master key strategies, improve focus, and boost confidence, all in a supportive environment.
-      </p>
-
-      <div className="training-info">
-        <p><strong>10 Week Training [K-5 Students]</strong></p>
-        <p>25 Sep 2024 to 18 Dec 2024</p>
-        <p>[No classes on 27 Nov 2024]</p>
-        <p>3:30 PM - 4:30 PM</p>
-      </div>
-
-      <form className="registration-form" onSubmit={handleSubmit}>
-        <div className="input-group">
-          <label>Parent's Name</label>
-          <div className="input-row">
-            <input 
-              type="text" 
-              name="parent_first_name" 
-              placeholder="First" 
-              value={formData.parent_first_name} 
-              onChange={handleChange}
+      {!loading && !showThankYou && (
+        <>
+          <div className="header">
+            <img
+              src="/images/chesspro.png"
+              alt="Delaware Chess Champs Logo"
+              className="logo"
+              width="150"
+              height="150"
             />
-            <input 
-              type="text" 
-              name="parent_last_name" 
-              placeholder="Last" 
-              value={formData.parent_last_name} 
-              onChange={handleChange}
+            <img
+              src="/images/schoolname1.png"
+              alt="Mount Pleasant Elementary School"
+              className="school-title"
+              width="200"
+              height="150"
             />
           </div>
-        </div>
 
-        <div className="input-group">
-          <label>Child's Name</label>
-          <div className="input-row">
-            <input 
-              type="text" 
-              name="child_first_name" 
-              placeholder="First" 
-              value={formData.child_first_name} 
-              onChange={handleChange}
-            />
-            <input 
-              type="text" 
-              name="child_last_name" 
-              placeholder="Last" 
-              value={formData.child_last_name} 
-              onChange={handleChange}
-            />
+          <h2>Chess Program: Fall 2024</h2>
+
+          <p className="program-description">
+            The Chess After-School Program gives students a fun and engaging way to learn the game while building critical thinking and problem-solving skills.
+            Through interactive lessons and games, students will master key strategies, improve focus, and boost confidence, all in a supportive environment.
+          </p>
+
+          <div className="training-info">
+            <p><strong>10 Week Training [K-5 Students]</strong></p>
+            <p>25 Sep 2024 to 18 Dec 2024</p>
+            <p>[No classes on 27 Nov 2024]</p>
+            <p>3:30 PM - 4:30 PM</p>
           </div>
-        </div>
+
+          <form className="registration-form" onSubmit={handleSubmit}>
+            {/* Form fields */}
+            <div className="input-group">
+              <label>Parent's Name</label>
+              <div className="input-row">
+                <input 
+                  type="text" 
+                  name="parent_first_name" 
+                  placeholder="First" 
+                  value={formData.parent_first_name} 
+                  onChange={handleChange}
+                />
+                <input 
+                  type="text" 
+                  name="parent_last_name" 
+                  placeholder="Last" 
+                  value={formData.parent_last_name} 
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+
+            <div className="input-group">
+              <label>Child's Name</label>
+              <div className="input-row">
+                <input 
+                  type="text" 
+                  name="child_first_name" 
+                  placeholder="First" 
+                  value={formData.child_first_name} 
+                  onChange={handleChange}
+                />
+                <input 
+                  type="text" 
+                  name="child_last_name" 
+                  placeholder="Last" 
+                  value={formData.child_last_name} 
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
 
         <div className="input-group">
           <label>Child's Grade</label>
@@ -237,6 +258,8 @@ const ChessRegistration = () => {
           </button>
         </div>
       </form>
+        </>
+      )}
     </div>
   );
 };

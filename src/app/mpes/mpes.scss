@@ -5,7 +5,7 @@
   background-color: white;
   border: 2px solid #000;
   font-family: 'Arial', sans-serif;
-   
+  color:#000;
 
   .header {
     display: flex;
@@ -19,19 +19,19 @@
     }
 
     .school-title {
-      height: 200px;
+      height: 150px;
       width: 700px;
     }
   }
 
   h2 {
-    font-size: 34px;
+    font-size: 28px;
     text-align: center;
   }
 
   .program-description {
     margin: 20px 0;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.5;
     text-align: center;
   }
@@ -49,7 +49,7 @@
     }
 
     strong {
-      font-size: 26px;
+      font-size: 24px;
     }
   }
 
@@ -75,6 +75,7 @@
 
       .input-row {
         display: flex;
+        flex-direction: column; /* Adjusted for mobile */
         gap: 10px;
 
         input {
@@ -85,7 +86,8 @@
 
     .button-group {
       display: flex;
-      justify-content: space-between;
+      justify-content: center; /* Center align buttons */
+      gap: 10px;
       margin-top: 20px;
 
       button {
@@ -94,6 +96,8 @@
         border: none;
         cursor: pointer;
         border-radius: 5px;
+        width: 100%; /* Full width on small screens */
+        max-width: 200px;
 
         &.payment-button {
           background-color: #F05727;
@@ -107,11 +111,64 @@
       }
     }
   }
+
+  /* Loading gif styles */
+  .loading-spinner {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .loading {
+    display: flex;
+  }
+
+  @media screen and (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: center;
+
+      .logo, .school-title {
+        height: 50px;
+        width: auto;
+      }
+    }
+
+    h2 {
+      font-size: 24px;
+    }
+
+    .program-description {
+      font-size: 16px;
+    }
+
+    .training-info {
+      p, strong {
+        font-size: 16px;
+      }
+    }
+
+    .button-group {
+      flex-direction: column;
+    }
+  }
+}
+.thank-you-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8); /* Darken the background */
+  z-index: 1000; /* Ensure it's on top of other elements */
 }
 
-/* Global reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.thank-you-overlay img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Ensures the image scales without distortion */
 }
