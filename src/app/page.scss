@@ -1,118 +1,181 @@
 .registration-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: white;
-    border: 2px solid #000;
-    font-family: 'Arial', sans-serif;
-     
-  
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-  
-      .logo {
-        height: 200px;
-        width: 200px;
-      }
-  
-      .school-title {
-        height: 200px;
-        width: 700px;
-      }
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border: 2px solid #000;
+  font-family: 'Arial', sans-serif;
+  color: #000;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .logo {
+      height: 200px;
+      width: 200px;
     }
-  
-    h2 {
-      font-size: 34px;
-      text-align: center;
+
+    .school-title {
+      height: 150px;
+      width: 700px;
     }
-  
-    .program-description {
-      margin: 20px 0;
-      font-size: 20px;
-      line-height: 1.5;
-      text-align: center;
+  }
+
+  h2 {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .program-description {
+    margin: 20px 0;
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .training-info {
+    background-color: #F05727;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+
+    p {
+      font-size: 16px;
+      margin: 5px 0;
     }
-  
-    .training-info {
-      background-color: #F05727;
-      color: white;
-      padding: 10px;
-      text-align: center;
-      margin-bottom: 20px;
-  
-      p {
-        font-size: 16px;
-        margin: 5px 0;
-      }
-  
-      strong {
-        font-size: 26px;
-      }
+
+    strong {
+      font-size: 24px;
     }
-  
-    .registration-form {
-      .input-group {
-        margin-bottom: 15px;
-  
-        label {
-          font-size: 14px;
-          font-weight: bold;
-          display: block;
-          margin-bottom: 5px;
-        }
-  
-        input,
-        select {
-          width: 100%;
-          padding: 10px;
-          font-size: 14px;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-        }
-  
-        .input-row {
-          display: flex;
-          gap: 10px;
-  
-          input {
-            flex: 1;
-          }
-        }
+  }
+
+  .registration-form {
+    .input-group {
+      margin-bottom: 15px;
+
+      label {
+        font-size: 14px;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
       }
-  
-      .button-group {
+
+      input,
+      select {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .input-row {
         display: flex;
-        justify-content: space-between;
-        margin-top: 20px;
-  
-        button {
-          padding: 10px 20px;
-          font-size: 14px;
-          border: none;
-          cursor: pointer;
-          border-radius: 5px;
-  
-          &.payment-button {
-            background-color: #F05727;
-            color: white;
-          }
-  
-          &.assistance-button {
-            background-color: #FFCC00;
-            color: #000;
-          }
+        flex-direction: column; /* Adjusted for mobile */
+        gap: 10px;
+
+        input {
+          flex: 1;
+        }
+      }
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center; /* Center align buttons */
+      gap: 10px;
+      margin-top: 20px;
+
+      button {
+        padding: 10px 20px;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        width: 100%; /* Full width on small screens */
+        max-width: 200px;
+
+        &.payment-button {
+          background-color: #F05727;
+          color: white;
+        }
+
+        &.assistance-button {
+          background-color: #FFCC00;
+          color: #000;
         }
       }
     }
   }
-  
-  /* Global reset */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+  /* Loading gif styles */
+  .loading-spinner {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
   }
   
+  .loading {
+    display: flex;
+  }
+
+  @media screen and (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: center;
+
+      .logo, .school-title {
+        height: 50px;
+        width: auto;
+      }
+    }
+
+    h2 {
+      font-size: 24px;
+    }
+
+    .program-description {
+      font-size: 16px;
+    }
+
+    .training-info {
+      p, strong {
+        font-size: 16px;
+      }
+    }
+
+    .button-group {
+      flex-direction: column;
+    }
+  }
+}
+
+.thank-you-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8); /* Darken the background */
+  z-index: 1000; /* Ensure it's on top of other elements */
+  padding: 20px; /* Add padding to ensure the content doesn't touch the edges */
+  box-sizing: border-box; /* Include padding in width/height calculations */
+
+  @media screen and (max-width: 768px) {
+    padding: 10px; /* Less padding on smaller screens */
+  }
+}
+
+.thank-you-overlay img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Ensures the image scales without distortion */
+}

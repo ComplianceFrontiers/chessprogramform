@@ -19,6 +19,7 @@ const ChessRegistration = () => {
     city: '',
     state: '',
     zip_code: '',
+    RequestFinancialAssistance:false,
   });
 
   const [loading, setLoading] = useState(false);
@@ -41,6 +42,7 @@ const ChessRegistration = () => {
       const response1 = await axios.post('https://backend-chess-tau.vercel.app/send-email-form', formData);
       if (response1.status === 200) {
         // Second API call
+        // formData[RequestFinancialAssistance]=false
         const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
         if (response2.status === 201) {
           // Redirect to the specified URL
@@ -61,6 +63,7 @@ const ChessRegistration = () => {
       // First API call
       const response1 = await axios.post('https://backend-chess-tau.vercel.app/send-email-form', formData);
       if (response1.status === 200) {
+        formData.RequestFinancialAssistance=true
         // Second API call
         const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
         if (response2.status === 201) {
