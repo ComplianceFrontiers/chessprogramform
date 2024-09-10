@@ -2,7 +2,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Admin.scss';
+import './admin.scss';
 
 // Define interfaces
 interface ParentName {
