@@ -22,8 +22,8 @@ const ChessRegistration = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [showThankYou, setShowThankYou] = useState(false);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -32,12 +32,15 @@ const ChessRegistration = () => {
     });
   };
   
+  
+
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post('http://127.0.0.1:80/submit_form', formData);
+      const response = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
       alert(response.data.message);
     } catch (error) {
       console.error('There was an error submitting the form!', error);
@@ -46,8 +49,31 @@ const ChessRegistration = () => {
     }
   };
 
+  const handleFinancialAssistance = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.post('https://backend-chess-tau.vercel.app/send-email-form', formData);
+      if (response.status === 200) {
+        setShowThankYou(true);
+        setTimeout(() => {
+          setShowThankYou(false);
+        }, 4000); // Hide the image after 4 seconds
+      }
+    } catch (error) {
+      console.error('There was an error requesting financial assistance!', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="registration-container">
+      {showThankYou && (
+        <div className="thank-you-overlay">
+          <img src="/images/thankyou.png" alt="Thank You" />
+        </div>
+      )}
+
       <div className="header">
         <img
           src="/images/chesspro.png"
@@ -206,7 +232,9 @@ const ChessRegistration = () => {
 
         <div className="button-group">
           <button type="submit" className="payment-button" disabled={loading}>Make Payment</button>
-          <button type="button" className="assistance-button" disabled={loading}>Request Financial Assistance</button>
+          <button type="button" className="assistance-button" onClick={handleFinancialAssistance} disabled={loading}>
+            Request Financial Assistance
+          </button>
         </div>
       </form>
     </div>

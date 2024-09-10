@@ -39,7 +39,7 @@ const Admin: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get<FormData[]>('http://127.0.0.1:80/get_forms');
+        const response = await axios.get<FormData[]>('https://backend-chess-tau.vercel.app/get_forms');
         setFormData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
