@@ -3,7 +3,7 @@
 'use client'
 import React, { useState } from 'react';
 import axios from 'axios';
-import './lombardy.scss';
+import './mpes.scss';
 
 const ChessRegistration = () => {
   const [formData, setFormData] = useState({
