@@ -20,6 +20,7 @@ const ChessRegistration = () => {
     state: '',
     zip_code: '',
     RequestFinancialAssistance:false,
+    SchoolName:"Lombardy Elementary School",
   });
 
   const [loading, setLoading] = useState(false);
