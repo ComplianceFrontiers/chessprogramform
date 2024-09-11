@@ -8,17 +8,19 @@
   color: #000;
 
   .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: block;
     margin-bottom: 20px;
 
     .logo {
-      height: 200px;
-      width: 200px;
+      display: block;
+      margin: 0 auto;
+      height: auto;
+      width: 150px;
     }
 
     .school-title {
+      display: block;
+      margin: 0 auto;
       height: 150px;
       width: 700px;
     }
@@ -90,7 +92,7 @@
       justify-content: center; /* Center align buttons */
       gap: 10px;
       margin-top: 20px;
-    
+
       button {
         padding: 10px 20px;
         font-size: 14px;
@@ -99,26 +101,25 @@
         border-radius: 5px;
         width: 100%; /* Full width on small screens */
         max-width: 200px;
-    
+
         &.payment-button {
           background-color: #F05727;
           color: white;
         }
-    
+
         &.assistance-button {
           background-color: #FFCC00;
           color: #000;
         }
       }
     }
-    
+
     @media screen and (max-width: 768px) {
       .button-group {
-        /* Ensure buttons are side by side on smaller screens */
         flex-direction: row; /* Set direction to row */
         justify-content: space-between; /* Distribute buttons evenly */
         gap: 10px; /* Space between buttons */
-        
+
         button {
           width: calc(50% - 5px); /* Adjust width to fit two buttons side by side with spacing */
         }
@@ -133,7 +134,7 @@
     align-items: center;
     margin: 20px 0;
   }
-  
+
   .loading {
     display: flex;
   }
@@ -143,7 +144,8 @@
       flex-direction: column;
       align-items: center;
 
-      .logo, .school-title {
+      .logo,
+      .school-title {
         height: 50px;
         width: auto;
       }
@@ -158,34 +160,85 @@
     }
 
     .training-info {
-      p, strong {
+      p,
+      strong {
         font-size: 16px;
       }
+    }
+  }
+
+  .terms-link {
+    color: blue;
+    text-decoration: underline;
+  }
+
+  .note {
+    margin-top: 20px;
+    font-size: 14px;
+    color: black;
+
+    .request-link {
+      color: red;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  .terms-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    a {
+      color: blue; /* Set the link color to blue */
+      text-decoration: underline; /* Optional: underline to indicate a link */
+    }
+
+    a:hover {
+      color: darkblue; /* Change color on hover to give feedback to the user */
     }
   }
 }
 
 .thank-you-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.8); /* Darken the background */
-  z-index: 1000; /* Ensure it's on top of other elements */
-  padding: 20px; /* Add padding to ensure the content doesn't touch the edges */
-  box-sizing: border-box; /* Include padding in width/height calculations */
-
-  @media screen and (max-width: 768px) {
-    padding: 10px; /* Less padding on smaller screens */
-  }
+  text-align: center; /* Center-align the content */
+  padding: 2rem; /* Increased padding for a more spacious layout */
+  background-color: #fef9e7; /* Soft pastel background */
+  border: 1px solid #f0c0c0; /* Soft pink border for a playful touch */
+  border-radius: 12px; /* Slightly larger rounded corners for a modern look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
-.thank-you-overlay img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain; /* Ensures the image scales without distortion */
+.thank-you-image {
+  width: 120px; /* Adjusted width for a more balanced appearance */
+  height: auto; /* Maintain aspect ratio */
+  margin: 0 auto; /* Center the image horizontally */
+}
+
+.thank-you-message {
+  margin-top: 1.5rem; /* Increased space between the image and message */
+  padding: 1.5rem; /* Added padding for a more spacious message box */
+  background-color: #fff5e6; /* Light orange background for a warm feel */
+  border: 2px solid #ffcc99; /* Border in a playful color */
+  border-radius: 8px; /* Rounded corners for a polished look */
+  display: inline-block; /* Keeps the message box only as wide as its content */
+  max-width: 90%; /* Limits width to avoid overflow on large screens */
+  line-height: 1.6; /* Improved line spacing for readability */
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun, kid-friendly font */
+  color: #333; /* Dark text color for better readability */
+  font-size: 1.1rem; /* Slightly larger font size for readability */
+}
+
+.thank-you-message p {
+  margin: 0; /* Remove default paragraph margin */
+}
+
+.thank-you-message span {
+  display: block;
+  color: #ff69b4; /* Fun pink color for emphasis */
+  font-weight: bold; /* Emphasize key phrases */
 }

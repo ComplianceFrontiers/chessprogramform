@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-unescaped-entities */
 'use client'
 import React, { useState } from 'react';
 import axios from 'axios';
 import './mpes.scss';
+import Link from 'next/link';
 
 const ChessRegistration = () => {
   const [formData, setFormData] = useState({
@@ -14,41 +14,47 @@ const ChessRegistration = () => {
     child_grade: '',
     email: '',
     phone: '',
-    address_line_1: '',
-    address_line_2: '',
-    city: '',
-    state: '',
-    zip_code: '',
-    RequestFinancialAssistance:false,
-    SchoolName:"Mount Pleasant Elementary School",
+    acceptTerms: false,
+    RequestFinancialAssistance: false,
+    SchoolName: "Mount Pleasant Elementary School",
   });
 
   const [loading, setLoading] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    const { name, value, type } = e.target;
+  
+    if (type === 'checkbox') {
+      const checked = (e.target as HTMLInputElement).checked;
+      setFormData({
+        ...formData,
+        [name]: checked,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
-  
-  
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.acceptTerms) {
+      alert("You must accept the terms and conditions to proceed.");
+      return;
+    }
+
     setLoading(true);
-    formData.RequestFinancialAssistance=false
+    formData.RequestFinancialAssistance = false;
+
     try {
-      // First API call
-      const response1 = await axios.post('https://backend-chess-tau.vercel.app/send-email-form', formData);
+      const response1 = await axios.post('https://backend-chess-tau.vercel.app/send-email-form-mpes', formData);
       if (response1.status === 200) {
-        // Second API call
-        // formData[RequestFinancialAssistance]=false
         const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
         if (response2.status === 201) {
-          // Redirect to the specified URL
-          window.location.href = 'https://buy.stripe.com/5kA6rE8xY22U3E44gi';
+          window.location.href = 'https://buy.stripe.com/6oE8zMaG6ePGfmM28c';
         }
       }
     } catch (error) {
@@ -57,23 +63,29 @@ const ChessRegistration = () => {
       setLoading(false);
     }
   };
-  
 
-  const handleFinancialAssistance = async () => {
-    formData.RequestFinancialAssistance=true
+  const handleFinancialAssistance = async (e: React.FormEvent) => {
+    if (!formData.email) {
+      alert("Email is required to proceed.");
+      return;
+    }
+    e.preventDefault();
+    if (!formData.acceptTerms) {
+      alert("You must accept the terms and conditions to proceed.");
+      return;
+    }
     setLoading(true);
+    formData.RequestFinancialAssistance = true;
+
     try {
-      // First API call
-      const response1 = await axios.post('https://backend-chess-tau.vercel.app/send-email-form', formData);
+      const response1 = await axios.post('https://backend-chess-tau.vercel.app/send-email-form-mpes', formData);
       if (response1.status === 200) {
-        
-        // Second API call
         const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
         if (response2.status === 201) {
           setShowThankYou(true);
           setTimeout(() => {
             setShowThankYou(false);
-          }, 4000);
+          }, 6000);
         }
       }
     } catch (error) {
@@ -82,7 +94,6 @@ const ChessRegistration = () => {
       setLoading(false);
     }
   };
-  
 
   return (
     <div className="registration-container">
@@ -94,7 +105,12 @@ const ChessRegistration = () => {
 
       {showThankYou && (
         <div className="thank-you-overlay">
-          <img src="/images/thankyou.png" alt="Thank You" />
+          <p className="thank-you-message">
+            <span>Thank you!</span> We’re excited about your interest in enrolling your child in our chess program. We understand that you are seeking financial assistance, and we appreciate your inquiry. Please allow us some time to review your request, and we will get back to you shortly.
+            <br />
+            <br />
+            Rest assured, we are fully committed to supporting your child's development and helping them explore the many benefits that chess offers during these formative years. We look forward to providing a fun, enriching experience that will help nurture their skills and growth.
+          </p>
         </div>
       )}
 
@@ -126,13 +142,12 @@ const ChessRegistration = () => {
 
           <div className="training-info">
             <p><strong>10 Week Training [K-5 Students]</strong></p>
-            <p>25 Sep 2024 to 18 Dec 2024</p>
+            <p> Program Date: 25 Sep 2024 to 18 Dec 2024</p>
             <p>[No classes on 27 Nov 2024]</p>
-            <p>3:30 PM - 4:30 PM</p>
+            <p>Time: 3:30 PM - 4:30 PM</p>
           </div>
 
           <form className="registration-form" onSubmit={handleSubmit}>
-            {/* Form fields */}
             <div className="input-group">
               <label>Parent's Name</label>
               <div className="input-row">
@@ -173,97 +188,72 @@ const ChessRegistration = () => {
               </div>
             </div>
 
-        <div className="input-group">
-          <label>Child's Grade</label>
-          <select 
-            name="child_grade" 
-            value={formData.child_grade} 
-            onChange={handleChange}
-          >
-            <option value="">Dropdown</option>
-            <option value="K">K</option>
-            <option value="1">1st Grade</option>
-            <option value="2">2nd Grade</option>
-            <option value="3">3rd Grade</option>
-            <option value="4">4th Grade</option>
-            <option value="5">5th Grade</option>
-          </select>
-        </div>
+            <div className="input-group">
+              <label>Child's Grade</label>
+              <select 
+                name="child_grade" 
+                value={formData.child_grade} 
+                onChange={handleChange}
+                required
+              >
+                <option value="">Dropdown</option>
+                <option value="K">K</option>
+                <option value="1">1st Grade</option>
+                <option value="2">2nd Grade</option>
+                <option value="3">3rd Grade</option>
+                <option value="4">4th Grade</option>
+                <option value="5">5th Grade</option>
+              </select>
+            </div>
 
-        <div className="input-group">
-          <label>Email</label>
-          <input 
-            type="email" 
-            name="email" 
-            placeholder="Enter Email" 
-            value={formData.email} 
-            onChange={handleChange}
-          />
-        </div>
+            <div className="input-group">
+              <label>Email <span className="required">*</span></label>
+              <input 
+                type="email" 
+                name="email" 
+                placeholder="Enter Email" 
+                value={formData.email} 
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-        <div className="input-group">
-          <label>Phone</label>
-          <input 
-            type="tel" 
-            name="phone" 
-            placeholder="Enter Phone Number" 
-            value={formData.phone} 
-            onChange={handleChange}
-          />
-        </div>
+            <div className="input-group">
+              <label>Phone <span className="required">*</span></label>
+              <input 
+                type="tel" 
+                name="phone" 
+                placeholder="Enter Phone Number" 
+                value={formData.phone} 
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-        <div className="input-group">
-          <label>Address</label>
-          <input 
-            type="text" 
-            name="address_line_1" 
-            placeholder="Address Line 1" 
-            value={formData.address_line_1} 
-            onChange={handleChange}
-          />
-          <input 
-            type="text" 
-            name="address_line_2" 
-            placeholder="Address Line 2" 
-            value={formData.address_line_2} 
-            onChange={handleChange}
-          />
-          <div className="input-row">
-            <input 
-              type="text" 
-              name="city" 
-              placeholder="City" 
-              value={formData.city} 
-              onChange={handleChange}
-            />
-            <input 
-              type="text" 
-              name="state" 
-              placeholder="State" 
-              value={formData.state} 
-              onChange={handleChange}
-            />
-            <input 
-              type="text" 
-              name="zip_code" 
-              placeholder="Zip Code" 
-              value={formData.zip_code} 
-              onChange={handleChange}
-            />
-          </div>
-        </div>
+            <div className="training-info">
+              <p><strong>10 Week Program $150.00</strong></p>
+            </div>
+            <div className="terms-container">
+              <input 
+                type="checkbox" 
+                id="terms" 
+                name="acceptTerms" 
+                checked={formData.acceptTerms} 
+                onChange={handleChange} 
+              />
+              <label htmlFor="terms">
+                I accept the <Link href="/terms-and-conditions">terms and conditions</Link>
+              </label>
+            </div>
 
-        <div className="training-info">
-          <p><strong>10 Week Program $150.00</strong></p>
-        </div>
+            <div className="button-group">
+              <button type="submit" className="payment-button" disabled={loading}>Make Payment</button>
+            </div>
+          </form>
 
-        <div className="button-group">
-          <button type="submit" className="payment-button" disabled={loading}>Make Payment</button>
-          <button type="button" className="assistance-button" onClick={handleFinancialAssistance} disabled={loading}>
-            Request Financial Assistance
-          </button>
-        </div>
-      </form>
+          <p className="note">
+            <strong>Note:</strong> Financial Assistance is available for this program. Click <a href="#" className="request-link" onClick={handleFinancialAssistance}> here </a> to register your request.
+          </p>
         </>
       )}
     </div>
