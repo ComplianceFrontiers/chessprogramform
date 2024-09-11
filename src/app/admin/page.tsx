@@ -15,21 +15,12 @@ interface ChildName {
   last: string;
 }
 
-interface Address {
-  line_1: string;
-  line_2: string;
-  city: string;
-  state: string;
-  zip_code: string;
-}
-
 interface FormData {
   parent_name: ParentName;
   child_name: ChildName;
   child_grade: string;
   email: string;
   phone: string;
-  address: Address;
   RequestFinancialAssistance: boolean;
   SchoolName: string;
 }
@@ -65,7 +56,6 @@ const Admin: React.FC = () => {
               <th>Grade</th>
               <th>Email</th>
               <th>Phone</th>
-              <th>Address</th>
               <th>Financial Assistance</th>
               <th>School Name</th>
             </tr>
@@ -78,10 +68,6 @@ const Admin: React.FC = () => {
                 <td>{form.child_grade}</td>
                 <td>{form.email}</td>
                 <td>{form.phone}</td>
-                <td>
-                  {form.address.line_1}, {form.address.line_2} <br />
-                  {form.address.city}, {form.address.state} - {form.address.zip_code}
-                </td>
                 <td>{form.RequestFinancialAssistance ? 'Yes' : 'No'}</td>
                 <td>{form.SchoolName}</td>
               </tr>
