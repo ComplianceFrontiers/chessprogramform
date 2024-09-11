@@ -66,7 +66,16 @@ const ChessRegistration = () => {
     }
   };
 
-  const handleFinancialAssistance = async () => {
+  const handleFinancialAssistance = async (e: React.FormEvent) => {
+    if (!formData.email) {
+      alert("Email is required to proceed.");
+      return;
+    }
+    e.preventDefault();
+    if (!formData.acceptTerms) {
+      alert("You must accept the terms and conditions to proceed.");
+      return;
+    }
     setLoading(true);
     formData.RequestFinancialAssistance = true;
 
