@@ -148,91 +148,93 @@ const ChessRegistration = () => {
           </div>
 
           <form className="registration-form" onSubmit={handleSubmit}>
-            <div className="input-group">
-              <label>Parent's Name</label>
-              <div className="input-row">
-                <input 
-                  type="text" 
-                  name="parent_first_name" 
-                  placeholder="First" 
-                  value={formData.parent_first_name} 
-                  onChange={handleChange}
-                  required
-                />
-                <input 
-                  type="text" 
-                  name="parent_last_name" 
-                  placeholder="Last" 
-                  value={formData.parent_last_name} 
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
+  <div className="input-group">
+    <label>Parent's Name</label>
+    <div className="input-row">
+      <input 
+        type="text" 
+        name="parent_first_name" 
+        placeholder="First" 
+        value={formData.parent_first_name} 
+        onChange={handleChange}
+        // required
+      />
+      <input 
+        type="text" 
+        name="parent_last_name" 
+        placeholder="Last" 
+        value={formData.parent_last_name} 
+        onChange={handleChange}
+        // required
+      />
+    </div>
+  </div>
 
-            <div className="input-group">
-              <label>Child's Name</label>
-              <div className="input-row">
-                <input 
-                  type="text" 
-                  name="child_first_name" 
-                  placeholder="First" 
-                  value={formData.child_first_name} 
-                  onChange={handleChange}
-                  required
-                />
-                <input 
-                  type="text" 
-                  name="child_last_name" 
-                  placeholder="Last" 
-                  value={formData.child_last_name} 
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
+  <div className="input-group">
+    <label>Child's Name</label>
+    <div className="input-row">
+      <input 
+        type="text" 
+        name="child_first_name" 
+        placeholder="First" 
+        value={formData.child_first_name} 
+        onChange={handleChange}
+        // required
+      />
+      <input 
+        type="text" 
+        name="child_last_name" 
+        placeholder="Last" 
+        value={formData.child_last_name} 
+        onChange={handleChange}
+        // required
+      />
+    </div>
+  </div>
 
-            <div className="input-group">
-              <label>Child's Grade</label>
-              <select 
-                name="child_grade" 
-                value={formData.child_grade} 
-                onChange={handleChange}
-                required
-              >
-                <option value="">Dropdown</option>
-                <option value="K">K</option>
-                <option value="1">1st Grade</option>
-                <option value="2">2nd Grade</option>
-                <option value="3">3rd Grade</option>
-                <option value="4">4th Grade</option>
-                <option value="5">5th Grade</option>
-              </select>
-            </div>
+  <div className="input-group">
+    <label>Child's Grade</label>
+    <select 
+      name="child_grade" 
+      value={formData.child_grade} 
+      onChange={handleChange}
+      required
+    >
+      <option value="">Dropdown</option>
+      <option value="K">K</option>
+      <option value="1">1st Grade</option>
+      <option value="2">2nd Grade</option>
+      <option value="3">3rd Grade</option>
+      <option value="4">4th Grade</option>
+      <option value="5">5th Grade</option>
+    </select>
+  </div>
 
-            <div className="input-group">
-              <label>Email</label>
-              <input 
-                type="email" 
-                name="email" 
-                placeholder="Enter Email" 
-                value={formData.email} 
-                onChange={handleChange}
-                required
-              />
-            </div>
+  <div className="input-group">
+    <label>Email <span className="required">*</span></label>
+    <input 
+      type="email" 
+      name="email" 
+      placeholder="Enter Email" 
+      value={formData.email} 
+      onChange={handleChange}
+      required
+    />
+  </div>
 
-            <div className="input-group">
-              <label>Phone</label>
-              <input 
-                type="tel" 
-                name="phone" 
-                placeholder="Enter Phone Number" 
-                value={formData.phone} 
-                onChange={handleChange}
-              />
-            </div>
+  <div className="input-group">
+    <label>Phone <span className="required">*</span></label>
+    <input 
+      type="tel" 
+      name="phone" 
+      placeholder="Enter Phone Number" 
+      value={formData.phone} 
+      onChange={handleChange}
+      required
+    />
+  </div>
 
+  
             <div className="training-info">
               <p><strong>10 Week Program $150.00</strong></p>
             </div>

@@ -164,53 +164,44 @@
     }
   }
 }
-
-.thank-you-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.8); /* Darken the background */
-  z-index: 1000; /* Ensure it's on top of other elements */
-  padding: 20px; /* Add padding to ensure the content doesn't touch the edges */
-  box-sizing: border-box; /* Include padding in width/height calculations */
-
-  @media screen and (max-width: 768px) {
-    padding: 10px; /* Less padding on smaller screens */
-  }
-}
 .thank-you-overlay {
   text-align: center; /* Center-align the content */
   padding: 2rem; /* Increased padding for a more spacious layout */
-  background-color: #f8f9fa; /* Light background for better contrast */
-  border: 1px solid #ddd; /* Subtle border for a more defined container */
+  background-color: #fef9e7; /* Soft pastel background */
+  border: 1px solid #f0c0c0; /* Soft pink border for a playful touch */
   border-radius: 12px; /* Slightly larger rounded corners for a modern look */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
-
+.thank-you-image {
+  width: 120px; /* Adjusted width for a more balanced appearance */
+  height: auto; /* Maintain aspect ratio */
+  margin: 0 auto; /* Center the image horizontally */
+}
 
 .thank-you-message {
   margin-top: 1.5rem; /* Increased space between the image and message */
   padding: 1.5rem; /* Added padding for a more spacious message box */
-  background-color: #ffffff; /* White background for contrast */
-  border: 1px solid #ddd; /* Subtle border around the message box */
+  background-color: #fff5e6; /* Light orange background for a warm feel */
+  border: 2px solid #ffcc99; /* Border in a playful color */
   border-radius: 8px; /* Rounded corners for a polished look */
   display: inline-block; /* Keeps the message box only as wide as its content */
   max-width: 90%; /* Limits width to avoid overflow on large screens */
   line-height: 1.6; /* Improved line spacing for readability */
-  font-family: 'Arial', sans-serif; /* Clean, modern font */
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun, kid-friendly font */
   color: #333; /* Dark text color for better readability */
+  font-size: 1.1rem; /* Slightly larger font size for readability */
 }
 
 .thank-you-message p {
   margin: 0; /* Remove default paragraph margin */
 }
 
+.thank-you-message span {
+  display: block;
+  color: #ff69b4; /* Fun pink color for emphasis */
+  font-weight: bold; /* Emphasize key phrases */
+}
 
 
 
@@ -255,19 +246,39 @@
 
   .input-group {
     margin-bottom: 20px;
-    
+  
     label {
       font-size: 14px;
       font-weight: bold;
       display: block;
       margin-bottom: 5px;
-
-      input[type="checkbox"] {
-        margin-right: 10px;
+  
+      .required {
+        color: red; // Red color for the asterisk
+        margin-left: 5px; // Space between label text and asterisk
       }
     }
-    
+  
+    input,
+    select {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  
+    .input-row {
+      display: flex;
+      flex-direction: column; // Adjusted for mobile
+      gap: 10px;
+  
+      input {
+        flex: 1;
+      }
+    }
   }
+  
   .terms-container {
     display: flex;
     align-items: center;
