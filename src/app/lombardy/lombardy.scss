@@ -193,20 +193,31 @@
     display: flex;
     align-items: center;
     margin-top: 10px;
-
+  
     input[type="checkbox"] {
       margin-right: 10px;
     }
-
-    a {
-      color: blue; /* Set the link color to blue */
-      text-decoration: underline; /* Optional: underline to indicate a link */
-    }
-
-    a:hover {
-      color: darkblue; /* Change color on hover to give feedback to the user */
+  
+    label {
+      font-size: 14px;
+  
+      &::after {
+        content: "*";
+        color: red; /* Color for the asterisk */
+        margin-left: 5px;
+      }
+  
+      a {
+        color: blue; /* Set the link color to blue */
+        text-decoration: underline; /* Optional: underline to indicate a link */
+      }
+  
+      a:hover {
+        color: darkblue; /* Change color on hover to give feedback to the user */
+      }
     }
   }
+  
 }
 
 .thank-you-overlay {
