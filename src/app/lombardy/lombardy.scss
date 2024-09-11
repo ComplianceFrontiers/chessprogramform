@@ -19,7 +19,7 @@
     }
 
     .school-title {
-      height: 150px;
+      height: 200px;
       width: 700px;
     }
   }
@@ -183,9 +183,108 @@
     padding: 10px; /* Less padding on smaller screens */
   }
 }
+.thank-you-overlay {
+  text-align: center; /* Center-align the content */
+  padding: 2rem; /* Increased padding for a more spacious layout */
+  background-color: #f8f9fa; /* Light background for better contrast */
+  border: 1px solid #ddd; /* Subtle border for a more defined container */
+  border-radius: 12px; /* Slightly larger rounded corners for a modern look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
 
-.thank-you-overlay img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain; /* Ensures the image scales without distortion */
+
+
+.thank-you-message {
+  margin-top: 1.5rem; /* Increased space between the image and message */
+  padding: 1.5rem; /* Added padding for a more spacious message box */
+  background-color: #ffffff; /* White background for contrast */
+  border: 1px solid #ddd; /* Subtle border around the message box */
+  border-radius: 8px; /* Rounded corners for a polished look */
+  display: inline-block; /* Keeps the message box only as wide as its content */
+  max-width: 90%; /* Limits width to avoid overflow on large screens */
+  line-height: 1.6; /* Improved line spacing for readability */
+  font-family: 'Arial', sans-serif; /* Clean, modern font */
+  color: #333; /* Dark text color for better readability */
+}
+
+.thank-you-message p {
+  margin: 0; /* Remove default paragraph margin */
+}
+
+
+
+
+.registration-container {
+  // ... (existing styles)
+
+  .terms-link {
+    color: blue;
+    text-decoration: underline;
+  }
+
+  .note {
+    margin-top: 20px;
+    font-size: 14px;
+    color: black;
+
+    .request-link {
+      color: red;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: center; // Center align the Make Payment button
+    margin-top: 20px;
+    
+    button {
+      padding: 10px 20px;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+
+      &.payment-button {
+        background-color: #F05727;
+        color: white;
+      }
+    }
+  }
+
+  .input-group {
+    margin-bottom: 20px;
+    
+    label {
+      font-size: 14px;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+
+      input[type="checkbox"] {
+        margin-right: 10px;
+      }
+    }
+    
+  }
+  .terms-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .terms-container input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  .terms-container a {
+    color: blue; /* Set the link color to blue */
+    text-decoration: underline; /* Optional: underline to indicate a link */
+  }
+  
+  .terms-container a:hover {
+    color: darkblue; /* Change color on hover to give feedback to the user */
+  }
+  
+  
 }
