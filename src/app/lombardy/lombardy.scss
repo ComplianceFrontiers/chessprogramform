@@ -8,18 +8,20 @@
   color: #000;
 
   .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: block;
     margin-bottom: 20px;
 
     .logo {
-      height: 200px;
-      width: 200px;
+      display: block;
+      margin: 0 auto;
+      height: auto;
+      width: 150px;
     }
 
     .school-title {
-      height: 200px;
+      display: block;
+      margin: 0 auto;
+      height: 150px;
       width: 700px;
     }
   }
@@ -90,7 +92,7 @@
       justify-content: center; /* Center align buttons */
       gap: 10px;
       margin-top: 20px;
-    
+
       button {
         padding: 10px 20px;
         font-size: 14px;
@@ -99,26 +101,25 @@
         border-radius: 5px;
         width: 100%; /* Full width on small screens */
         max-width: 200px;
-    
+
         &.payment-button {
           background-color: #F05727;
           color: white;
         }
-    
+
         &.assistance-button {
           background-color: #FFCC00;
           color: #000;
         }
       }
     }
-    
+
     @media screen and (max-width: 768px) {
       .button-group {
-        /* Ensure buttons are side by side on smaller screens */
         flex-direction: row; /* Set direction to row */
         justify-content: space-between; /* Distribute buttons evenly */
         gap: 10px; /* Space between buttons */
-        
+
         button {
           width: calc(50% - 5px); /* Adjust width to fit two buttons side by side with spacing */
         }
@@ -133,7 +134,7 @@
     align-items: center;
     margin: 20px 0;
   }
-  
+
   .loading {
     display: flex;
   }
@@ -143,7 +144,8 @@
       flex-direction: column;
       align-items: center;
 
-      .logo, .school-title {
+      .logo,
+      .school-title {
         height: 50px;
         width: auto;
       }
@@ -158,12 +160,50 @@
     }
 
     .training-info {
-      p, strong {
+      p,
+      strong {
         font-size: 16px;
       }
     }
   }
+
+  .terms-link {
+    color: blue;
+    text-decoration: underline;
+  }
+
+  .note {
+    margin-top: 20px;
+    font-size: 14px;
+    color: black;
+
+    .request-link {
+      color: red;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  .terms-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    a {
+      color: blue; /* Set the link color to blue */
+      text-decoration: underline; /* Optional: underline to indicate a link */
+    }
+
+    a:hover {
+      color: darkblue; /* Change color on hover to give feedback to the user */
+    }
+  }
 }
+
 .thank-you-overlay {
   text-align: center; /* Center-align the content */
   padding: 2rem; /* Increased padding for a more spacious layout */
@@ -201,101 +241,4 @@
   display: block;
   color: #ff69b4; /* Fun pink color for emphasis */
   font-weight: bold; /* Emphasize key phrases */
-}
-
-
-
-.registration-container {
-  // ... (existing styles)
-
-  .terms-link {
-    color: blue;
-    text-decoration: underline;
-  }
-
-  .note {
-    margin-top: 20px;
-    font-size: 14px;
-    color: black;
-
-    .request-link {
-      color: red;
-      text-decoration: underline;
-      cursor: pointer;
-    }
-  }
-
-  .button-group {
-    display: flex;
-    justify-content: center; // Center align the Make Payment button
-    margin-top: 20px;
-    
-    button {
-      padding: 10px 20px;
-      font-size: 14px;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-
-      &.payment-button {
-        background-color: #F05727;
-        color: white;
-      }
-    }
-  }
-
-  .input-group {
-    margin-bottom: 20px;
-  
-    label {
-      font-size: 14px;
-      font-weight: bold;
-      display: block;
-      margin-bottom: 5px;
-  
-      .required {
-        color: red; // Red color for the asterisk
-        margin-left: 5px; // Space between label text and asterisk
-      }
-    }
-  
-    input,
-    select {
-      width: 100%;
-      padding: 10px;
-      font-size: 14px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-  
-    .input-row {
-      display: flex;
-      flex-direction: column; // Adjusted for mobile
-      gap: 10px;
-  
-      input {
-        flex: 1;
-      }
-    }
-  }
-  
-  .terms-container {
-    display: flex;
-    align-items: center;
-  }
-  
-  .terms-container input[type="checkbox"] {
-    margin-right: 10px;
-  }
-  
-  .terms-container a {
-    color: blue; /* Set the link color to blue */
-    text-decoration: underline; /* Optional: underline to indicate a link */
-  }
-  
-  .terms-container a:hover {
-    color: darkblue; /* Change color on hover to give feedback to the user */
-  }
-  
-  
 }
