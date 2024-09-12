@@ -231,7 +231,7 @@ const ChessRegistration = () => {
             </div>
 
             <div className="training-info">
-              <p><strong>10 Weeks Training Program[10 Sessions] $150.00</strong></p>
+              <p><strong>10 Weeks Training Program [10 Sessions] $150.00</strong></p>
             </div>
             <div className="terms-container">
               <input 
