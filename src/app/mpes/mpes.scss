@@ -101,6 +101,7 @@
         border-radius: 5px;
         width: 100%; /* Full width on small screens */
         max-width: 200px;
+        text-align: center;
 
         &.payment-button {
           background-color: #F05727;
@@ -117,7 +118,7 @@
     @media screen and (max-width: 768px) {
       .button-group {
         flex-direction: row; /* Set direction to row */
-        justify-content: space-between; /* Distribute buttons evenly */
+        justify-content: center; /* Distribute buttons evenly */
         gap: 10px; /* Space between buttons */
 
         button {
@@ -217,6 +218,7 @@
       }
     }
   }
+  
 }
 
 .thank-you-overlay {
