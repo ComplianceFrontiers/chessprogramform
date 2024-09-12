@@ -118,7 +118,7 @@
     @media screen and (max-width: 768px) {
       .button-group {
         flex-direction: row; /* Set direction to row */
-        justify-content: space-between; /* Distribute buttons evenly */
+        justify-content: center; /* Distribute buttons evenly */
         gap: 10px; /* Space between buttons */
 
         button {
