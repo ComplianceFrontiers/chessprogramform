@@ -3,6 +3,6 @@ url->https://backend-chess-tau.vercel.app
 
 frontend url->https://chesschampsus.vercel.app
 
-linked to stripe so 
+linked to stripe so
 
 2 school forms

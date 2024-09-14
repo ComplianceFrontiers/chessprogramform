@@ -1,48 +1,135 @@
 .admin-container {
-    padding: 20px;
-    background-color: #f9f9f9;
-    
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #333;
+  padding: 20px;
+  background-color: #f4f4f4;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .form-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    display: block; /* Required for horizontal scroll */
+    margin-bottom: 20px;
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+      font-size: 14px;
     }
-    
-    .form-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 0 auto;
+
+    th {
+      background-color: #f0f0f0;
+      font-weight: 600;
+    }
+
+    td {
       background-color: #fff;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  
-      th, td {
-        padding: 12px;
-        text-align: left;
-        border: 1px solid #ddd;
-      }
-  
-      th {
-        background-color: #f4f4f4;
-        font-weight: bold;
-      }
-  
-      tr:nth-child(even) {
-        background-color: #f9f9f9;
-      }
-  
-      tr:hover {
-        background-color: #f1f1f1;
-      }
-  
-      td {
-        font-size: 14px;
-        color: #555;
-      }
     }
-  
-    p {
-      text-align: center;
-      color: #999;
+
+    td select, td input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    .radio-buttons {
+      display: inline-flex;
+      gap: 10px;
+      padding: 8px;
+    }
+
+    .radio-buttons label {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
     }
   }
-  
+
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    .logout-button, .export-button, .save-button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .logout-button {
+      background-color: #f44336; /* Red color for logout */
+    }
+
+    .export-button {
+      background-color: #4caf50; /* Green color for export */
+    }
+
+    .save-button {
+      background-color: #007bff; /* Blue color for save */
+    }
+
+    .logout-button:hover {
+      background-color: #d32f2f; /* Darken on hover */
+    }
+
+    .export-button:hover {
+      background-color: #388e3c; /* Darken on hover */
+    }
+
+    .save-button:hover {
+      background-color: #0056b3; /* Darken on hover */
+    }
+  }
+
+  p {
+    text-align: center;
+    color: #999;
+  }
+
+  .form-section {
+    margin-bottom: 20px;
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    select, input[type="radio"] {
+      margin-bottom: 10px;
+    }
+
+    .form-row {
+      margin-bottom: 15px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  }
+}
