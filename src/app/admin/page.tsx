@@ -34,6 +34,7 @@ interface FormData {
 
 const Admin: React.FC = () => {
   const [formData, setFormData] = useState<FormData[]>([]); // Set the state with FormData type
+  const [loading, setLoading] = useState(false); // State for loading indicator
   const router = useRouter(); // Use router for redirect
 
   // Logout function
@@ -69,6 +70,8 @@ const Admin: React.FC = () => {
 
   // Handle form submission (Save changes for all rows)
   const handleSubmit = async () => {
+    setLoading(true); // Show loading GIF
+
     try {
       const updatePayload = {
         updates: formData.map((form) => ({
@@ -88,6 +91,8 @@ const Admin: React.FC = () => {
       }
     } catch (error) {
       alert('An error occurred while saving changes. Please try again.');
+    } finally {
+      setLoading(false); // Hide loading GIF
     }
   };
 
@@ -130,6 +135,12 @@ const Admin: React.FC = () => {
       </div>
 
       <h2>School Form Submissions</h2>
+
+      {loading && (
+  <div className="loading-overlay">
+    <img src="/images/loading.gif" alt="Loading" className="loading-gif" />
+  </div>
+)}
 
       {formData.length > 0 ? (
         <table className="form-table">

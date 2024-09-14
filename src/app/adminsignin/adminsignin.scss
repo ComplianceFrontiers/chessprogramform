@@ -1,137 +1,157 @@
 .rounded-10 {
-    border-radius: 10px;
+  border-radius: 10px;
+}
+
+.signin-background {
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signin-form {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative; /* Changed from absolute to relative for better mobile handling */
+  max-width: 100%; /* Full width on smaller screens */
+  width: 100%;
+}
+
+.signin-form-container {
+  width: 100%;
+  max-width: 500px; /* Adjust the max-width as needed */
+}
+
+.username-box,
+.password-box {
+  transform: translateX(0); /* Initially position boxes */
+  transition: transform 0.3s ease-in-out; /* Smooth transition effect */
+}
+
+.signin-field {
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: slide-in 0.5s forwards;
+}
+
+.signin-label {
+  display: block;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.signin-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #868585;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.signin-button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #4e89e3;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  opacity: 0;
+  animation: slide-in 0.5s forwards;
+  animation-delay: 0.4s;
+}
+
+.signin-field:nth-child(1) {
+  animation-name: slide-in-left;
+  animation-delay: 0.1s;
+}
+
+.signin-field:nth-child(2) {
+  animation-name: slide-in-right;
+  animation-delay: 0.2s;
+}
+
+@keyframes slide-in {
+  to {
+    opacity: 1;
   }
-  
-  .signin-background {
-    // background-image: url('/images/signupbg.png'); // Update with your sign-in background image
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
   }
-  
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.signin-button:hover {
+  background-color: #098cff;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; // Ensure it takes the full screen height
+}
+
+.loading-gif {
+  width: 350px;
+  height: 350px;
+}
+
+@media (max-width: 768px) {
   .signin-form {
-    background: white;
-    padding: 2rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    left: 70%; /* Adjust this value to move the form to the right */
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
-    max-width: 500px; /* Adjust the width as needed */
+    padding: 1rem;
+    box-shadow: none; // Remove shadow on smaller screens for better appearance
   }
-  
-  .signin-form-container {
-    position: relative;
-    width: 30%;
-    max-width: 1100px; /* Adjust the max-width as needed */
-  }
-  
-  .username-box,
-  .password-box {
-    transform: translateX(0); /* Initially position boxes */
-    transition: transform 0.3s ease-in-out; /* Smooth transition effect */
-  }
-  
-  .signin-field {
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: slide-in 0.5s forwards;
-  }
-  
-  .signin-label {
-    display: block;
-    color: #333;
-    margin-bottom: 0.1rem;
-    font-weight: 600;
-  }
-  
-  .signin-input {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #868585;
-    border-radius: 10px;
-    font-size: 1rem;
-  }
-  
+
   .signin-button {
-    width: 100%;
-    padding: 0.75rem;
-    background-color: #4e89e3;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 1.25rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    opacity: 0;
-    animation: slide-in 0.5s forwards;
-    animation-delay: 0.4s;
+    font-size: 1rem; // Adjust font size for better fit on small screens
   }
-  
-  .signin-field:nth-child(1) {
-    animation-name: slide-in-left;
-    animation-delay: 0.1s;
+}
+
+@media (max-width: 480px) {
+  .signin-form {
+    padding: 0.5rem;
   }
-  
-  .signin-field:nth-child(2) {
-    animation-name: slide-in-right;
-    animation-delay: 0.2s;
+
+  .signin-input,
+  .signin-button {
+    font-size: 0.875rem; // Further adjust font size for very small screens
   }
-  
-  @keyframes slide-in {
-    to {
-      opacity: 1;
-    }
+
+  .signin-label {
+    font-size: 0.875rem;
   }
-  
-  @keyframes slide-in-left {
-    from {
-      opacity: 0;
-      transform: translateX(-100%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  
-  @keyframes slide-in-right {
-    from {
-      opacity: 0;
-      transform: translateX(100%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  
-  .signin-button:hover {
-    background-color: #098cff;
-  }
-  
-  .mt-4 {
-    margin-top: 1rem;
-  }
-  
-  .mb-4 {
-    margin-bottom: 1rem;
-  }
-  
-  .loading-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; // Ensure it takes the full screen height
-  }
-  
-  .loading-gif {
-    width: 350px;
-    height: 350px;
-  }
-  
+}
