@@ -2,12 +2,13 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/navigation'; // Import useRouter for navigation
+import { useRouter } from 'next/navigation';
 import './admin.scss';
-import * as XLSX from 'xlsx'; // Import the XLSX library
+import * as XLSX from 'xlsx';
 import withadminAuth from '../withadminAuth';
 
-// Define interfaces
+type FilterField = 'sno' | 'profile_id' | 'group' | 'payment_status';
+
 interface ParentName {
   first: string;
   last: string;
@@ -27,29 +28,41 @@ interface FormData {
   phone: string;
   RequestFinancialAssistance: boolean;
   SchoolName: string;
-  payment_status: string; // New field: Payment status
-  group: string; // New field: Group
-  level: string; // New field: Level
+  payment_status: string;
+  group: string;
+  level: string;
 }
 
 const Admin: React.FC = () => {
-  const [formData, setFormData] = useState<FormData[]>([]); // Set the state with FormData type
-  const [loading, setLoading] = useState(false); // State for loading indicator
-  const router = useRouter(); // Use router for redirect
+  const [formData, setFormData] = useState<FormData[]>([]);
+  const [filteredData, setFilteredData] = useState<FormData[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [filterVisibility, setFilterVisibility] = useState({
+    sno: false,
+    profile_id: false,
+    group: false,
+    payment_status: false,
+  });
+  const [filters, setFilters] = useState({
+    sno: '',
+    profile_id: '',
+    group: '',
+    payment_status: '',
+  });
+  const router = useRouter();
 
-  // Logout function
   const handleLogout = () => {
     localStorage.removeItem('username');
     localStorage.removeItem('password');
-    router.push('/adminsignin'); // Redirect to /admin after logout
+    router.push('/adminsignin');
   };
 
-  // Fetch the form data from the API
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get<FormData[]>('https://backend-chess-tau.vercel.app/get_forms');
         setFormData(response.data);
+        setFilteredData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -58,7 +71,19 @@ const Admin: React.FC = () => {
     fetchData();
   }, []);
 
-  // Function to handle updates for each row's data
+  useEffect(() => {
+    // Filter data based on selected filters
+    const filtered = formData.filter((item) => {
+      return (
+        (!filters.sno || item.profile_id.includes(filters.sno)) &&
+        (!filters.profile_id || item.profile_id.includes(filters.profile_id)) &&
+        (!filters.group || item.group === filters.group) &&
+        (!filters.payment_status || item.payment_status === filters.payment_status)
+      );
+    });
+    setFilteredData(filtered);
+  }, [filters, formData]);
+
   const handleUpdate = (index: number, field: string, value: string) => {
     const updatedFormData = [...formData];
     updatedFormData[index] = {
@@ -68,10 +93,8 @@ const Admin: React.FC = () => {
     setFormData(updatedFormData);
   };
 
-  // Handle form submission (Save changes for all rows)
   const handleSubmit = async () => {
-    setLoading(true); // Show loading GIF
-
+    setLoading(true);
     try {
       const updatePayload = {
         updates: formData.map((form) => ({
@@ -92,13 +115,12 @@ const Admin: React.FC = () => {
     } catch (error) {
       alert('An error occurred while saving changes. Please try again.');
     } finally {
-      setLoading(false); // Hide loading GIF
+      setLoading(false);
     }
   };
 
-  // Function to handle export to Excel
   const handleExportToExcel = () => {
-    const dataToExport = formData.map((form) => ({
+    const dataToExport = filteredData.map((form) => ({
       "profile_id": form.profile_id,
       "Parent's First Name": form.parent_name.first,
       "Parent's Last Name": form.parent_name.last,
@@ -120,6 +142,20 @@ const Admin: React.FC = () => {
     XLSX.writeFile(workbook, 'form_submissions.xlsx');
   };
 
+  const toggleFilterVisibility = (field: FilterField) => {
+    setFilterVisibility((prevVisibility) => ({
+      ...prevVisibility,
+      [field]: !prevVisibility[field],
+    }));
+  };
+
+  const handleFilterChange = (field: FilterField, value: string) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [field]: value,
+    }));
+  };
+
   return (
     <div className="admin-container">
       <div className="button-container">
@@ -137,61 +173,133 @@ const Admin: React.FC = () => {
       <h2>School Form Submissions</h2>
 
       {loading && (
-  <div className="loading-overlay">
-    <img src="/images/loading.gif" alt="Loading" className="loading-gif" />
-  </div>
-)}
+        <div className="loading-overlay">
+          <img src="/images/loading.gif" alt="Loading" className="loading-gif" />
+        </div>
+      )}
 
-      {formData.length > 0 ? (
-            <table className="form-table">
-              <thead>
-                <tr>
-                  <th>S No.</th> {/* Add serial number column header */}
-                  <th>Profile ID</th>
-                  <th>Parent's Name</th>
-                  <th>Child's Name</th>
-                  <th>Grade</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-                  <th>Financial Assistance</th>
-                  <th>School Name</th>
-                  <th>Payment Status</th>
-                  <th>Group</th>
-                  <th>Level</th>
-                </tr>
-              </thead>
-              <tbody>
-                {formData.map((form, index) => (
-                  <tr key={index}>
-                    <td>{index + 1}</td> {/* Display serial number */}
-                    <td>{form.profile_id}</td>
-                    <td>{form.parent_name.first} {form.parent_name.last}</td>
-                    <td>{form.child_name.first} {form.child_name.last}</td>
-                    <td>{form.child_grade}</td>
-                    <td>{form.email}</td>
-                    <td>{form.phone}</td>
-                    <td>{form.RequestFinancialAssistance ? 'Yes' : 'No'}</td>
-                    <td>{form.SchoolName}</td>
-                    <td>
-                      <div className="radio-buttons">
-                        <label>
-                          <input
-                            type="radio"
-                            value="Yes"
-                            checked={form.payment_status === 'Yes'}
-                            onChange={() => handleUpdate(index, 'payment_status', 'Yes')}
-                          /> Yes
-                        </label>
-                        <label>
-                          <input
-                            type="radio"
-                            value="No"
-                            checked={form.payment_status === 'No'}
-                            onChange={() => handleUpdate(index, 'payment_status', 'No')}
-                          /> No
-                        </label>
-                      </div>
-                    </td>
+      {filteredData.length > 0 ? (
+        <table className="form-table">
+          <thead>
+            <tr>
+              <th>
+                S No.
+                <button onClick={() => toggleFilterVisibility('sno')}>
+                🔍
+                </button>
+                {filterVisibility.sno && (
+                  <input
+                    type="text"
+                    placeholder="Filter by S No."
+                    value={filters.sno}
+                    onChange={(e) => handleFilterChange('sno', e.target.value)}
+                  />
+                )}
+              </th>
+              <th>
+                Profile ID
+                <button onClick={() => toggleFilterVisibility('profile_id')}>
+                🔍
+                </button>
+                {filterVisibility.profile_id && (
+                  <input
+                    type="text"
+                    placeholder="Filter by Profile ID"
+                    value={filters.profile_id}
+                    onChange={(e) => handleFilterChange('profile_id', e.target.value)}
+                  />
+                )}
+              </th>
+              <th>
+                Parent's Name
+              </th>
+              <th>
+                Child's Name
+              </th>
+              <th>
+                Grade
+              </th>
+              <th>
+                Email
+              </th>
+              <th>
+                Phone
+              </th>
+              <th>
+                Financial Assistance
+              </th>
+              <th>
+                School Name
+              </th>
+              <th>
+                Payment Status
+                <button onClick={() => toggleFilterVisibility('payment_status')}>
+                🔍
+                </button>
+                {filterVisibility.payment_status && (
+                  <select
+                    value={filters.payment_status}
+                    onChange={(e) => handleFilterChange('payment_status', e.target.value)}
+                  >
+                    <option value="">Select Payment Status</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                )}
+              </th>
+              <th>
+                Group
+                <button onClick={() => toggleFilterVisibility('group')}>
+                🔍
+                </button>
+                {filterVisibility.group && (
+                  <select
+                    value={filters.group}
+                    onChange={(e) => handleFilterChange('group', e.target.value)}
+                  >
+                    <option value="">Select Group</option>
+                    <option value="After School Group 1">After School Group 1</option>
+                    <option value="Club Group 2">Club Group 2</option>
+                  </select>
+                )}
+              </th>
+              <th>
+                Level
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredData.map((form, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{form.profile_id}</td>
+                <td>{form.parent_name.first} {form.parent_name.last}</td>
+                <td>{form.child_name.first} {form.child_name.last}</td>
+                <td>{form.child_grade}</td>
+                <td>{form.email}</td>
+                <td>{form.phone}</td>
+                <td>{form.RequestFinancialAssistance ? 'Yes' : 'No'}</td>
+                <td>{form.SchoolName}</td>
+                <td>
+                  <div className="radio-buttons">
+                    <label>
+                      <input
+                        type="radio"
+                        value="Yes"
+                        checked={form.payment_status === 'Yes'}
+                        onChange={() => handleUpdate(index, 'payment_status', 'Yes')}
+                      /> Yes
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        value="No"
+                        checked={form.payment_status === 'No'}
+                        onChange={() => handleUpdate(index, 'payment_status', 'No')}
+                      /> No
+                    </label>
+                  </div>
+                </td>
                     <td>
                       <select
                         value={form.group}
@@ -202,25 +310,22 @@ const Admin: React.FC = () => {
                         <option value="Club Group 2">Club Group 2</option>
                       </select>
                     </td>
-                    <td>
-                      <select
-                        value={form.level}
-                        onChange={(e) => handleUpdate(index, 'level', e.target.value)}
-                      >
-                        <option value="">Select level</option>
-                        <option value="Level1">Level 1</option>
-                        <option value="Level2">Level 2</option>
-                        <option value="Level3">Level 3</option>
-                        <option value="Level4">Level 4</option>
-                        <option value="Level5">Level 5</option>
-                      </select>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                <td>
+                  <select
+                    value={form.level}
+                    onChange={(e) => handleUpdate(index, 'level', e.target.value)}
+                  >
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                  </select>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       ) : (
-        <p>No form submissions found.</p>
+        <p>No data available</p>
       )}
     </div>
   );

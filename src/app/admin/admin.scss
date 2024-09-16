@@ -16,8 +16,8 @@
   .form-table {
     width: 100%;
     border-collapse: collapse;
-    overflow-x: auto; /* Enable horizontal scrolling */
-    display: block; /* Required for horizontal scroll */
+    overflow-x: auto;
+    display: block;
     margin-bottom: 20px;
 
     th, td {
@@ -25,11 +25,44 @@
       padding: 12px;
       text-align: left;
       font-size: 14px;
+      position: relative; // Added for filter icon positioning
     }
 
     th {
       background-color: #f0f0f0;
       font-weight: 600;
+      position: relative;
+
+      .filter-icon {
+        cursor: pointer;
+        font-size: 13px;
+        margin-left: 8px;
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #555;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #007bff; // Blue on hover
+        }
+      }
+
+      .filter-input {
+        margin-top: 5px;
+        display: block;
+        width: 100%;
+        padding: 5px;
+        font-size: 12px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        display: none;
+      }
+
+      &.filter-active .filter-input {
+        display: block;
+      }
     }
 
     td {
@@ -70,27 +103,27 @@
     }
 
     .logout-button {
-      background-color: #f44336; /* Red color for logout */
+      background-color: #f44336; // Red color for logout
     }
 
     .export-button {
-      background-color: #4caf50; /* Green color for export */
+      background-color: #4caf50; // Green color for export
     }
 
     .save-button {
-      background-color: #007bff; /* Blue color for save */
+      background-color: #007bff; // Blue color for save
     }
 
     .logout-button:hover {
-      background-color: #d32f2f; /* Darken on hover */
+      background-color: #d32f2f; // Darken on hover
     }
 
     .export-button:hover {
-      background-color: #388e3c; /* Darken on hover */
+      background-color: #388e3c; // Darken on hover
     }
 
     .save-button:hover {
-      background-color: #0056b3; /* Darken on hover */
+      background-color: #0056b3; // Darken on hover
     }
   }
 
@@ -133,13 +166,14 @@
     }
   }
 }
+
 .loading-overlay {
   position: fixed;
-  top: 30px;;
+  top: 30px;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: white; // Full white background
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -147,6 +181,6 @@
 }
 
 .loading-gif {
-  width: auto; // Adjust the size of the loading GIF
+  width: auto;
   height: auto;
 }
