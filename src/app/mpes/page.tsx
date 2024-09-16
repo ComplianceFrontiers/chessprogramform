@@ -141,9 +141,9 @@ const ChessRegistration = () => {
           </p>
 
           <div className="training-info">
-            <p><strong>10 Weeks Training [K-5 Students]</strong></p>
-            <p> Program Dates: 09 oct 2024 to 18 Dec 2024</p>
-            <p>[Classes on 10/9; 10/16, 10/23, 10/30, 11/6, 11/13, 11/20; 12/14, 12/11 and 12/18. No classes on 11/27]</p>
+            <p><strong>10 Weeks Training on Wednesdays [K-5 Students]</strong></p>
+            <p> Program Dates: 09 Oct 2024 to 18 Dec 2024</p>
+            <p>[Classes on 10/9; 10/16, 10/23, 10/30, 11/6, 11/13, 11/20; 12/14, 12/11 and 12/18. No class on 11/27]</p>
             <p>Time: 3:30 PM - 4:30 PM</p>
           </div>
 
