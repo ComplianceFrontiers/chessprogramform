@@ -7,7 +7,7 @@ import './admin.scss';
 import * as XLSX from 'xlsx';
 import withadminAuth from '../withadminAuth';
 
-type FilterField = 'sno' | 'profile_id' | 'group' | 'payment_status';
+type FilterField = 'sno' | 'profile_id' | 'group' | 'payment_status'|'financial_assistance'|'school_name';
 
 interface ParentName {
   first: string;
@@ -42,12 +42,16 @@ const Admin: React.FC = () => {
     profile_id: false,
     group: false,
     payment_status: false,
+    financial_assistance: false,
+    school_name: false,
   });
   const [filters, setFilters] = useState({
     sno: '',
     profile_id: '',
     group: '',
     payment_status: '',
+    financial_assistance: '',
+    school_name: '',
   });
   const router = useRouter();
 
@@ -78,20 +82,32 @@ const Admin: React.FC = () => {
         (!filters.sno || item.profile_id.includes(filters.sno)) &&
         (!filters.profile_id || item.profile_id.includes(filters.profile_id)) &&
         (!filters.group || item.group === filters.group) &&
-        (!filters.payment_status || item.payment_status === filters.payment_status)
+        (!filters.payment_status || item.payment_status === filters.payment_status)&&
+        (!filters.financial_assistance || 
+          (filters.financial_assistance === 'Yes' && item.RequestFinancialAssistance) ||
+          (filters.financial_assistance === 'No' && !item.RequestFinancialAssistance))&&
+          (!filters.school_name || item.SchoolName === filters.school_name)  // Exact match for school name
+    
       );
     });
     setFilteredData(filtered);
   }, [filters, formData]);
 
   const handleUpdate = (index: number, field: string, value: string) => {
-    const updatedFormData = [...formData];
-    updatedFormData[index] = {
-      ...updatedFormData[index],
-      [field]: value,
-    };
-    setFormData(updatedFormData);
+    const originalIndex = formData.findIndex(
+      (item) => item.profile_id === filteredData[index].profile_id
+    );
+  
+    if (originalIndex !== -1) {
+      const updatedFormData = [...formData];
+      updatedFormData[originalIndex] = {
+        ...updatedFormData[originalIndex],
+        [field]: value,
+      };
+      setFormData(updatedFormData);
+    }
   };
+  
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -149,13 +165,13 @@ const Admin: React.FC = () => {
     }));
   };
 
-  const handleFilterChange = (field: FilterField, value: string) => {
+  const handleFilterChange = (key: string, value: string) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
-      [field]: value,
+      [key]: value
     }));
   };
-
+  
   return (
     <div className="admin-container">
       <div className="button-container">
@@ -226,11 +242,39 @@ const Admin: React.FC = () => {
                 Phone
               </th>
               <th>
-                Financial Assistance
-              </th>
-              <th>
-                School Name
-              </th>
+      Financial Assistance
+      <button onClick={() => toggleFilterVisibility('financial_assistance')}>
+        🔍
+      </button>
+      {filterVisibility.financial_assistance && (
+        <select
+          value={filters.financial_assistance}
+          onChange={(e) => handleFilterChange('financial_assistance', e.target.value)}
+        >
+          <option value="">All</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      )}
+    </th>
+    <th>
+  School Name
+  <button onClick={() => toggleFilterVisibility('school_name')}>
+    🔍
+  </button>
+  {filterVisibility.school_name && (
+    <select
+      value={filters.school_name}
+      onChange={(e) => handleFilterChange('school_name', e.target.value)}
+    >
+      <option value="">All Schools</option>
+      <option value="Lombardy Elementary School">Lombardy Elementary School</option>
+      <option value="Mount Pleasant Elementary School">Mount Pleasant Elementary School</option>
+    </select>
+  )}
+</th>
+
+
               <th>
                 Payment Status
                 <button onClick={() => toggleFilterVisibility('payment_status')}>
@@ -247,6 +291,7 @@ const Admin: React.FC = () => {
                   </select>
                 )}
               </th>
+
               <th>
                 Group
                 <button onClick={() => toggleFilterVisibility('group')}>
