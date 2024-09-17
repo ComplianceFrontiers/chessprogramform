@@ -379,6 +379,7 @@ const Admin: React.FC = () => {
                     value={form.group}
                     onChange={(e) => handleUpdate(index, 'group', e.target.value)}
                   >
+                     <option value="">Select group</option>
                     <option value="In School Program">In School Program</option>
                     <option value="Club">Club</option>
                   </select>
@@ -388,6 +389,7 @@ const Admin: React.FC = () => {
                     value={form.level}
                     onChange={(e) => handleUpdate(index, 'level', e.target.value)}
                   >
+                    <option value="">Select Level</option>
                     <option value="Level 1">Level 1</option>
                     <option value="Level 2">Level 2</option>
                     <option value="Level 3">Level 3</option>
