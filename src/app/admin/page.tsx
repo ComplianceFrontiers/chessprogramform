@@ -7,7 +7,7 @@ import './admin.scss';
 import * as XLSX from 'xlsx';
 import withadminAuth from '../withadminAuth';
 
-type FilterField = 'sno' | 'profile_id' | 'group' | 'payment_status'|'financial_assistance'|'school_name';
+type FilterField = 'sno' | 'profile_id' | 'group' | 'payment_status' | 'financial_assistance' | 'school_name';
 
 interface ParentName {
   first: string;
@@ -53,6 +53,8 @@ const Admin: React.FC = () => {
     financial_assistance: '',
     school_name: '',
   });
+  const [selectedRows, setSelectedRows] = useState<string[]>([]);
+  const [selectAll, setSelectAll] = useState(false);
   const router = useRouter();
 
   const handleLogout = () => {
@@ -82,12 +84,11 @@ const Admin: React.FC = () => {
         (!filters.sno || item.profile_id.includes(filters.sno)) &&
         (!filters.profile_id || item.profile_id.includes(filters.profile_id)) &&
         (!filters.group || item.group === filters.group) &&
-        (!filters.payment_status || item.payment_status === filters.payment_status)&&
-        (!filters.financial_assistance || 
+        (!filters.payment_status || item.payment_status === filters.payment_status) &&
+        (!filters.financial_assistance ||
           (filters.financial_assistance === 'Yes' && item.RequestFinancialAssistance) ||
-          (filters.financial_assistance === 'No' && !item.RequestFinancialAssistance))&&
-          (!filters.school_name || item.SchoolName === filters.school_name)  // Exact match for school name
-    
+          (filters.financial_assistance === 'No' && !item.RequestFinancialAssistance)) &&
+        (!filters.school_name || item.SchoolName === filters.school_name) // Exact match for school name
       );
     });
     setFilteredData(filtered);
@@ -97,7 +98,7 @@ const Admin: React.FC = () => {
     const originalIndex = formData.findIndex(
       (item) => item.profile_id === filteredData[index].profile_id
     );
-  
+
     if (originalIndex !== -1) {
       const updatedFormData = [...formData];
       updatedFormData[originalIndex] = {
@@ -107,13 +108,13 @@ const Admin: React.FC = () => {
       setFormData(updatedFormData);
     }
   };
-  
 
   const handleSubmit = async () => {
     setLoading(true);
     try {
+      const selectedData = formData.filter((form) => selectedRows.includes(form.profile_id));
       const updatePayload = {
-        updates: formData.map((form) => ({
+        updates: selectedData.map((form) => ({
           profile_id: form.profile_id,
           payment_status: form.payment_status,
           group: form.group,
@@ -129,27 +130,44 @@ const Admin: React.FC = () => {
         alert('Failed to save changes. Please try again.');
       }
     } catch (error) {
-      alert('An error occurred while saving changes. Please try again.');
+      alert('Make sure you have selected check box.');
     } finally {
       setLoading(false);
     }
   };
 
+  const handleSelectRow = (profile_id: string) => {
+    setSelectedRows((prevSelected) =>
+      prevSelected.includes(profile_id)
+        ? prevSelected.filter((id) => id !== profile_id)
+        : [...prevSelected, profile_id]
+    );
+  };
+
+  const handleSelectAll = () => {
+    setSelectAll(!selectAll);
+    if (!selectAll) {
+      setSelectedRows(filteredData.map((form) => form.profile_id));
+    } else {
+      setSelectedRows([]);
+    }
+  };
+
   const handleExportToExcel = () => {
     const dataToExport = filteredData.map((form) => ({
-      "profile_id": form.profile_id,
+      profile_id: form.profile_id,
       "Parent's First Name": form.parent_name.first,
       "Parent's Last Name": form.parent_name.last,
       "Child's First Name": form.child_name.first,
       "Child's Last Name": form.child_name.last,
       "Child's Grade": form.child_grade,
-      "Email": form.email,
-      "Phone": form.phone,
-      "Request Financial Assistance": form.RequestFinancialAssistance ? 'Yes' : 'No',
-      "School Name": form.SchoolName,
-      "Payment Status": form.payment_status,
-      "Group": form.group,
-      "Level": form.level,
+      Email: form.email,
+      Phone: form.phone,
+      'Request Financial Assistance': form.RequestFinancialAssistance ? 'Yes' : 'No',
+      'School Name': form.SchoolName,
+      'Payment Status': form.payment_status,
+      Group: form.group,
+      Level: form.level,
     }));
 
     const worksheet = XLSX.utils.json_to_sheet(dataToExport);
@@ -168,10 +186,10 @@ const Admin: React.FC = () => {
   const handleFilterChange = (key: string, value: string) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
-      [key]: value
+      [key]: value,
     }));
   };
-  
+
   return (
     <div className="admin-container">
       <div className="button-container">
@@ -182,7 +200,7 @@ const Admin: React.FC = () => {
           Export to Excel
         </button>
         <button className="save-button" onClick={handleSubmit}>
-          Save All Changes
+          Save Selected Changes
         </button>
       </div>
 
@@ -198,7 +216,10 @@ const Admin: React.FC = () => {
         <table className="form-table">
           <thead>
             <tr>
-              <th>
+            <th>
+                <input type="checkbox" checked={selectAll} onChange={handleSelectAll} />
+              </th>
+            <th>
                 S No.
                 <button onClick={() => toggleFilterVisibility('sno')}>
                 🔍
@@ -212,6 +233,7 @@ const Admin: React.FC = () => {
                   />
                 )}
               </th>
+              
               <th>
                 Profile ID
                 <button onClick={() => toggleFilterVisibility('profile_id')}>
@@ -316,6 +338,13 @@ const Admin: React.FC = () => {
           <tbody>
             {filteredData.map((form, index) => (
               <tr key={index}>
+                <td>
+                  <input
+                    type="checkbox"
+                    checked={selectedRows.includes(form.profile_id)}
+                    onChange={() => handleSelectRow(form.profile_id)}
+                  />
+                </td>
                 <td>{index + 1}</td>
                 <td>{form.profile_id}</td>
                 <td>{form.parent_name.first} {form.parent_name.last}</td>
@@ -345,24 +374,24 @@ const Admin: React.FC = () => {
                     </label>
                   </div>
                 </td>
-                    <td>
-                      <select
-                        value={form.group}
-                        onChange={(e) => handleUpdate(index, 'group', e.target.value)}
-                      >
-                        <option value="">Select group</option>
-                        <option value="After School Group 1">After School Group 1</option>
-                        <option value="Club Group 2">Club Group 2</option>
-                      </select>
-                    </td>
+                <td>
+                  <select
+                    value={form.group}
+                    onChange={(e) => handleUpdate(index, 'group', e.target.value)}
+                  >
+                    <option value="Group A">Group A</option>
+                    <option value="Group B">Group B</option>
+                    <option value="Group C">Group C</option>
+                  </select>
+                </td>
                 <td>
                   <select
                     value={form.level}
                     onChange={(e) => handleUpdate(index, 'level', e.target.value)}
                   >
-                    <option value="Beginner">Beginner</option>
-                    <option value="Intermediate">Intermediate</option>
-                    <option value="Advanced">Advanced</option>
+                    <option value="Level 1">Level 1</option>
+                    <option value="Level 2">Level 2</option>
+                    <option value="Level 3">Level 3</option>
                   </select>
                 </td>
               </tr>
@@ -370,7 +399,7 @@ const Admin: React.FC = () => {
           </tbody>
         </table>
       ) : (
-        <p>No data available</p>
+        <p>No form submissions found.</p>
       )}
     </div>
   );
