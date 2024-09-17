@@ -7,7 +7,7 @@ import './admin.scss';
 import * as XLSX from 'xlsx';
 import withadminAuth from '../withadminAuth';
 
-type FilterField = 'sno' | 'profile_id' | 'group' | 'payment_status' | 'financial_assistance' | 'school_name';
+type FilterField = 'sno' | 'profile_id' | 'group' | 'payment_status' | 'financial_assistance' | 'school_name' | 'level';
 
 interface ParentName {
   first: string;
@@ -44,6 +44,7 @@ const Admin: React.FC = () => {
     payment_status: false,
     financial_assistance: false,
     school_name: false,
+    level: false, // Added filter for level
   });
   const [filters, setFilters] = useState({
     sno: '',
@@ -52,6 +53,7 @@ const Admin: React.FC = () => {
     payment_status: '',
     financial_assistance: '',
     school_name: '',
+    level: '', // Added filter for level
   });
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
   const [selectAll, setSelectAll] = useState(false);
@@ -88,7 +90,8 @@ const Admin: React.FC = () => {
         (!filters.financial_assistance ||
           (filters.financial_assistance === 'Yes' && item.RequestFinancialAssistance) ||
           (filters.financial_assistance === 'No' && !item.RequestFinancialAssistance)) &&
-        (!filters.school_name || item.SchoolName === filters.school_name) // Exact match for school name
+        (!filters.school_name || item.SchoolName === filters.school_name) &&
+        (!filters.level || item.level === filters.level) // Added filter for level
       );
     });
     setFilteredData(filtered);
@@ -237,7 +240,7 @@ const Admin: React.FC = () => {
               <th>
                 Profile ID
                 <button onClick={() => toggleFilterVisibility('profile_id')}>
-                🔍
+                  🔍
                 </button>
                 {filterVisibility.profile_id && (
                   <input
@@ -331,8 +334,25 @@ const Admin: React.FC = () => {
                 )}
               </th>
               <th>
-                Level
-              </th>
+  Level
+  <button onClick={() => toggleFilterVisibility('level')}>
+    🔍
+  </button>
+  {filterVisibility.level && (
+    <select
+      value={filters.level}
+      onChange={(e) => handleFilterChange('level', e.target.value)}
+    >
+      <option value="">Select Level</option>
+      <option value="Level 1">Level 1</option>
+      <option value="Level 2">Level 2</option>
+      <option value="Level 3">Level 3</option>
+      <option value="Level 4">Level 4</option>
+      <option value="Level 5">Level 5</option>
+    </select>
+  )}
+</th>
+
             </tr>
           </thead>
           <tbody>
