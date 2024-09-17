@@ -225,7 +225,6 @@ const Admin: React.FC = () => {
             <th>
                 S No.
                 <button onClick={() => toggleFilterVisibility('sno')}>
-                🔍
                 </button>
                 {filterVisibility.sno && (
                   <input
@@ -240,7 +239,6 @@ const Admin: React.FC = () => {
               <th>
                 Profile ID
                 <button onClick={() => toggleFilterVisibility('profile_id')}>
-                  🔍
                 </button>
                 {filterVisibility.profile_id && (
                   <input
