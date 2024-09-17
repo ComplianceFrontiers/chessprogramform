@@ -325,8 +325,8 @@ const Admin: React.FC = () => {
                     onChange={(e) => handleFilterChange('group', e.target.value)}
                   >
                     <option value="">Select Group</option>
-                    <option value="After School Group 1">After School Group 1</option>
-                    <option value="Club Group 2">Club Group 2</option>
+                    <option value="In School Program">In School Program</option>
+                    <option value="Club">Club</option>
                   </select>
                 )}
               </th>
