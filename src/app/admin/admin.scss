@@ -1,3 +1,5 @@
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
 .admin-container {
   padding: 20px;
   background-color: #f4f4f4;
@@ -31,40 +33,45 @@
     th {
       background-color: #f0f0f0;
       font-weight: 600;
-      position: relative;
+      padding: 10px;
+      font-size: 14px;
+      width: 150px; // Fixed width for all <th> elements, adjust if needed
+      text-align: left;
+      white-space: nowrap; // Prevent text wrapping to the next line
 
-      .filter-icon {
+      .header-text {
+        display: inline-block; // Keep the text and icon in the same line
+      }
+
+       .filter-icon {
+        margin-left: 5px; // Space between text and icon
+        font-size: 10px;
         cursor: pointer;
-        font-size: 13px;
-        margin-left: 8px;
-        position: absolute;
-        right: 5px;
-        top: 50%;
-        transform: translateY(-50%);
         color: #555;
+        vertical-align: middle; // Align icon vertically with the text
         transition: color 0.3s ease;
 
         &:hover {
-          color: #007bff; // Blue on hover
+          color: #007bff;
         }
       }
-
+    
       .filter-input {
         margin-top: 5px;
         display: block;
-        width: 100%;
+        width: 90%;
         padding: 5px;
         font-size: 12px;
         border-radius: 4px;
         border: 1px solid #ddd;
         display: none;
       }
-
+    
       &.filter-active .filter-input {
         display: block;
       }
     }
-
+    
     td {
       background-color: #fff;
     }
