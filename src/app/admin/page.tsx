@@ -212,19 +212,18 @@ const Admin: React.FC = () => {
 
   return (
     <div className="admin-container">
-      <div className="button-container">
-        <button className="logout-button" onClick={handleLogout}>
-          Log Out
-        </button>
-        <button className="export-button" onClick={handleExportToExcel}>
-          Export to Excel
-        </button>
-        <button className="save-button" onClick={handleSubmit}>
-          Save Selected Changes
-        </button>
-      </div>
+            
+            <div className="button-container">
+  <h2>School Form Submissions</h2>
+  <div className="button-group">
+    <button className="logout-button" onClick={handleLogout}>Log Out</button>
+    <button className="export-button" onClick={handleExportToExcel}>Export to Excel</button>
+    <button className="save-button" onClick={handleSubmit}>Save Selected Changes</button>
+  </div>
+</div>
 
-      <h2>School Form Submissions</h2>
+
+
 
       {loading && (
         <div className="loading-overlay">
@@ -240,7 +239,7 @@ const Admin: React.FC = () => {
                 <input type="checkbox" checked={selectAll} onChange={handleSelectAll} />
               </th>
             <th>
-            <span className="header-text">Si.</span>
+            <span className="header-text">Sl.</span>
                 <button onClick={() => toggleFilterVisibility('sno')}>
                 </button>
                 {filterVisibility.sno && (
@@ -254,7 +253,7 @@ const Admin: React.FC = () => {
               </th>
               
               <th>
-                ID
+                Id
                 <button onClick={() => toggleFilterVisibility('profile_id')}>
                 </button>
                 {filterVisibility.profile_id && (
@@ -369,6 +368,7 @@ const Admin: React.FC = () => {
       <option value="Level 3">Level 3</option>
       <option value="Level 4">Level 4</option>
       <option value="Level 5">Level 5</option>
+      <option value="Level 6">Level 6</option>
     </select>
   )}
 </th>
@@ -419,7 +419,7 @@ const Admin: React.FC = () => {
                     value={form.group}
                     onChange={(e) => handleUpdate(index, 'group', e.target.value)}
                   >
-                     <option value="">Group</option>
+                     <option value="">Select</option>
                     <option value="In School Program">In School Program</option>
                     <option value="Club">Club</option>
                   </select>
@@ -429,12 +429,13 @@ const Admin: React.FC = () => {
                     value={form.level}
                     onChange={(e) => handleUpdate(index, 'level', e.target.value)}
                   >
-                    <option value="">Level</option>
+                    <option value="">Select</option>
                     <option value="Level 1">Level 1</option>
                     <option value="Level 2">Level 2</option>
                     <option value="Level 3">Level 3</option>
                     <option value="Level 4">Level 4</option>
                     <option value="Level 5">Level 5</option>
+                    <option value="Level 6">Level 6</option>
                   </select>
                 </td>
               </tr>

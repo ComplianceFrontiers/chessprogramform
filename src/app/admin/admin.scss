@@ -95,10 +95,24 @@
 
   .button-container {
     display: flex;
-    justify-content: flex-end;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
-
+  
+    h2 {
+      flex: 1;
+      font-size: 27px;
+      text-align: center;
+      margin-left: 290px;
+      margin-top: 20px;
+    }
+  
+    .button-group {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px; // Adjust the gap between buttons
+    }
+  
     .logout-button, .export-button, .save-button {
       padding: 12px 20px;
       border: none;
@@ -108,32 +122,25 @@
       font-size: 14px;
       transition: background-color 0.3s ease;
     }
-
+  
     .logout-button {
       background-color: #f44336; // Red color for logout
     }
-
+  
     .export-button {
       background-color: #4caf50; // Green color for export
     }
-
+  
     .save-button {
-      background-color: #007bff; // Blue color for save
+      background-color: #2196f3; // Blue color for save
     }
-
-    .logout-button:hover {
-      background-color: #d32f2f; // Darken on hover
-    }
-
-    .export-button:hover {
-      background-color: #388e3c; // Darken on hover
-    }
-
-    .save-button:hover {
-      background-color: #0056b3; // Darken on hover
+  
+    .logout-button:hover, .export-button:hover, .save-button:hover {
+      opacity: 0.8;
     }
   }
-
+  
+  
   p {
     text-align: center;
     color: #999;
