@@ -309,8 +309,8 @@ const Admin: React.FC = () => {
       onChange={(e) => handleFilterChange('school_name', e.target.value)}
     >
       <option value="">All Schools</option>
-      <option value="Lombardy Elementary School">Lombardy</option>
-      <option value="Mount Pleasant Elementary School">Mount Pleasant Elementary</option>
+      <option value="Lombardy Elementary School">Lombardy Elementary School</option>
+      <option value="Mount Pleasant Elementary School">Mount Pleasant Elementary School</option>
     </select>
   )}
 </th>
