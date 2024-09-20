@@ -26,7 +26,7 @@ const ChessRegistration = () => {
     child_grade: '',
     email: '',
     phone: '',
-    acceptTerms: false,
+    acceptTerms: true,
     RequestFinancialAssistance: false,
     SchoolName: "Mount Pleasant Elementary School",
   });
@@ -227,7 +227,7 @@ const ChessRegistration = () => {
                 id="terms" 
                 name="acceptTerms" 
                 checked={formData.acceptTerms} 
-                onChange={handleChange} 
+                // onChange={handleChange} 
               />
               <label htmlFor="terms">
                 I accept the <Link href="/terms-and-conditions">terms and conditions</Link>
@@ -247,11 +247,14 @@ const ChessRegistration = () => {
       >
            <CheckoutPage amount={amount} formData={formData} />
           </Elements>
+        
+          <p className="note">
+         <strong>Note:</strong> Financial Assistance is available for this program. Click <a href="#" className="request-link" onClick={handleFinancialAssistance}> here </a> to register your request.
+       </p>
         </>
+        
       )}
-       <p className="note">
-            <strong>Note:</strong> Financial Assistance is available for this program. Click <a href="#" className="request-link" onClick={handleFinancialAssistance}> here </a> to register your request.
-          </p>
+      
     </div>
   );
 };

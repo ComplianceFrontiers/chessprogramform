@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useStripe, useElements, PaymentElement } from "@stripe/react-stripe-js";
 import convertToSubcurrency from "@/lib/convertToSubcurrency";
-// import axios from "axios";
 
 interface CheckoutPageProps {
   amount: number;
@@ -10,12 +9,12 @@ interface CheckoutPageProps {
     parent_last_name: string;
     child_first_name: string;
     child_last_name: string;
-    child_grade:string;
+    child_grade: string;
     email: string;
     phone: string;
-    SchoolName:string;
-    RequestFinancialAssistance:boolean;
-    // Add any other fields you need from formData
+    SchoolName: string;
+    RequestFinancialAssistance: boolean;
+    acceptTerms:boolean;
   };
 }
 
@@ -25,7 +24,6 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ amount, formData }) => {
   const [errorMessage, setErrorMessage] = useState<string>();
   const [clientSecret, setClientSecret] = useState("");
   const [loading, setLoading] = useState(false);
-  // const [showThankYou, setShowThankYou] = useState(false);
 
   useEffect(() => {
     fetch("/api/create-payment-intent", {
@@ -42,6 +40,12 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ amount, formData }) => {
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
   }, [amount, formData.email, formData.phone]);
+
+  const allFieldsFilled = () => {
+    return Object.values(formData).every((field) => 
+      field !== "" && field !== undefined && field !== null
+    );
+  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -74,10 +78,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ amount, formData }) => {
       setLoading(false);
       return;
     }
-     
-   
-  };                              
-  
+  };
 
   if (!clientSecret || !stripe || !elements) {
     return (
@@ -96,9 +97,13 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ amount, formData }) => {
     <form onSubmit={handleSubmit} className="bg-white p-2 rounded-md">
       {clientSecret && <PaymentElement />}
       {errorMessage && <div>{errorMessage}</div>}
-      {/* {showThankYou && <div>Thank you for your payment and form submission!</div>} */}
+      {!allFieldsFilled() && (
+        <div className="text-red-500">
+          Please fill all required fields.
+        </div>
+      )}
       <button
-        disabled={!stripe || loading}
+        disabled={!stripe || loading || !allFieldsFilled()}
         className="text-white w-full p-5 bg-black mt-2 rounded-md font-bold disabled:opacity-50 disabled:animate-pulse"
       >
         {!loading ? `Pay $${amount}` : "Processing..."}
