@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import CheckoutPage from '@/components/CheckoutPage';
+import Loading from '../../../Loading';
 // import convertToSubcurrency from '@/lib/convertToSubcurrency';
 
 // Ensure the Stripe public key is loaded
@@ -87,9 +88,7 @@ const ChessRegistration = () => {
   return (
     <div className="registration-container">
       {loading && (
-        <div className="loading-overlay">
-          <img src="/images/loading.gif" alt="Loading..." />
-        </div>
+        <Loading />
       )}
 
       {showThankYou && (

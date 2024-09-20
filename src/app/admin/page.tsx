@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import './admin.scss';
 import * as XLSX from 'xlsx';
 import withadminAuth from '../withadminAuth';
+import Loading from '../../../Loading';
 
 type FilterField = 'sno' | 'profile_id' | 'group' | 'payment_status' | 'financial_assistance' | 'school_name' | 'level';
 
@@ -227,9 +228,7 @@ const Admin: React.FC = () => {
       <h2>School Form Submissions</h2>
 
       {loading && (
-        <div className="loading-overlay">
-          <img src="/images/loading.gif" alt="Loading" className="loading-gif" />
-        </div>
+        <Loading />
       )}
 
       {filteredData.length > 0 ? (

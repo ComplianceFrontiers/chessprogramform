@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './lombardy.scss';
 import Link from 'next/link';
+import Loading from '../../../Loading';
 
 const ChessRegistration = () => {
   const [formData, setFormData] = useState({
@@ -98,9 +99,7 @@ const ChessRegistration = () => {
   return (
     <div className="registration-container">
       {loading && (
-        <div className="loading-overlay">
-          <img src="/images/loading.gif" alt="Loading..." />
-        </div>
+        <Loading />
       )}
 
       {showThankYou && (
