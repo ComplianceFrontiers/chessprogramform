@@ -4,6 +4,17 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './mpes.scss';
 import Link from 'next/link';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import CheckoutPage from '@/components/CheckoutPage';
+// import convertToSubcurrency from '@/lib/convertToSubcurrency';
+
+// Ensure the Stripe public key is loaded
+if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
+  throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined");
+}
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 const ChessRegistration = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +35,7 @@ const ChessRegistration = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
-  
+
     if (type === 'checkbox') {
       const checked = (e.target as HTMLInputElement).checked;
       setFormData({
@@ -39,30 +50,6 @@ const ChessRegistration = () => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.acceptTerms) {
-      alert("You must accept the terms and conditions to proceed.");
-      return;
-    }
-
-    setLoading(true);
-    formData.RequestFinancialAssistance = false;
-
-    try {
-      const response1 = await axios.post('https://backend-chess-tau.vercel.app/send-email-form-mpes', formData);
-      if (response1.status === 200) {
-        const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
-        if (response2.status === 201) {
-          window.location.href = 'https://buy.stripe.com/4gw17k3dE8ri8Yo8wB';
-        }
-      }
-    } catch (error) {
-      console.error('There was an error requesting financial assistance or submitting the form!', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleFinancialAssistance = async (e: React.FormEvent) => {
     if (!formData.email) {
@@ -94,6 +81,8 @@ const ChessRegistration = () => {
       setLoading(false);
     }
   };
+
+  const amount = 150; // Payment amount
 
   return (
     <div className="registration-container">
@@ -147,7 +136,7 @@ const ChessRegistration = () => {
             <p>Time: 3:30 PM - 4:30 PM</p>
           </div>
 
-          <form className="registration-form" onSubmit={handleSubmit}>
+          <form className="registration-form">
             <div className="input-group">
               <label>Parent's Name</label>
               <div className="input-row">
@@ -245,17 +234,25 @@ const ChessRegistration = () => {
                 I accept the <Link href="/terms-and-conditions">terms and conditions</Link>
               </label>
             </div>
-
-            <div className="button-group">
-              <button type="submit" className="payment-button" disabled={loading}>Make Payment</button>
-            </div>
+ 
+ 
           </form>
 
-          <p className="note">
-            <strong>Note:</strong> Financial Assistance is available for this program. Click <a href="#" className="request-link" onClick={handleFinancialAssistance}> here </a> to register your request.
-          </p>
+          <Elements
+        stripe={stripePromise}
+        options={{
+          mode: "payment",
+          amount: amount,
+          currency: "usd",
+        }}
+      >
+           <CheckoutPage amount={amount} formData={formData} />
+          </Elements>
         </>
       )}
+       <p className="note">
+            <strong>Note:</strong> Financial Assistance is available for this program. Click <a href="#" className="request-link" onClick={handleFinancialAssistance}> here </a> to register your request.
+          </p>
     </div>
   );
 };
