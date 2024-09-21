@@ -33,8 +33,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ amount, formData }) => {
       },
       body: JSON.stringify({ 
         amount: convertToSubcurrency(amount), 
-        email: formData.email, 
-        phone: formData.phone 
+      formData,
       }),
     })
       .then((res) => res.json())
