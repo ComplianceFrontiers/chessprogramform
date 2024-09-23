@@ -45,7 +45,7 @@ const Payment: React.FC<PaymentProps> = ({ formData }) => {
           currency: "usd",
         }}
       >
-        <CheckoutPage amount={amount} formData={formData} />
+        <CheckoutPage amount={amount} formData={formData} disabled={false} />
       </Elements>
     </main>
   );
