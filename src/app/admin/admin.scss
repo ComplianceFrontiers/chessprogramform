@@ -1,3 +1,5 @@
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
 .admin-container {
   padding: 20px;
   background-color: #f4f4f4;
@@ -31,40 +33,45 @@
     th {
       background-color: #f0f0f0;
       font-weight: 600;
-      position: relative;
+      padding: 10px;
+      font-size: 14px;
+      width: 150px; // Fixed width for all <th> elements, adjust if needed
+      text-align: left;
+      white-space: nowrap; // Prevent text wrapping to the next line
 
-      .filter-icon {
+      .header-text {
+        display: inline-block; // Keep the text and icon in the same line
+      }
+
+       .filter-icon {
+        margin-left: 5px; // Space between text and icon
+        font-size: 10px;
         cursor: pointer;
-        font-size: 13px;
-        margin-left: 8px;
-        position: absolute;
-        right: 5px;
-        top: 50%;
-        transform: translateY(-50%);
         color: #555;
+        vertical-align: middle; // Align icon vertically with the text
         transition: color 0.3s ease;
 
         &:hover {
-          color: #007bff; // Blue on hover
+          color: #007bff;
         }
       }
-
+    
       .filter-input {
         margin-top: 5px;
         display: block;
-        width: 100%;
+        width: 90%;
         padding: 5px;
         font-size: 12px;
         border-radius: 4px;
         border: 1px solid #ddd;
         display: none;
       }
-
+    
       &.filter-active .filter-input {
         display: block;
       }
     }
-
+    
     td {
       background-color: #fff;
     }
@@ -88,10 +95,24 @@
 
   .button-container {
     display: flex;
-    justify-content: flex-end;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
-
+  
+    h2 {
+      flex: 1;
+      font-size: 27px;
+      text-align: center;
+      margin-left: 290px;
+      margin-top: 20px;
+    }
+  
+    .button-group {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px; // Adjust the gap between buttons
+    }
+  
     .logout-button, .export-button, .save-button {
       padding: 12px 20px;
       border: none;
@@ -101,32 +122,25 @@
       font-size: 14px;
       transition: background-color 0.3s ease;
     }
-
+  
     .logout-button {
       background-color: #f44336; // Red color for logout
     }
-
+  
     .export-button {
       background-color: #4caf50; // Green color for export
     }
-
+  
     .save-button {
-      background-color: #007bff; // Blue color for save
+      background-color: #2196f3; // Blue color for save
     }
-
-    .logout-button:hover {
-      background-color: #d32f2f; // Darken on hover
-    }
-
-    .export-button:hover {
-      background-color: #388e3c; // Darken on hover
-    }
-
-    .save-button:hover {
-      background-color: #0056b3; // Darken on hover
+  
+    .logout-button:hover, .export-button:hover, .save-button:hover {
+      opacity: 0.8;
     }
   }
-
+  
+  
   p {
     text-align: center;
     color: #999;

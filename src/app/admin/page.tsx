@@ -213,19 +213,18 @@ const Admin: React.FC = () => {
 
   return (
     <div className="admin-container">
-      <div className="button-container">
-        <button className="logout-button" onClick={handleLogout}>
-          Log Out
-        </button>
-        <button className="export-button" onClick={handleExportToExcel}>
-          Export to Excel
-        </button>
-        <button className="save-button" onClick={handleSubmit}>
-          Save Selected Changes
-        </button>
-      </div>
+            
+            <div className="button-container">
+  <h2>School Form Submissions</h2>
+  <div className="button-group">
+    <button className="logout-button" onClick={handleLogout}>Log Out</button>
+    <button className="export-button" onClick={handleExportToExcel}>Export to Excel</button>
+    <button className="save-button" onClick={handleSubmit}>Save Selected Changes</button>
+  </div>
+</div>
 
-      <h2>School Form Submissions</h2>
+
+
 
       {loading && (
         <Loading />
@@ -239,7 +238,7 @@ const Admin: React.FC = () => {
                 <input type="checkbox" checked={selectAll} onChange={handleSelectAll} />
               </th>
             <th>
-                S No.
+            <span className="header-text">Sl.</span>
                 <button onClick={() => toggleFilterVisibility('sno')}>
                 </button>
                 {filterVisibility.sno && (
@@ -253,7 +252,7 @@ const Admin: React.FC = () => {
               </th>
               
               <th>
-                Profile ID
+                Id
                 <button onClick={() => toggleFilterVisibility('profile_id')}>
                 </button>
                 {filterVisibility.profile_id && (
@@ -281,10 +280,11 @@ const Admin: React.FC = () => {
                 Phone
               </th>
               <th>
-      Financial Assistance
-      <button onClick={() => toggleFilterVisibility('financial_assistance')}>
-        🔍
-      </button>
+              <span className="header-text">Assistance</span>
+              <button className='filter-icon' onClick={() => toggleFilterVisibility('financial_assistance')}>
+                <i className="fas fa-filter"></i>
+              </button>
+
       {filterVisibility.financial_assistance && (
         <select
           value={filters.financial_assistance}
@@ -298,9 +298,10 @@ const Admin: React.FC = () => {
     </th>
     <th>
   School Name
-  <button onClick={() => toggleFilterVisibility('school_name')}>
-    🔍
-  </button>
+  <button className='filter-icon' onClick={() => toggleFilterVisibility('school_name')}>
+  <i className="fas fa-filter"></i>
+</button>
+
   {filterVisibility.school_name && (
     <select
       value={filters.school_name}
@@ -316,9 +317,10 @@ const Admin: React.FC = () => {
 
               <th>
                 Payment Status
-                <button onClick={() => toggleFilterVisibility('payment_status')}>
-                🔍
-                </button>
+                <button className='filter-icon' onClick={() => toggleFilterVisibility('payment_status')}>
+  <i className="fas fa-filter"></i>
+</button>
+
                 {filterVisibility.payment_status && (
                   <select
                     value={filters.payment_status}
@@ -333,9 +335,10 @@ const Admin: React.FC = () => {
 
               <th>
                 Group
-                <button onClick={() => toggleFilterVisibility('group')}>
-                🔍
-                </button>
+                <button className='filter-icon' onClick={() => toggleFilterVisibility('group')}>
+  <i className="fas fa-filter"></i>
+</button>
+
                 {filterVisibility.group && (
                   <select
                     value={filters.group}
@@ -349,9 +352,10 @@ const Admin: React.FC = () => {
               </th>
               <th>
   Level
-  <button onClick={() => toggleFilterVisibility('level')}>
-    🔍
-  </button>
+  <button className='filter-icon' onClick={() => toggleFilterVisibility('level')}>
+  <i className="fas fa-filter"></i>
+</button>
+
   {filterVisibility.level && (
     <select
       value={filters.level}
@@ -363,6 +367,7 @@ const Admin: React.FC = () => {
       <option value="Level 3">Level 3</option>
       <option value="Level 4">Level 4</option>
       <option value="Level 5">Level 5</option>
+      <option value="Level 6">Level 6</option>
     </select>
   )}
 </th>
@@ -413,7 +418,7 @@ const Admin: React.FC = () => {
                     value={form.group}
                     onChange={(e) => handleUpdate(index, 'group', e.target.value)}
                   >
-                     <option value="">Select group</option>
+                     <option value="">Select</option>
                     <option value="In School Program">In School Program</option>
                     <option value="Club">Club</option>
                   </select>
@@ -423,12 +428,13 @@ const Admin: React.FC = () => {
                     value={form.level}
                     onChange={(e) => handleUpdate(index, 'level', e.target.value)}
                   >
-                    <option value="">Select Level</option>
+                    <option value="">Select</option>
                     <option value="Level 1">Level 1</option>
                     <option value="Level 2">Level 2</option>
                     <option value="Level 3">Level 3</option>
                     <option value="Level 4">Level 4</option>
                     <option value="Level 5">Level 5</option>
+                    <option value="Level 6">Level 6</option>
                   </select>
                 </td>
               </tr>
