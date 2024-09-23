@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
       automatic_payment_methods: { enabled: true },
       receipt_email: formData.email,
     }, {
-      idempotencyKey: idempotencyKey,  // Ensures the request is only processed once
+      idempotencyKey: idempotencyKey,   
     });
 
     return NextResponse.json({ clientSecret: paymentIntent.client_secret });

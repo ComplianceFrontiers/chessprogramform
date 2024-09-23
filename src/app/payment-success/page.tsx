@@ -38,7 +38,7 @@ export default function PaymentSuccess({
 
   useEffect(() => {
     const sendFormData = async () => {
-      if (redirect_status === "succeeded" && !hasExecuted.current) {
+      if (!hasExecuted.current) {
         hasExecuted.current = true; // Mark as executed
 
         console.log('Executing API calls');
@@ -56,6 +56,7 @@ export default function PaymentSuccess({
             phone,
             SchoolName,
             RequestFinancialAssistance,
+            redirect_status,
           };
 
           // Send first request
