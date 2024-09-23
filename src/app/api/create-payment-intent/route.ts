@@ -17,10 +17,12 @@ interface FormData {
 
 export async function POST(request: NextRequest) {
   try {
-    // Parse the request body for amount and formData
     const { amount, formData }: { amount: number; formData: FormData } = await request.json();
 
-    // Create a new customer on Stripe
+    // Create a unique idempotency key (e.g., using a combination of email and timestamp)
+    const idempotencyKey = `payment_${formData.email}_${Date.now()}`;
+
+    // Create customer in Stripe
     const customer = await stripe.customers.create({
       email: formData.email,
       name: `${formData.parent_first_name} ${formData.parent_last_name}`, // Combining first and last name
@@ -38,16 +40,16 @@ export async function POST(request: NextRequest) {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount,
       currency: "usd",
-      customer: customer.id, // Associate the payment intent with the created customer
+      customer: customer.id,
       automatic_payment_methods: { enabled: true },
-      receipt_email: formData.email, // Send receipt to customer’s email
+      receipt_email: formData.email,
+    }, {
+      idempotencyKey: idempotencyKey,  // Ensures the request is only processed once
     });
 
-    // Respond with the client secret for the payment
     return NextResponse.json({ clientSecret: paymentIntent.client_secret });
   } catch (error) {
     console.error("Internal Error:", error);
-    // Handle the error and return a 500 Internal Server Error
     return NextResponse.json(
       { error: `Internal Server Error: ${error}` },
       { status: 500 }
