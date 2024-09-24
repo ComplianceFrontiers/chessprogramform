@@ -51,7 +51,7 @@ const ChessRegistration = () => {
     formData.RequestFinancialAssistance = false;
 
     try {
-      const response1 = await axios.post('https://backend-chess-tau.vercel.app/send-email-form-lombardy', formData);
+      const response1 = await axios.post('https://backend-chess-tau.vercel.app/send-email-form-mpes', formData);
       if (response1.status === 200) {
         const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
         if (response2.status === 201) {
