@@ -29,7 +29,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ amount, formData }) => {
 
   useEffect(() => {
     // Create payment intent only if clientSecret is null
-    if (!clientSecret && formData.email&&formData.acceptTerms) {
+    if (!clientSecret) {
       fetch("/api/create-payment-intent", {
         method: "POST",
         headers: {
@@ -47,7 +47,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ amount, formData }) => {
           console.error(error);
         });
     }
-  }, [amount, formData.email,formData.acceptTerms]);
+  }, [amount, formData.email, formData.acceptTerms, clientSecret, formData]);
 
   const allFieldsFilled = () => {
     return Object.values(formData).every(
