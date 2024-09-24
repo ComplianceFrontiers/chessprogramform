@@ -20,7 +20,7 @@ interface CheckoutPageProps {
   disabled:boolean;
 }
 
-const CheckoutPage: React.FC<CheckoutPageProps> = ({ amount,formData }) => {
+const CheckoutPage: React.FC<CheckoutPageProps> = ({ amount, formData }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState<string>();
@@ -29,7 +29,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ amount,formData }) => {
 
   useEffect(() => {
     // Create payment intent only if clientSecret is null
-    if (!clientSecret) {
+    if (!clientSecret && formData.email&&formData.acceptTerms==true) {
       fetch("/api/create-payment-intent", {
         method: "POST",
         headers: {
@@ -47,7 +47,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ amount,formData }) => {
           console.error(error);
         });
     }
-  }, [amount, formData.email, formData.acceptTerms, clientSecret, formData]);
+  }, [amount, formData.email,formData.acceptTerms]);
 
   const allFieldsFilled = () => {
     return Object.values(formData).every(

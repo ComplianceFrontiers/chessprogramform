@@ -8,6 +8,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import CheckoutPage from '@/components/CheckoutPage';
 import Loading from '../../../Loading';
+import debounce from 'lodash/debounce';
 
 // Ensure the Stripe public key is loaded
 if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
@@ -27,7 +28,7 @@ const ChessRegistration = () => {
     phone: '',
     acceptTerms: false,
     RequestFinancialAssistance: false,
-    SchoolName: "test School",
+    SchoolName: "Mount Pleasant Elementary School",
   });
 
   const [loading, setLoading] = useState(false);
@@ -49,8 +50,17 @@ const ChessRegistration = () => {
       });
     }
 
- 
+    // Call the debounced function after a delay
+    if (name === 'email') {
+      debouncedCreatePaymentIntent();
+    }
   };
+
+  const debouncedCreatePaymentIntent = debounce(async () => {
+    if (!formData.email) return;
+
+    // Add your logic to create payment intent here
+  }, 500); // Adjust the delay (in milliseconds) as needed
 
   const handleFinancialAssistance = async (e: React.FormEvent) => {
     if (!formData.email) {
@@ -83,7 +93,7 @@ const ChessRegistration = () => {
     }
   };
 
-  const amount = 1; // Payment amount
+  const amount = 150; // Payment amount
 
   return (
     <div className="registration-container">
@@ -112,8 +122,6 @@ const ChessRegistration = () => {
           <div className="training-info">
             <p><strong>10 Weeks Training on Wednesdays [K-5 Students]</strong></p>
             <p>Program Dates: 09 Oct 2024 to 18 Dec 2024</p>
-            <p>[Classes on 10/9; 10/16, 10/23, 10/30, 11/6, 11/13, 11/20 ; 12/4, 12/11 and 12/18 . No class on 11/27]</p>
-            <p>Time: 3:30 PM - 4:30 PM</p>
           </div>
 
           <form className="registration-form">
@@ -171,13 +179,13 @@ const ChessRegistration = () => {
           </form>
 
           <Elements
-            stripe={stripePromise}
-            options={{
-            mode: "payment",
-            amount: amount,
-            currency: "usd",
-            }}
-        >
+        stripe={stripePromise}
+        options={{
+          mode: "payment",
+          amount: amount,
+          currency: "usd",
+        }}
+      >
             <CheckoutPage
               amount={amount}
               formData={formData}
