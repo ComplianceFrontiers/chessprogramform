@@ -20,7 +20,7 @@ interface CheckoutPageProps {
   disabled:boolean;
 }
 
-const CheckoutPage: React.FC<CheckoutPageProps> = ({ amount, formData }) => {
+const CheckoutPage: React.FC<CheckoutPageProps> = ({ amount,formData }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState<string>();
