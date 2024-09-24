@@ -78,7 +78,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ amount, formData }) => {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: `http://localhost:3000/payment-success?amount=${amount}&redirect_status=succeeded&parent_first_name=${encodeURIComponent(
+        return_url: `https://chesschampsus.vercel.app/payment-success?amount=${amount}&redirect_status=succeeded&parent_first_name=${encodeURIComponent(
           formData.parent_first_name
         )}&parent_last_name=${encodeURIComponent(
           formData.parent_last_name
