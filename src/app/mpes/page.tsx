@@ -4,18 +4,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './mpes.scss';
 import Link from 'next/link';
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
-import CheckoutPage from '@/components/CheckoutPage';
 import Loading from '../../../Loading';
-import debounce from 'lodash/debounce';
-
-// Ensure the Stripe public key is loaded
-if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
-  throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined");
-}
-
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 const ChessRegistration = () => {
   const [formData, setFormData] = useState({
@@ -36,7 +25,7 @@ const ChessRegistration = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
-
+  
     if (type === 'checkbox') {
       const checked = (e.target as HTMLInputElement).checked;
       setFormData({
@@ -49,18 +38,32 @@ const ChessRegistration = () => {
         [name]: value,
       });
     }
-
-    // Call the debounced function after a delay
-    if (name === 'email') {
-      debouncedCreatePaymentIntent();
-    }
   };
 
-  const debouncedCreatePaymentIntent = debounce(async () => {
-    if (!formData.email) return;
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.acceptTerms) {
+      alert("You must accept the terms and conditions to proceed.");
+      return;
+    }
 
-    // Add your logic to create payment intent here
-  }, 500); // Adjust the delay (in milliseconds) as needed
+    setLoading(true);
+    formData.RequestFinancialAssistance = false;
+
+    try {
+      const response1 = await axios.post('https://backend-chess-tau.vercel.app/send-email-form-lombardy', formData);
+      if (response1.status === 200) {
+        const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
+        if (response2.status === 201) {
+          window.location.href = 'https://buy.stripe.com/4gw17k3dE8ri8Yo8wB';
+        }
+      }
+    } catch (error) {
+      console.error('There was an error requesting financial assistance or submitting the form!', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleFinancialAssistance = async (e: React.FormEvent) => {
     if (!formData.email) {
@@ -76,7 +79,7 @@ const ChessRegistration = () => {
     formData.RequestFinancialAssistance = true;
 
     try {
-      const response1 = await axios.post('https://backend-chess-tau.vercel.app/send-email-form-mpes', formData);
+      const response1 = await axios.post('https://backend-chess-tau.vercel.app/send-email-form-lombardy', formData);
       if (response1.status === 200) {
         const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
         if (response2.status === 201) {
@@ -93,11 +96,11 @@ const ChessRegistration = () => {
     }
   };
 
-  const amount = 150; // Payment amount
-
   return (
     <div className="registration-container">
-      {loading && <Loading />}
+      {loading && (
+        <Loading />
+      )}
 
       {showThankYou && (
         <div className="thank-you-overlay">
@@ -116,7 +119,8 @@ const ChessRegistration = () => {
 
           <h2>Chess Program: Fall 2024</h2>
           <p className="program-description">
-            The Chess After-School Program gives students a fun and engaging way to learn...
+          The Chess After-School Program gives students a fun and engaging way to learn the game while building critical thinking and problem-solving skills.
+            Through interactive lessons and games, students will master key strategies, improve focus, and boost confidence, all in a supportive environment.
           </p>
 
           <div className="training-info">
@@ -126,26 +130,55 @@ const ChessRegistration = () => {
             <p>Time: 3:30 PM - 4:30 PM</p>
           </div>
 
-          <form className="registration-form">
+          <form className="registration-form" onSubmit={handleSubmit}>
             <div className="input-group">
               <label>Parent's Name</label>
               <div className="input-row">
-                <input type="text" name="parent_first_name" placeholder="First" value={formData.parent_first_name} onChange={handleChange} />
-                <input type="text" name="parent_last_name" placeholder="Last" value={formData.parent_last_name} onChange={handleChange} />
+                <input 
+                  type="text" 
+                  name="parent_first_name" 
+                  placeholder="First" 
+                  value={formData.parent_first_name} 
+                  onChange={handleChange}
+                />
+                <input 
+                  type="text" 
+                  name="parent_last_name" 
+                  placeholder="Last" 
+                  value={formData.parent_last_name} 
+                  onChange={handleChange}
+                />
               </div>
             </div>
 
             <div className="input-group">
               <label>Child's Name</label>
               <div className="input-row">
-                <input type="text" name="child_first_name" placeholder="First" value={formData.child_first_name} onChange={handleChange} />
-                <input type="text" name="child_last_name" placeholder="Last" value={formData.child_last_name} onChange={handleChange} />
+                <input 
+                  type="text" 
+                  name="child_first_name" 
+                  placeholder="First" 
+                  value={formData.child_first_name} 
+                  onChange={handleChange}
+                />
+                <input 
+                  type="text" 
+                  name="child_last_name" 
+                  placeholder="Last" 
+                  value={formData.child_last_name} 
+                  onChange={handleChange}
+                />
               </div>
             </div>
 
             <div className="input-group">
               <label>Child's Grade</label>
-              <select name="child_grade" value={formData.child_grade} onChange={handleChange} required>
+              <select 
+                name="child_grade" 
+                value={formData.child_grade} 
+                onChange={handleChange}
+                required
+              >
                 <option value="">Dropdown</option>
                 <option value="K">K</option>
                 <option value="1">1st Grade</option>
@@ -158,42 +191,48 @@ const ChessRegistration = () => {
 
             <div className="input-group">
               <label>Email <span className="required">*</span></label>
-              <input type="email" name="email" placeholder="Enter Email" value={formData.email} onChange={handleChange} required />
+              <input 
+                type="email" 
+                name="email" 
+                placeholder="Enter Email" 
+                value={formData.email} 
+                onChange={handleChange}
+                required
+              />
             </div>
 
             <div className="input-group">
               <label>Phone <span className="required">*</span></label>
-              <input type="tel" name="phone" placeholder="Enter Phone Number" value={formData.phone} onChange={handleChange} required />
+              <input 
+                type="tel" 
+                name="phone" 
+                placeholder="Enter Phone Number" 
+                value={formData.phone} 
+                onChange={handleChange}
+                required
+              />
             </div>
 
+            <div className="training-info">
+              <p><strong>10 Weeks Training Program [10 Sessions] $150.00</strong></p>
+            </div>
             <div className="terms-container">
-              <input
-                type="checkbox"
-                id="terms"
-                name="acceptTerms"
-                checked={formData.acceptTerms}
-                onChange={handleChange}
+              <input 
+                type="checkbox" 
+                id="terms" 
+                name="acceptTerms" 
+                checked={formData.acceptTerms} 
+                onChange={handleChange} 
               />
               <label htmlFor="terms">
                 I accept the <Link href="/terms-and-conditions">terms and conditions</Link>
               </label>
             </div>
-          </form>
 
-          <Elements
-        stripe={stripePromise}
-        options={{
-          mode: "payment",
-          amount: amount,
-          currency: "usd",
-        }}
-      >
-            <CheckoutPage
-              amount={amount}
-              formData={formData}
-              disabled={!formData.acceptTerms || !formData.email}
-            />
-          </Elements>
+            <div className="button-group">
+              <button type="submit" className="payment-button" disabled={loading}>Make Payment</button>
+            </div>
+          </form>
 
           <p className="note">
             <strong>Note:</strong> Financial Assistance is available for this program. Click <a href="#" className="request-link" onClick={handleFinancialAssistance}> here </a> to register your request.
