@@ -93,7 +93,7 @@ const ChessRegistration = () => {
     }
   };
 
-  const amount = 150; // Payment amount
+  const amount = 1; // Payment amount
 
   return (
     <div className="registration-container">
