@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-unescaped-entities */
 'use client';
 import React, { useState, useEffect } from 'react';
@@ -117,44 +118,54 @@ const Admin: React.FC = () => {
     setLoading(true);
     try {
       const selectedData = formData.filter((form) => selectedRows.includes(form.profile_id));
-      const updatePayload = {
-        updates: selectedData.map((form) => ({
-          profile_id: form.profile_id,
-          payment_status: form.payment_status,
-          group: form.group,
-          level: form.level,
-        })),
+      
+      // Function to divide selectedData into chunks of 5
+      const chunkArray = (array: any[], chunkSize: number) => {
+        const results = [];
+        for (let i = 0; i < array.length; i += chunkSize) {
+          results.push(array.slice(i, i + chunkSize));
+        }
+        return results;
       };
   
-      const updateResponse = await axios.post('https://backend-chess-tau.vercel.app/update_forms', updatePayload);
-      const updatePayload1 = {
-        updates: selectedData.map((form) => ({
-          profile_id: form.profile_id,
-          payment_status: form.payment_status,
-          group: form.group,
-          level: form.level,
-          email: form.email || '', // Ensure email is present or default to empty string
-        })),
-      };
-      
-      if (updateResponse.status === 200) {
-        // Call the send_mails_for_updated_records API
-        const mailResponse = await axios.post('https://backend-chess-tau.vercel.app/send_mails_for_updated_records', updatePayload1);
-        
-        if (mailResponse.status === 200) {
-          alert('Changes saved and emails sent successfully!');
+      const updateChunks = chunkArray(selectedData, 5);
+  
+      // Process each chunk sequentially
+      for (const chunk of updateChunks) {
+        const updatePayload = {
+          updates: chunk.map((form) => ({
+            profile_id: form.profile_id,
+            payment_status: form.payment_status,
+            group: form.group,
+            level: form.level,
+            email: form.email || '', // Ensure email is present or default to empty string
+          })),
+        };
+  
+        const updateResponse = await axios.post('https://backend-chess-tau.vercel.app/update_forms', updatePayload);
+  
+        if (updateResponse.status === 200) {
+          const mailResponse = await axios.post(
+            'https://backend-chess-tau.vercel.app/send_mails_for_updated_records',
+            updatePayload
+          );
+  
+          if (mailResponse.status !== 200) {
+            alert('Some emails failed to send. Please check the records.');
+          }
         } else {
-          alert('Changes saved but failed to send emails. Please try again.');
+          alert('Failed to save some changes. Please try again.');
         }
-      } else {
-        alert('Failed to save changes. Please try again.');
       }
+  
+      alert('All changes saved and emails sent successfully!');
     } catch (error) {
       alert('An error occurred. Please check your selections and try again.');
     } finally {
       setLoading(false);
     }
   };
+  
   
 
   const handleSelectRow = (profile_id: string) => {
