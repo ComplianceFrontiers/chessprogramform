@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-unescaped-entities */
 'use client';
 import React, { useState, useEffect } from 'react';
@@ -118,47 +117,39 @@ const Admin: React.FC = () => {
     setLoading(true);
     try {
       const selectedData = formData.filter((form) => selectedRows.includes(form.profile_id));
-      
-      // Function to divide selectedData into chunks of 5
-      const chunkArray = (array: any[], chunkSize: number) => {
-        const results = [];
-        for (let i = 0; i < array.length; i += chunkSize) {
-          results.push(array.slice(i, i + chunkSize));
-        }
-        return results;
+      const updatePayload1 = {
+        updates: selectedData.map((form) => ({
+          profile_id: form.profile_id,
+          payment_status: form.payment_status,
+          group: form.group,
+          level: form.level,
+          email: form.email || '', // Ensure email is present or default to empty string
+        })),
       };
   
-      const updateChunks = chunkArray(selectedData, 5);
-  
-      // Process each chunk sequentially
-      for (const chunk of updateChunks) {
-        const updatePayload = {
-          updates: chunk.map((form) => ({
-            profile_id: form.profile_id,
-            payment_status: form.payment_status,
-            group: form.group,
-            level: form.level,
-            email: form.email || '', // Ensure email is present or default to empty string
-          })),
-        };
-  
-        const updateResponse = await axios.post('https://backend-chess-tau.vercel.app/update_forms', updatePayload);
-  
-        if (updateResponse.status === 200) {
-          const mailResponse = await axios.post(
-            'https://backend-chess-tau.vercel.app/send_mails_for_updated_records',
-            updatePayload
-          );
-  
-          if (mailResponse.status !== 200) {
-            alert('Some emails failed to send. Please check the records.');
+      // Helper function to send batches of 4
+      const sendBatch = async (batch: { profile_id: string; payment_status: string; group: string; level: string; email: string; }[]) => {
+        try {
+          const response = await axios.post('https://backend-chess-tau.vercel.app/send_mails_for_updated_records', {
+            updates: batch,
+          });
+          if (response.status !== 200) {
+            throw new Error('Failed to send email batch');
           }
-        } else {
-          alert('Failed to save some changes. Please try again.');
+        } catch (error) {
+          console.error('Error sending batch:', error);
+          throw error;
         }
+      };
+  
+      // Split `updatePayload1.updates` into chunks of 4 and send each batch
+      const batchSize = 4;
+      for (let i = 0; i < updatePayload1.updates.length; i += batchSize) {
+        const batch = updatePayload1.updates.slice(i, i + batchSize);
+        await sendBatch(batch);
       }
   
-      alert('All changes saved and emails sent successfully!');
+      alert('Emails sent successfully!');
     } catch (error) {
       alert('An error occurred. Please check your selections and try again.');
     } finally {
