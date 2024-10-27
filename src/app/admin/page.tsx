@@ -126,6 +126,7 @@ const Admin: React.FC = () => {
           email: form.email || '', // Ensure email is present or default to empty string
         })),
       };
+      await axios.post('https://backend-chess-tau.vercel.app/update_forms', updatePayload1);
   
       // Helper function to send batches of 4
       const sendBatch = async (batch: { profile_id: string; payment_status: string; group: string; level: string; email: string; }[]) => {
