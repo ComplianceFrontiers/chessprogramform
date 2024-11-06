@@ -71,7 +71,7 @@ const ChessRegistration = () => {
       {showThankYou && (
         <div className="thank-you-overlay">
           <p className="thank-you-message">
-          <span>Thank you!</span> We’re excited about your interest in enrolling your child in our chess program. Please allow us some time to review your request, and we will get back to you shortly.
+          <span>Thank you!</span> We’re excited about your interest in enrolling your child in our chess program. Please expect to hear back from <a>connect@chesschamps.us</a> on the next step.
           </p>
         </div>
       )}
@@ -177,7 +177,7 @@ const ChessRegistration = () => {
                 onChange={handleChange} 
               />
               <label htmlFor="terms">
-                I accept the <Link href="/terms-and-conditions">terms and conditions</Link>
+                I accept the <Link href="/terms-and-conditions_jcc">terms and conditions</Link>
               </label>
             </div>
 
