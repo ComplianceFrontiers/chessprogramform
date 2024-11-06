@@ -33,8 +33,8 @@ const TermsAndConditions = () => {
       
       <h2>Understanding of Waiver</h2>
       <p>I have read and fully understand the terms of this Disclaimer and Liability Waiver. By participating in Chess Champs activities, I am giving up substantial rights, including the right to sue Chess Champs the  for any injury or damage my child or I may suffer.</p>
-      
-      <h1>Publicity Disclaimer for Chess Champs</h1>
+      <p></p>
+      <h2>Publicity Disclaimer for Chess Champs</h2>
       
       <h2>Communication Consent</h2>
       <p>You consent to receive communication from Chess Champs and Chess Champs LLC regarding updates, announcements, and other relevant information related to chess activities and events.</p>
