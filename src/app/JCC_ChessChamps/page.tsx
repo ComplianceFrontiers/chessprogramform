@@ -7,7 +7,7 @@ import Link from 'next/link';
 import Loading from '../../../Loading';
 
 const ChessRegistration = () => {
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     parent_first_name: '',
     parent_last_name: '',
     child_first_name: '',
@@ -18,24 +18,22 @@ const ChessRegistration = () => {
     acceptTerms: false,
     RequestFinancialAssistance: false,
     SchoolName: "JCC_Chess_champs",
-  });
+  };
 
+  const [formData, setFormData] = useState(initialFormData);
   const [loading, setLoading] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
-    if (type === 'checkbox') {
-      setFormData({
-        ...formData,
-        [name]: (e.target as HTMLInputElement).checked,
-      });
-    } else {
-      setFormData({
-        ...formData,
-        [name]: value,
-      });
-    }
+    setFormData({
+      ...formData,
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
+    });
+  };
+
+  const resetForm = () => {
+    setFormData(initialFormData);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -54,7 +52,10 @@ const ChessRegistration = () => {
         const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
         if (response2.status === 201) {
           setShowThankYou(true);
-          setTimeout(() => setShowThankYou(false), 6000);
+          setTimeout(() => {
+            setShowThankYou(false);
+            resetForm(); // Reset the form after the thank-you message
+          }, 5000);
         }
       }
     } catch (error) {
@@ -71,7 +72,7 @@ const ChessRegistration = () => {
       {showThankYou && (
         <div className="thank-you-overlay">
           <p className="thank-you-message">
-          <span>Thank you!</span> We’re excited about your interest in enrolling your child in our chess program. Please expect to hear back from <a>connect@chesschamps.us</a> on the next step.
+            <span>Thank you!</span> We’re excited about your interest in enrolling your child in our chess program. Please expect to hear back from <a>connect@chesschamps.us</a> on the next step.
           </p>
         </div>
       )}
@@ -132,17 +133,18 @@ const ChessRegistration = () => {
                 />
               </div>
             </div>
+
             <div className="input-group">
-  <label htmlFor="child_grade">Child's Grade</label>
-  <input
-    type="text"
-    name="child_grade"
-    id="child_grade"
-    value={formData.child_grade}
-    onChange={handleChange}
-    placeholder="Enter child's grade"
-  />
-</div>
+              <label htmlFor="child_grade">Child's Grade</label>
+              <input
+                type="text"
+                name="child_grade"
+                id="child_grade"
+                value={formData.child_grade}
+                onChange={handleChange}
+                placeholder="Enter child's grade"
+              />
+            </div>
 
             <div className="input-group">
               <label>Email <span className="required">*</span></label>

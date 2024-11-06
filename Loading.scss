@@ -14,4 +14,8 @@
 .loading-gif {
   width: 550px;
   height: 550px;
+  @media (max-width: 768px) {
+    width: auto;
+    height: 300px;
+  }
 }
