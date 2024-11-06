@@ -86,8 +86,8 @@ const ChessRegistration = () => {
           <h2>Chess Program For Kids</h2>
           <p className="program-description">
             The Chess Champs Program gives students a fun and engaging way to learn the game while building critical thinking and problem-solving skills.
-            Through interactive lessons and games, students will master key strategies, improve focus, and boost confidence, all in a supportive environment.
-          </p>
+           <p>Through interactive lessons and games, students will master key strategies, improve focus, and boost confidence, all in a supportive environment.
+          </p></p>
 
           <form className="registration-form" onSubmit={handleSubmit}>
             <div className="input-group">
