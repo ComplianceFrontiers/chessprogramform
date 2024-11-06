@@ -23,7 +23,7 @@ const TermsAndConditions = () => {
       <p>I voluntarily assume all risks associated with participation in Chess Champs activities. I accept full responsibility for any injury or damage that may result from my or my child's participation, whether caused by the negligence of Chess Champs, or otherwise.</p>
       
       <h2>Release of Liability</h2>
-      <p>In consideration of being allowed to participate in Chess Champs activities, I hereby release, waive, discharge, and covenant not to sue Chess Champs, its directors, officers, employees, volunteers, and agents, its directors, officers, employees, volunteers, and agents, from any and all claims, demands, actions, or causes of action for any injury or damage that I or my child may suffer as a result of participation in Chess Champs activities.</p>
+      <p>In consideration of being allowed to participate in Chess Champs activities, I hereby release, waive, discharge, and covenant not to sue Chess Champs, its directors, officers, employees, volunteers, and agents, from any and all claims, demands, actions, or causes of action for any injury or damage that I or my child may suffer as a result of participation in Chess Champs activities.</p>
       
       <h2>Indemnification</h2>
       <p>I agree to indemnify and hold harmless Chess Champs from any and all claims, demands, actions, or causes of action, including attorneys' fees, that may be brought against them as a result of my or my child's participation in Chess Champs activities.</p>
@@ -43,7 +43,7 @@ const TermsAndConditions = () => {
       <p>Your email address and phone number may be used by Chess Champs and Chess Champs LLC to send promotional materials, newsletters, and event invitations.</p>
       
       <h2>Opt-out Option</h2>
-      <p>You have the option to unsubscribe or opt-out from receiving communications at any time by following the instructions provided in the emails or by contacting Chess Champs directly.</p>
+      <p>You have the option to unsubscribe or opt-out from receiving communications at any time by contacting Chess Champs directly.</p>
       
       <h2>Privacy Policy</h2>
       <p>Your contact information will be handled in accordance with the privacy policy of Chess Champs and Chess Champs LLC, ensuring confidentiality and security.</p>

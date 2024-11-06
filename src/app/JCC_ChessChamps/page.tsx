@@ -140,7 +140,6 @@ const ChessRegistration = () => {
     id="child_grade"
     value={formData.child_grade}
     onChange={handleChange}
-    required
     placeholder="Enter child's grade"
   />
 </div>
