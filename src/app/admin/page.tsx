@@ -313,6 +313,7 @@ const Admin: React.FC = () => {
       <option value="">All Schools</option>
       <option value="Lombardy Elementary School">Lombardy Elementary School</option>
       <option value="Mount Pleasant Elementary School">Mount Pleasant Elementary School</option>
+      <option value="JCC_Chess_champs">JCC_ChessChamps</option>
     </select>
   )}
 </th>
