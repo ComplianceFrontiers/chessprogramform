@@ -1,0 +1,128 @@
+/* components/SendEmail.module.scss */
+.containerSendEmail {
+    max-width: 2150px; /* Increased width */
+    margin: 2rem auto;
+    width:50%;
+    padding: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.label {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.input, .textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+/* components/SendEmail.module.scss */
+.button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    margin-top: 1rem;
+    margin-right: 15rem; /* Add space to the right */
+    border: none;
+    border-radius: 4px;
+    background-color: #0070f3;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.backButton {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #ccc; /* Optionally change background color */
+    color: #0e0d0d; /* Optionally change text color */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.button:hover:not(:disabled), .backButton:hover {
+    background-color: #005bb5;
+    color: #fff;
+}
+
+.successMessage {
+    color: green;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.errorMessage {
+    color: red;
+    text-align: center;
+    margin: 1rem 0;
+}
+/* Popup Modal Styles */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popupContent {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .popupButton {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .popupButton:hover {
+    background-color: #005bb5;
+  }
+  
+  .successMessage {
+    color: green;
+    margin-bottom: 1rem;
+  }
+  
+  .errorMessage {
+    color: red;
+    margin-bottom: 1rem;
+  }
+  
