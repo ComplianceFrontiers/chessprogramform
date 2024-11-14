@@ -1,97 +1,157 @@
 .subscribers-container {
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 50px auto;
   padding: 20px;
   text-align: center;
+  background: #f9f9f9;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    transition: color 0.3s ease;
+  
+    &:hover {
+      color: #007bff;
+    }
+  
+    // Adding a gradient underline
+    &::after {
+      content: '';
+      position: absolute;
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(90deg, #007bff, #0056b3);
+      bottom: -5px;
+      left: 20%;
+      transition: all 0.4s ease;
+      opacity: 0.7;
+    }
+  
+    // Hover effect to expand underline
+    &:hover::after {
+      width: 100%;
+      left: 0;
+      background: linear-gradient(90deg, #0056b3, #007bff);
+    }
+  
+    // Fade-in animation for initial load
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    animation: fadeIn 0.5s ease forwards;
+  
+    // Responsive font-size for smaller screens
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+  }
+  
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-}
+  overflow: hidden;
+  border-radius: 8px;
 
-th, td {
-  padding: 10px;
-  border: 1px solid #ddd;
-}
+  th, td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.95rem;
+  }
 
-th {
-  background-color: #f4f4f4;
-}
+  th {
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+  }
 
-.error {
-  color: red;
-}
-.next-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
+  tr:nth-child(even) {
+    background-color: #f4f4f4;
+  }
 
-  &:hover {
-    background-color: #0056b3;
+  tr:hover {
+    background-color: #e2e6ea;
   }
 }
-/* Other styles remain the same */
+
+.filters {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  input, select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+
+    &:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+  }
+}
+
+.next-button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    background: linear-gradient(90deg, #0056b3, #007bff);
+  }
+}
 
 .modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: center;
+
+  .modal-content {
+    animation: fadeIn 0.4s ease;
+  }
 }
 
-.modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 400px;
-  text-align: center;
-}
-
-.modal-content h3 {
-  margin-bottom: 15px;
-}
-
-.modal-content input,
-.modal-content textarea {
-  width: 100%;
-  padding: 8px;
-  margin: 10px 0;
-  border-radius: 4px;
-  border: 1px solid #ddd;
-}
-
-.send-button,
-.close-button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-}
-
-.close-button {
-  background-color: #dc3545;
-}
-
-.send-button:hover {
-  background-color: #0056b3;
-}
-
-.close-button:hover {
-  background-color: #c82333;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
