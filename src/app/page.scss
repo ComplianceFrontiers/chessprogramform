@@ -1,4 +1,5 @@
 .registration-container {
+  border-radius: 10px;
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
@@ -9,13 +10,14 @@
 
   .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Center aligns the logo */
     align-items: center;
-    margin-bottom: 20px;
+    flex-direction: column; /* Stack images and text vertically if there’s more than one */
 
     .logo {
-      height: 200px;
+      height: 250px;
       width: 200px;
+      margin: 0 auto; /* Ensures the logo centers within the header */
     }
 
     .school-title {

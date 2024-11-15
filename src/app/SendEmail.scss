@@ -1,128 +1,188 @@
-/* components/SendEmail.module.scss */
+/* SendEmail.module.scss */
+
 .containerSendEmail {
-    max-width: 2150px; /* Increased width */
-    margin: 2rem auto;
-    width:50%;
-    padding: 2rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+  max-width: 850px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  width: 90%;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f9f9f9, #eaeaea);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+
+  &:hover {
+      transform: scale(1.02); /* Subtle hover zoom */
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
 }
 
 .title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #333;
+  background: linear-gradient(to right, #0070f3, #005bb5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Gradient text */
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
 }
 
 .label {
-    display: block;
-    margin-bottom: 1rem;
-    font-weight: bold;
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color: #444;
+  transition: color 0.3s ease;
+
+  &:hover {
+      color: #0070f3;
+  }
 }
 
 .input, .textarea {
-    width: 100%;
-    padding: 0.5rem;
-    margin-top: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:focus {
+      border-color: #0070f3;
+      box-shadow: 0 0 8px rgba(0, 112, 243, 0.3);
+      outline: none;
+  }
 }
 
 .textarea {
-    height: 100px;
-    resize: vertical;
+  height: 120px;
+  resize: vertical;
 }
 
-/* components/SendEmail.module.scss */
+.button, .backButton {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: calc(50% - 0.5rem);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+      transform: translateY(-3px); /* Lifts the button slightly */
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  }
+}
+
 .button {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    margin-top: 1rem;
-    margin-right: 15rem; /* Add space to the right */
-    border: none;
-    border-radius: 4px;
-    background-color: #0070f3;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background: linear-gradient(135deg, #0070f3, #005bb5);
+  color: white;
+  margin-right: 1rem;
+
+  &:hover {
+      background: linear-gradient(135deg, #005bb5, #003e82);
+  }
 }
 
 .backButton {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    margin-top: 1rem;
-    border: none;
-    border-radius: 4px;
-    background-color: #ccc; /* Optionally change background color */
-    color: #0e0d0d; /* Optionally change text color */
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background: linear-gradient(135deg, #ccc, #aaa);
+  color: #333;
+
+  &:hover {
+      background: linear-gradient(135deg, #aaa, #888);
+  }
 }
 
+.successMessage, .errorMessage {
+  font-weight: bold;
+  text-align: center;
+  margin: 1rem 0;
+  animation: popIn 0.4s ease;
+}
 
-.button:hover:not(:disabled), .backButton:hover {
-    background-color: #005bb5;
-    color: #fff;
+@keyframes popIn {
+  from {
+      transform: scale(0.9);
+      opacity: 0;
+  }
+  to {
+      transform: scale(1);
+      opacity: 1;
+  }
 }
 
 .successMessage {
-    color: green;
-    text-align: center;
-    margin: 1rem 0;
+  color: #28a745;
 }
 
 .errorMessage {
-    color: red;
-    text-align: center;
-    margin: 1rem 0;
+  color: #dc3545;
 }
+
 /* Popup Modal Styles */
 .popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.popupContent {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
+  animation: popIn 0.4s ease;
+}
+
+.popupButton {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #0070f3, #005bb5);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+      background: linear-gradient(135deg, #005bb5, #003e82);
   }
-  
-  .popupContent {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    text-align: center;
+}
+
+@media (max-width: 768px) {
+  .containerSendEmail {
+      padding: 1.5rem;
   }
-  
-  .popupButton {
-    margin-top: 1rem;
-    padding: 0.75rem 1.5rem;
-    background-color: #0070f3;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+
+  .button, .backButton {
+      width: 100%;
+      margin-right: 0;
+      margin-top: 0.5rem;
   }
-  
-  .popupButton:hover {
-    background-color: #005bb5;
-  }
-  
-  .successMessage {
-    color: green;
-    margin-bottom: 1rem;
-  }
-  
-  .errorMessage {
-    color: red;
-    margin-bottom: 1rem;
-  }
-  
+}

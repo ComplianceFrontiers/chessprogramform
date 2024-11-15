@@ -5,11 +5,11 @@ import './subscribe.scss';
 const Subscribe = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    // Check if email is provided
     if (!email) {
       setMessage('Please enter a valid email.');
       return;
@@ -27,6 +27,7 @@ const Subscribe = () => {
       if (response.ok) {
         const data = await response.json();
         setMessage(data.message || 'Subscription successful!');
+        setIsSubscribed(true);  // Set to subscribed
       } else {
         const errorData = await response.json();
         setMessage(errorData.error || 'An error occurred.');
@@ -36,18 +37,25 @@ const Subscribe = () => {
     }
   };
 
+  const handleUnsubscribe = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubscribed(false);
+    setMessage('You have unsubscribed.');
+  };
+
   return (
     <div className="subscribe-container">
       <h2>Subscribe to Chess Champs</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={isSubscribed ? handleUnsubscribe : handleSubscribe}>
         <input
           type="email"
           placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          disabled={isSubscribed} // Disable input if already subscribed
         />
-        <button type="submit">Subscribe</button>
+        <button type="submit">{isSubscribed ? 'Unsubscribe' : 'Subscribe'}</button>
       </form>
       {message && <p className={message.includes('successful') ? '' : 'error'}>{message}</p>}
     </div>
