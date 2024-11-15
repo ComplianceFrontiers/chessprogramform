@@ -106,7 +106,8 @@ const GetSubscribers: React.FC = () => {
 
   return (
     <div className="subscribers-container">
-      <h2>Subscribers List</h2>
+    {!showEmailModal && <h2>Subscribers List</h2>}
+
       {error && <p className="error">{error}</p>}
 
       {/* Filter Inputs */}
