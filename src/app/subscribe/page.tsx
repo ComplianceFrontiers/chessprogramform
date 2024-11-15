@@ -4,14 +4,18 @@ import './subscribe.scss';
 
 const Subscribe = () => {
   const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [app, setApp] = useState(false);
+  const [tournament, setTournament] = useState(false);
   const [message, setMessage] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
 
   const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
-    if (!email) {
-      setMessage('Please enter a valid email.');
+
+    if (!email || !name || !phone) {
+      setMessage('Please enter valid email, name, and phone.');
       return;
     }
 
@@ -21,7 +25,13 @@ const Subscribe = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, subscriber: true }),
+        body: JSON.stringify({ 
+          email, 
+          name, 
+          phone, 
+          app, 
+          tournament
+        }),
       });
 
       if (response.ok) {
@@ -55,7 +65,43 @@ const Subscribe = () => {
           required
           disabled={isSubscribed} // Disable input if already subscribed
         />
-        <button type="submit">{isSubscribed ? 'Unsubscribe' : 'Subscribe'}</button>
+        <input
+          type="text"
+          placeholder="Enter your name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          disabled={isSubscribed}
+        />
+        <input
+          type="text"
+          placeholder="Enter your phone number"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          required
+          disabled={isSubscribed}
+        />
+        <label>
+          <input
+            type="checkbox"
+            checked={app}
+            onChange={(e) => setApp(e.target.checked)}
+            disabled={isSubscribed}
+          />
+          App Subscription
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={tournament}
+            onChange={(e) => setTournament(e.target.checked)}
+            disabled={isSubscribed}
+          />
+          Tournament Updates
+        </label>
+        <button type="submit" disabled={isSubscribed}>
+          {isSubscribed ? 'Unsubscribe' : 'Subscribe'}
+        </button>
       </form>
       {message && <p className={message.includes('successful') ? '' : 'error'}>{message}</p>}
     </div>

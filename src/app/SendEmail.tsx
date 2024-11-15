@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; 
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import './SendEmail.scss';
 
@@ -16,10 +16,11 @@ const SendEmail: React.FC<SendEmailProps> = ({ selectedRecords, onBack }) => {
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [showPopup, setShowPopup] = useState(false); // State for showing popup
+  const [apiLink, setApiLink] = useState(''); // State for the API link
 
   const handleSendEmail = async () => {
-    if (!subject || !message) {
-      setErrorMessage('Subject and message are required.');
+    if (!subject || !message || !apiLink) {
+      setErrorMessage('Subject, message, and API link are required.');
       setShowPopup(true);
       return;
     }
@@ -30,11 +31,18 @@ const SendEmail: React.FC<SendEmailProps> = ({ selectedRecords, onBack }) => {
 
     const bccEmails = selectedRecords.map(record => record.email).join(', ');
 
+    // Insert the API link into the email message
+    const linkButton = `
+      <a href="${apiLink}" style="display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: white; text-align: center; border-radius: 5px; text-decoration: none;">
+        Click here to access the link
+      </a>
+    `;
+
     const formData = new FormData();
     formData.append('name', selectedRecords.map(record => record.name).join(', '));
     formData.append('bcc', bccEmails);
     formData.append('subject', subject);
-    formData.append('message', message);
+    formData.append('message', message + linkButton); // Append the API link button to the message
     if (image) {
       formData.append('image', image);
     }
@@ -88,6 +96,18 @@ const SendEmail: React.FC<SendEmailProps> = ({ selectedRecords, onBack }) => {
           onChange={e => setMessage(e.target.value)}
           required
           className="textarea"
+        />
+      </label>
+
+      <label className="label">
+        API Link:
+        <input
+          type="url"
+          value={apiLink}
+          onChange={e => setApiLink(e.target.value)}
+          required
+          className="input"
+          placeholder="Enter the API link"
         />
       </label>
 
