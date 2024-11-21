@@ -74,13 +74,13 @@ const SendEmail: React.FC<SendEmailProps> = ({ selectedRecords, onBack }) => {
           </div>
           
           <div style="background-color: #f1646f; padding: 15px; color: white; text-align: center; width: 80%; margin: 20px auto; border-radius: 8px;">
-            <p style="font-size: 16px; line-height: 1.6; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <p style="font-size: 10px; line-height: 1.6; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto;">
               <b style="color: #fff;">About the J:</b><br />
               The Siegel JCC is a non-profit Jewish community center where people of all faiths and backgrounds come together to learn, share, play, and celebrate. Our 32-acre campus houses an Early Childhood Center, Youth & Teen Programs, and Summer Camp, as well as a state-of-the-art Fitness Center, Indoor & Outdoor Pools, Sports, and Community Events.
             </p>
           </div>
 
-          <footer style="background-color: #7fcfff; padding: 15px; font-size: 14px; text-align: center; color: #333; width: 80%; margin: 20px auto; border-radius: 8px;">
+          <footer style="background-color: #7fcfff; padding: 15px; font-size: 10px; text-align: center; color: #333; width: 80%; margin: 20px auto; border-radius: 8px;">
             <p>Follow us:</p>
             <p>
               <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">YouTube</a> | <a href="#">Website</a> | <a href="#">E-Mail</a>
