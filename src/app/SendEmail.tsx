@@ -80,7 +80,7 @@ const SendEmail: React.FC<SendEmailProps> = ({ selectedRecords, onBack }) => {
             </p>
           </div>
 
-          <footer style="background-color: #7fcfff; padding: 15px; font-size: 10px; text-align: center; color: #333; width: 80%; margin: 20px auto; border-radius: 8px;">
+          <footer style="background-color: #7fcfff; padding: 15px; font-size: 12px; text-align: center; color: #333; width: 80%; margin: 20px auto; border-radius: 8px;">
             <p>Follow us:</p>
             <p>
               <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">YouTube</a> | <a href="#">Website</a> | <a href="#">E-Mail</a>
