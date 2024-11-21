@@ -43,19 +43,19 @@ const SendEmail: React.FC<SendEmailProps> = ({ selectedRecords, onBack }) => {
           </p>
           
          <p style="font-size: 16px; line-height: 1.6; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto;">
-  <b style="color: #d72c2c;">Program Details:</b>
-</p>
-<ul style="font-size: 16px; line-height: 1.6; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto; padding-left: 20px; list-style-type: disc;">
-  <li><b style="color: #d72c2c;">Dates:</b> Tuesdays, November 19 (TONIGHT) - December 17</li>
-  <li><b style="color: #d72c2c;">Time:</b> 5 - 6:30 PM or 6:30 - 8 PM</li>
-  <li><b style="color: #d72c2c;">Location:</b> Siegel JCC Auditorium</li>
-  <li><b style="color: #d72c2c;">Instructor:</b> Coach Jeffers, Camp Archery Specialist</li>
-  <li><b style="color: #d72c2c;">Age Restrictions:</b> 8+</li>
-  <li><b style="color: #d72c2c;">Cost:</b> $75/Member, $100/Non-Member</li>
-</ul>
-<p style="font-size: 16px; line-height: 1.6; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto;">
-  On Week 5 there will be a class tournament based on points!
-</p>
+              <b style="color: #d72c2c;">Program Details:</b>
+            </p>
+            <ul style="font-size: 16px; line-height: 1.6; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto; padding-left: 20px; list-style-type: disc;">
+              <li><b style="color: #d72c2c;">Dates:</b> Tuesdays, November 19 (TONIGHT) - December 17</li>
+              <li><b style="color: #d72c2c;">Time:</b> 5 - 6:30 PM or 6:30 - 8 PM</li>
+              <li><b style="color: #d72c2c;">Location:</b> Siegel JCC Auditorium</li>
+              <li><b style="color: #d72c2c;">Instructor:</b> Coach Jeffers, Camp Archery Specialist</li>
+              <li><b style="color: #d72c2c;">Age Restrictions:</b> 8+</li>
+              <li><b style="color: #d72c2c;">Cost:</b> $75/Member, $100/Non-Member</li>
+            </ul>
+            <p style="font-size: 16px; line-height: 1.6; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto;">
+              On Week 5 there will be a class tournament based on points!
+          </p>
 
           
           <p style="font-size: 16px; line-height: 1.6; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto;">
