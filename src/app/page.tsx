@@ -12,6 +12,7 @@ const ChessRegistration = () => {
     child_first_name: '',
     child_last_name: '',
     child_grade: '',
+    program: '',
     email: '',
     phone: '',
     address_line_1: '',
@@ -43,10 +44,10 @@ const ChessRegistration = () => {
     <div className="registration-container">
       <div className="header">
         <img
-          src="/images/chesspro.png"
+          src="/images/chessproo.png"
           alt="Delaware Chess Champs Logo"
           className="logo"
-          width="150"
+          width="200"
           height="150"
         />
         {/* <img
@@ -58,7 +59,7 @@ const ChessRegistration = () => {
         /> */}
       </div>
 
-      <h2>Chess Program: Fall 2024</h2>
+      <h2>Chess Program: Winter 2025</h2>
 
       <p className="program-description">
         The Chess After-School Program gives students a fun and engaging way to learn the game while building critical thinking and problem-solving skills.
@@ -66,15 +67,29 @@ const ChessRegistration = () => {
       </p>
 
       <div className="training-info">
-        <p><strong>10 Week Training [K-5 Students]</strong></p>
-        <p>25 Sep 2024 to 18 Dec 2024</p>
-        <p>[No classes on 27 Nov 2024]</p>
-        <p>3:30 PM - 4:30 PM</p>
+        <p><strong>10 Weeks Training on Tuesdays [K-5 Students]</strong></p>
+        <p>Program Dates: 7-Jan 2025 to 11-Mar-2025</p>
+        <p>[Classes on 01/7, 01/14, 01/21, 01/28, 02/04, 02/11, 02/18, 02/25, 04/04 and 03/11]</p>
+        <p>Time: 3:30 PM – 04:30 PM. [Student Pick Up Time: 4:35 PM from Main Entrance | The children in the Y Program will be escorted by us after the session]</p>
       </div>
 
       <form className="registration-form" onSubmit={handleSubmit}>
+         {/* New Dropdown for Program Selection */}
+         <div className="input-group">
+          <label>Select your Program</label>
+          <select
+            name="program"
+            value={formData.program}
+            onChange={handleChange}
+          >
+            <option value="">Dropdown</option>
+            <option value="beginner">Beginner [New Students Only]</option>
+            <option value="intermediate">Intermediate [Returning Students]</option>
+          </select>
+        </div>
         <div className="input-group">
           <label>Parent's Name</label>
+
           <div className="input-row">
             <input 
               type="text" 
@@ -129,6 +144,8 @@ const ChessRegistration = () => {
             <option value="5">5th Grade</option>
           </select>
         </div>
+
+        
 
         <div className="input-group">
           <label>Email</label>
