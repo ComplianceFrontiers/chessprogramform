@@ -8,7 +8,7 @@ import * as XLSX from 'xlsx';
 import withadminAuth from '../withadminAuth';
 import Loading from '../../../Loading';
 
-type FilterField = 'sno' | 'profile_id' | 'group' | 'payment_status' | 'financial_assistance' | 'school_name' | 'level' | 'program' |'year';
+type FilterField = 'sno' | 'profile_id' | 'group' | 'payment_status' | 'financial_assistance' | 'school_name' | 'level' | 'program' | 'year';
 
 interface ParentName {
   first: string;
@@ -32,7 +32,7 @@ interface FormData {
   payment_status: string;
   group: string;
   level: string;
-  program:string | "";
+  program: string | '';
   year: number;
 }
 
@@ -48,8 +48,8 @@ const Admin: React.FC = () => {
     financial_assistance: false,
     school_name: false,
     level: false, // Added filter for level
-    program:false,
-    year:false
+    program: false,
+    year: false,
   });
   const [filters, setFilters] = useState({
     sno: '',
@@ -59,9 +59,8 @@ const Admin: React.FC = () => {
     financial_assistance: '',
     school_name: '',
     level: '', // Added filter for level
-    program:'',
-    year: 2025
-
+    program: '',
+    year: 0,
   });
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
   const [selectAll, setSelectAll] = useState(false);
@@ -99,13 +98,15 @@ const Admin: React.FC = () => {
           (filters.financial_assistance === 'Yes' && item.RequestFinancialAssistance) ||
           (filters.financial_assistance === 'No' && !item.RequestFinancialAssistance)) &&
         (!filters.school_name || item.SchoolName === filters.school_name) &&
-        (!filters.level || item.level === filters.level)  &&
+        (!filters.level || item.level === filters.level) &&
         (!filters.program || item.program === filters.program) &&
-        (!filters.year || item.year === filters.year)
+        // Ensure that both values are treated as numbers for year comparison
+        (filters.year === 0 || item.year === Number(filters.year))
       );
     });
     setFilteredData(filtered);
   }, [filters, formData]);
+  
 
   const handleUpdate = (index: number, field: string, value: string) => {
     const originalIndex = formData.findIndex(
@@ -136,9 +137,9 @@ const Admin: React.FC = () => {
         })),
       };
       await axios.post('https://backend-chess-tau.vercel.app/update_forms', updatePayload1);
-  
+
       // Helper function to send batches of 4
-      const sendBatch = async (batch: { profile_id: string; payment_status: string; group: string; level: string; email: string; }[]) => {
+      const sendBatch = async (batch: { profile_id: string; payment_status: string; group: string; level: string; email: string }[]) => {
         try {
           const response = await axios.post('https://backend-chess-tau.vercel.app/send_mails_for_updated_records', {
             updates: batch,
@@ -151,14 +152,14 @@ const Admin: React.FC = () => {
           throw error;
         }
       };
-  
+
       // Split `updatePayload1.updates` into chunks of 4 and send each batch
       const batchSize = 4;
       for (let i = 0; i < updatePayload1.updates.length; i += batchSize) {
         const batch = updatePayload1.updates.slice(i, i + batchSize);
         await sendBatch(batch);
       }
-  
+
       alert('Emails sent successfully!');
     } catch (error) {
       alert('An error occurred. Please check your selections and try again.');
@@ -166,8 +167,6 @@ const Admin: React.FC = () => {
       setLoading(false);
     }
   };
-  
-  
 
   const handleSelectRow = (profile_id: string) => {
     setSelectedRows((prevSelected) =>
@@ -201,8 +200,8 @@ const Admin: React.FC = () => {
       'Payment Status': form.payment_status,
       Group: form.group,
       Level: form.level,
-      Program:form.program,
-      Year:form.year,
+      Program: form.program,
+      Year: form.year,
     }));
 
     const worksheet = XLSX.utils.json_to_sheet(dataToExport);
@@ -227,32 +226,26 @@ const Admin: React.FC = () => {
 
   return (
     <div className="admin-container">
-            
-            <div className="button-container">
-  <h2>School Form Submissions</h2>
-  <div className="button-group">
-    <button className="logout-button" onClick={handleLogout}>Log Out</button>
-    <button className="export-button" onClick={handleExportToExcel}>Export to Excel</button>
-    <button className="save-button" onClick={handleSubmit}>Save Selected Changes</button>
-  </div>
-</div>
+      <div className="button-container">
+        <h2>School Form Submissions</h2>
+        <div className="button-group">
+          <button className="logout-button" onClick={handleLogout}>Log Out</button>
+          <button className="export-button" onClick={handleExportToExcel}>Export to Excel</button>
+          <button className="save-button" onClick={handleSubmit}>Save Selected Changes</button>
+        </div>
+      </div>
 
-
-
-
-      {loading && (
-        <Loading />
-      )}
+      {loading && <Loading />}
 
       {filteredData.length > 0 ? (
         <table className="form-table">
           <thead>
             <tr>
-            <th>
+              <th>
                 <input type="checkbox" checked={selectAll} onChange={handleSelectAll} />
               </th>
-            <th>
-            <span className="header-text">Sl.</span>
+              <th>
+                <span className="header-text">Sl.</span>
                 <button onClick={() => toggleFilterVisibility('sno')}>
                 </button>
                 {filterVisibility.sno && (
@@ -264,7 +257,7 @@ const Admin: React.FC = () => {
                   />
                 )}
               </th>
-              
+
               <th>
                 Id
                 <button onClick={() => toggleFilterVisibility('profile_id')}>
@@ -310,7 +303,7 @@ const Admin: React.FC = () => {
         </select>
       )}
     </th>
-    <th>
+              <th>
   School Name
   <button className='filter-icon' onClick={() => toggleFilterVisibility('school_name')}>
   <i className="fas fa-filter"></i>
