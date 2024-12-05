@@ -8,7 +8,7 @@ import * as XLSX from 'xlsx';
 import withadminAuth from '../withadminAuth';
 import Loading from '../../../Loading';
 
-type FilterField = 'sno' | 'profile_id' | 'group' | 'payment_status' | 'financial_assistance' | 'school_name' | 'level';
+type FilterField = 'sno' | 'profile_id' | 'group' | 'payment_status' | 'financial_assistance' | 'school_name' | 'level' | 'program' |'year';
 
 interface ParentName {
   first: string;
@@ -32,6 +32,8 @@ interface FormData {
   payment_status: string;
   group: string;
   level: string;
+  program:string | "";
+  year: number;
 }
 
 const Admin: React.FC = () => {
@@ -46,6 +48,8 @@ const Admin: React.FC = () => {
     financial_assistance: false,
     school_name: false,
     level: false, // Added filter for level
+    program:false,
+    year:false
   });
   const [filters, setFilters] = useState({
     sno: '',
@@ -55,6 +59,9 @@ const Admin: React.FC = () => {
     financial_assistance: '',
     school_name: '',
     level: '', // Added filter for level
+    program:'',
+    year: ''
+
   });
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
   const [selectAll, setSelectAll] = useState(false);
@@ -92,7 +99,11 @@ const Admin: React.FC = () => {
           (filters.financial_assistance === 'Yes' && item.RequestFinancialAssistance) ||
           (filters.financial_assistance === 'No' && !item.RequestFinancialAssistance)) &&
         (!filters.school_name || item.SchoolName === filters.school_name) &&
-        (!filters.level || item.level === filters.level) // Added filter for level
+        (!filters.level || item.level === filters.level)  &&
+        (!filters.program || item.program === filters.program) &&
+          (!filters.year ||
+            (filters.year === '2025' && item.year) ||
+            (filters.year === '2024' && !item.year))
       );
     });
     setFilteredData(filtered);
@@ -192,6 +203,8 @@ const Admin: React.FC = () => {
       'Payment Status': form.payment_status,
       Group: form.group,
       Level: form.level,
+      Program:form.program,
+      Year:form.year,
     }));
 
     const worksheet = XLSX.utils.json_to_sheet(dataToExport);
@@ -375,6 +388,40 @@ const Admin: React.FC = () => {
     </select>
   )}
 </th>
+<th>
+              <span className="header-text">Program</span>
+              <button className='filter-icon' onClick={() => toggleFilterVisibility('program')}>
+                <i className="fas fa-filter"></i>
+              </button>
+
+      {filterVisibility.program && (
+        <select
+          value={filters.program}
+          onChange={(e) => handleFilterChange('program', e.target.value)}
+        >
+          <option value="">program</option>
+          <option value="beginner">beginner</option>
+          <option value="intermediate">intermediate</option>
+        </select>
+      )}
+    </th>
+    <th>
+              <span className="header-text">Year</span>
+              <button className='filter-icon' onClick={() => toggleFilterVisibility('year')}>
+                <i className="fas fa-filter"></i>
+              </button>
+
+      {filterVisibility.year && (
+        <select
+          value={filters.year}
+          onChange={(e) => handleFilterChange('year', e.target.value)}
+        >
+          <option value="">year</option>
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+        </select>
+      )}
+    </th>
 
             </tr>
           </thead>
@@ -441,6 +488,8 @@ const Admin: React.FC = () => {
                     <option value="Level 6">Level 6</option>
                   </select>
                 </td>
+                <td>{form.program}</td>
+                <td>{form.year}</td>
               </tr>
             ))}
           </tbody>
