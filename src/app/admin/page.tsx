@@ -60,7 +60,7 @@ const Admin: React.FC = () => {
     school_name: '',
     level: '', // Added filter for level
     program:'',
-    year: ''
+    year: 2025
 
   });
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
