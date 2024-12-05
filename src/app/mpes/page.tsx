@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-unescaped-entities */
 'use client';
 import React, { useState } from 'react';
@@ -13,8 +14,10 @@ const ChessRegistration = () => {
     child_first_name: '',
     child_last_name: '',
     child_grade: '',
+    program: '',
     email: '',
     phone: '',
+    year:2025,
     acceptTerms: false,
     RequestFinancialAssistance: false,
     SchoolName: "Mount Pleasant Elementary School",
@@ -75,6 +78,10 @@ const ChessRegistration = () => {
       alert("You must accept the terms and conditions to proceed.");
       return;
     }
+    if (!formData.program) {
+      alert("Select Your Program to proceed.");
+      return;
+    }
     setLoading(true);
     formData.RequestFinancialAssistance = true;
 
@@ -98,7 +105,7 @@ const ChessRegistration = () => {
 
   return (
     <div className="registration-container">
-      {loading && (
+{loading && (
         <Loading />
       )}
 
@@ -112,114 +119,140 @@ const ChessRegistration = () => {
           </p>
         </div>
       )}
-
-      {!loading && !showThankYou && (
-        <>
-          <div className="header">
-            <img src="/images/chesspro.png" alt="Delaware Chess Champs Logo" className="logo" width="150" height="150" />
-            <img src="/images/schoolname.png" alt="Mount Pleasant Elementary School" className="school-title" width="200" height="150" />
+       <div className="header">
+            <img src="/images/chessproo.png" alt="Delaware Chess Champs Logo" className="logo" width="200" height="150" />
+            <a
+              href="https://chesschamps.us"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="chess-champs-link"
+            >
+              Chess Champs
+            </a>
+            <img
+              src="/images/schoolname.png"
+              alt="Mount Pleasant Elementary School"
+              className="school-title"
+              width="200"
+              height="150"
+            />
           </div>
+      <h2>Chess Program: Winter 2025</h2>
 
-          <h2>Chess Program: Fall 2024</h2>
-          <p className="program-description">
-          The Chess After-School Program gives students a fun and engaging way to learn the game while building critical thinking and problem-solving skills.
-            Through interactive lessons and games, students will master key strategies, improve focus, and boost confidence, all in a supportive environment.
-          </p>
+      <p className="program-description">
+        The Chess After-School Program gives students a fun and engaging way to learn the game while building critical thinking and problem-solving skills.
+        Through interactive lessons and games, students will master key strategies, improve focus, and boost confidence, all in a supportive environment.
+      </p>
 
-          <div className="training-info">
-            <p><strong>10 Weeks Training on Wednesdays [K-5 Students]</strong></p>
-            <p>Program Dates: 09 Oct 2024 to 18 Dec 2024</p>
-            <p>[Classes on 10/9; 10/16, 10/23, 10/30, 11/6, 11/13, 11/20 ; 12/4, 12/11 and 12/18 . No class on 11/27]</p>
-            <p>Time: 3:30 PM - 4:30 PM</p>
+      <div className="training-info">
+        <p><strong>10 Weeks Training on Tuesdays [K-5 Students]</strong></p>
+        <p>Program Dates: 7-Jan 2025 to 11-Mar-2025</p>
+        <p>[Classes on 01/7, 01/14, 01/21, 01/28, 02/04, 02/11, 02/18, 02/25, 04/04 and 03/11]</p>
+        <p>Time: 3:30 PM – 04:30 PM. [Student Pick Up Time: 4:35 PM from Main Entrance | The children in the Y Program will be escorted by us after the session]</p>
+      </div>
+
+      <form className="registration-form" onSubmit={handleSubmit}>
+         {/* New Dropdown for Program Selection */}
+         <div className="input-group">
+         <label>Select your Program <span className="required">*</span></label>
+          <select
+            name="program"
+            value={formData.program}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Dropdown</option>
+            <option value="beginner">Beginner [New Students Only]</option>
+            <option value="intermediate">Intermediate [Returning Students]</option>
+          </select>
+        </div>
+        <div className="input-group">
+          <label>Parent's Name</label>
+
+          <div className="input-row">
+            <input 
+              type="text" 
+              name="parent_first_name" 
+              placeholder="First" 
+              value={formData.parent_first_name} 
+              onChange={handleChange}
+            />
+            <input 
+              type="text" 
+              name="parent_last_name" 
+              placeholder="Last" 
+              value={formData.parent_last_name} 
+              onChange={handleChange}
+            />
           </div>
+        </div>
 
-          <form className="registration-form" onSubmit={handleSubmit}>
-            <div className="input-group">
-              <label>Parent's Name</label>
-              <div className="input-row">
-                <input 
-                  type="text" 
-                  name="parent_first_name" 
-                  placeholder="First" 
-                  value={formData.parent_first_name} 
-                  onChange={handleChange}
-                />
-                <input 
-                  type="text" 
-                  name="parent_last_name" 
-                  placeholder="Last" 
-                  value={formData.parent_last_name} 
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
+        <div className="input-group">
+          <label>Child's Name</label>
+          <div className="input-row">
+            <input 
+              type="text" 
+              name="child_first_name" 
+              placeholder="First" 
+              value={formData.child_first_name} 
+              onChange={handleChange}
+            />
+            <input 
+              type="text" 
+              name="child_last_name" 
+              placeholder="Last" 
+              value={formData.child_last_name} 
+              onChange={handleChange}
+            />
+          </div>
+        </div>
 
-            <div className="input-group">
-              <label>Child's Name</label>
-              <div className="input-row">
-                <input 
-                  type="text" 
-                  name="child_first_name" 
-                  placeholder="First" 
-                  value={formData.child_first_name} 
-                  onChange={handleChange}
-                />
-                <input 
-                  type="text" 
-                  name="child_last_name" 
-                  placeholder="Last" 
-                  value={formData.child_last_name} 
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-
-            <div className="input-group">
-              <label>Child's Grade</label>
-              <select 
-                name="child_grade" 
-                value={formData.child_grade} 
-                onChange={handleChange}
+        <div className="input-group">
+          <label>Child's Grade</label>
+          <select 
+            name="child_grade" 
+            value={formData.child_grade} 
+            onChange={handleChange}
                 required
-              >
-                <option value="">Dropdown</option>
-                <option value="K">K</option>
-                <option value="1">1st Grade</option>
-                <option value="2">2nd Grade</option>
-                <option value="3">3rd Grade</option>
-                <option value="4">4th Grade</option>
-                <option value="5">5th Grade</option>
-              </select>
-            </div>
+          >
+            <option value="">Dropdown</option>
+            <option value="K">K</option>
+            <option value="1">1st Grade</option>
+            <option value="2">2nd Grade</option>
+            <option value="3">3rd Grade</option>
+            <option value="4">4th Grade</option>
+            <option value="5">5th Grade</option>
+          </select>
+        </div>
 
-            <div className="input-group">
+        <div className="input-group">
               <label>Email <span className="required">*</span></label>
-              <input 
-                type="email" 
-                name="email" 
-                placeholder="Enter Email" 
-                value={formData.email} 
-                onChange={handleChange}
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Enter Email" 
+            value={formData.email} 
+            onChange={handleChange}
                 required
-              />
-            </div>
+          />
+        </div>
 
-            <div className="input-group">
+        <div className="input-group">
               <label>Phone <span className="required">*</span></label>
-              <input 
-                type="tel" 
-                name="phone" 
-                placeholder="Enter Phone Number" 
-                value={formData.phone} 
-                onChange={handleChange}
+          <input 
+            type="tel" 
+            name="phone" 
+            placeholder="Enter Phone Number" 
+            value={formData.phone} 
+            onChange={handleChange}
                 required
-              />
-            </div>
-
-            <div className="training-info">
-              <p><strong>10 Weeks Training Program [10 Sessions] $150.00</strong></p>
-            </div>
-            <div className="terms-container">
+          />
+        </div>
+        
+        <div className="training-info">
+          <p><strong>10 Week Program $150.00</strong></p>
+          </div>
+          <div className="terms-container">
               <input 
                 type="checkbox" 
                 id="terms" 
@@ -230,18 +263,13 @@ const ChessRegistration = () => {
               <label htmlFor="terms">
                 I accept the <Link href="/terms-and-conditions">terms and conditions</Link>
               </label>
-            </div>
+        </div>
 
-            <div className="button-group">
-              <button type="submit" className="payment-button" disabled={loading}>Make Payment</button>
-            </div>
-          </form>
-
-          <p className="note">
-            <strong>Note:</strong> Financial Assistance is available for this program. Click <a href="#" className="request-link" onClick={handleFinancialAssistance}> here </a> to register your request.
-          </p>
-        </>
-      )}
+        <div className="button-group">
+          <button type="submit" className="payment-button"disabled={loading}>Make Payment</button>
+          <button type="button" className="assistance-button" onClick={handleFinancialAssistance}>Request Financial Assistance</button>
+        </div>
+      </form>
     </div>
   );
 };

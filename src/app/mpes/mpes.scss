@@ -6,16 +6,47 @@
   border: 2px solid #000;
   font-family: 'Arial', sans-serif;
   color: #000;
-
+  .header {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align items horizontally */
+    text-align: center; /* Center text content */
+    gap: 15px; /* Add spacing between items */
+    margin: 20px auto; /* Center the header container itself */
+  }
+  
+  .logo {
+    width: 200px;
+    height: 180px;
+  }
+  
+  .school-title {
+    width: 200px;
+    height: 150px;
+  }
+  
+  .chess-champs-link {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff; /* Blue color */
+    text-decoration: none;
+  }
+  
+  .chess-champs-link:hover {
+    text-decoration: underline;
+    color: blue; /* Darker blue on hover */
+  }
+  
   .header {
     display: block;
+    align-items: center;
     margin-bottom: 20px;
 
     .logo {
       display: block;
       margin: 0 auto;
       height: 250px;
-      width: 200px;
+      width: 250px;
     }
 
     .school-title {
@@ -147,7 +178,7 @@
     
       .logo {
         height: 200px;
-        width: 160px; /* Set the width of the logo to 100px */
+        width: 180px; /* Set the width of the logo to 100px */
       }
     
       .school-title {
