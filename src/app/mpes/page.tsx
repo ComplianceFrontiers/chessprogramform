@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-unescaped-entities */
 'use client';
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import axios from 'axios';
 import './mpes.scss';
 import Link from 'next/link';
@@ -25,6 +25,7 @@ const ChessRegistration = () => {
 
   const [loading, setLoading] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
+  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -67,6 +68,9 @@ const ChessRegistration = () => {
       setLoading(false);
     }
   };
+  useEffect(() => {
+    console.log('showThankYou updated:', showThankYou);
+  }, [showThankYou]);
 
   const handleFinancialAssistance = async (e: React.FormEvent) => {
     if (!formData.email) {
@@ -89,8 +93,12 @@ const ChessRegistration = () => {
       const response1 = await axios.post('https://backend-chess-tau.vercel.app/send-email-form-mpes', formData);
       if (response1.status === 200) {
         const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
+
         if (response2.status === 201) {
+          
+          
           setShowThankYou(true);
+          console.log(response2.status==201,showThankYou)
           setTimeout(() => {
             setShowThankYou(false);
           }, 6000);
@@ -119,7 +127,9 @@ const ChessRegistration = () => {
           </p>
         </div>
       )}
-       <div className="header">
+       {!loading && !showThankYou && (
+        <>
+         <div className="header">
             <img src="/images/chessproo.png" alt="Delaware Chess Champs Logo" className="logo" width="200" height="150" />
             <a
               href="https://chesschamps.us"
@@ -270,6 +280,8 @@ const ChessRegistration = () => {
           <button type="button" className="assistance-button" onClick={handleFinancialAssistance}>Request Financial Assistance</button>
         </div>
       </form>
+      </>
+      )}
     </div>
   );
 };
