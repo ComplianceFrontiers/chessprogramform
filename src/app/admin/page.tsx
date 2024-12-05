@@ -101,9 +101,7 @@ const Admin: React.FC = () => {
         (!filters.school_name || item.SchoolName === filters.school_name) &&
         (!filters.level || item.level === filters.level)  &&
         (!filters.program || item.program === filters.program) &&
-          (!filters.year ||
-            (filters.year === 2025 && item.year) ||
-            (filters.year === 2024 && !item.year))
+        (!filters.year || item.year === filters.year)
       );
     });
     setFilteredData(filtered);
