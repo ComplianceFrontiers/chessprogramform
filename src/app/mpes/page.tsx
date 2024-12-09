@@ -131,10 +131,10 @@ const ChessRegistration = () => {
             <h3>Payment Options</h3>
             <ul>
               <li>
-                <strong>PayPal:</strong> Transfer $150 to <em>Sumit.compliance@gmail.com</em>
+                <strong>PayPal:</strong> Transfer $150 to <em style={{ textDecoration: 'underline', color: 'blue' }}>Sumit.compliance@gmail.com</em>
               </li>
               <li>
-                <strong>Zelle:</strong> Transfer $150 to <em>+1 302-256-4141</em>
+                <strong>Zelle:</strong> Transfer $150 to <em style={{ textDecoration: 'underline', color: 'blue' }}>+1 302-256-4141</em>
               </li>
               <li>
   <strong>Stripe:</strong>{' '}
