@@ -47,25 +47,25 @@ const ChessRegistration = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.acceptTerms) {
-      alert("You must accept the terms and conditions to proceed.");
-      return;
-    }
-    if (!formData.email && !formData.phone && !formData.program) {
-      alert("Please Fill Required Fields");
-      return;
-    }
+    // if (!formData.acceptTerms) {
+    //   alert("You must accept the terms and conditions to proceed.");
+    //   return;
+    // }
+    // if (!formData.email && !formData.phone && !formData.program) {
+    //   alert("Please Fill Required Fields");
+    //   return;
+    // }
 
     formData.RequestFinancialAssistance = false;
 
     try {
-      const response1 = await axios.post('https://backend-chess-tau.vercel.app/send-email-form-mpes', formData);
-      if (response1.status === 200) {
-        const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
-        if (response2.status === 201) {
+      // const response1 = await axios.post('https://backend-chess-tau.vercel.app/send-email-form-mpes', formData);
+      // if (response1.status === 200) {
+      //   const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
+      //   if (response2.status === 201) {
           setShowPopup(true);
-        }
-      }
+      //   }
+      // }
     } catch (error) {
       console.error('There was an error requesting financial assistance or submitting the form!', error);
     }
@@ -127,23 +127,26 @@ const ChessRegistration = () => {
             <h3>Payment Options</h3>
             <ul>
               <li>
-                <strong>PayPal:</strong> Transfer $150 to <em style={{ textDecoration: 'underline', color: 'blue' }}>Sumit.compliance@gmail.com</em>
+                <strong>PayPal:</strong> Transfer $150 to <em >Sumit.compliance@gmail.com</em>
               </li>
               <li>
-                <strong>Zelle:</strong> Transfer $150 to <em style={{ textDecoration: 'underline', color: 'blue' }}>+1 302-256-4141</em>
+                <strong>Zelle:</strong> Transfer $150 to <em >+1 302-256-4141</em>
               </li>
               <li>
-                <strong>Stripe:</strong>{' '}
-                <a
-                  href="https://buy.stripe.com/5kA03g15wazq0rS8wE"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="payment-link"
-                  style={{ textDecoration: 'underline', color: 'blue' }}
-                >
-                  Pay using Credit/Debit Card: $150 (Program fees) + $5 (Payment processing charges)
-                </a>
-              </li>
+  <strong>Stripe:</strong>{' '}
+  <a
+    href="https://buy.stripe.com/5kA03g15wazq0rS8wE"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="payment-link"
+    style={{ textDecoration: 'none' }}  // Removes the underline from the link itself
+  >
+    <button className="payment-button">
+      Pay using Credit/Debit Card: $150 (Program fees) + $5 (Payment processing charges)
+    </button>
+  </a>
+</li>
+
             </ul>
           </div>
         </div>
