@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-unescaped-entities */
 'use client';
-import React, { useState ,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './mpes.scss';
 import Link from 'next/link';
 import Loading from '../../../Loading';
 
 const ChessRegistration = () => {
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     parent_first_name: '',
     parent_last_name: '',
     child_first_name: '',
@@ -17,20 +17,20 @@ const ChessRegistration = () => {
     program: '',
     email: '',
     phone: '',
-    year:2025,
+    year: 2025,
     acceptTerms: false,
     RequestFinancialAssistance: false,
     SchoolName: "Mount Pleasant Elementary School",
-  });
+  };
 
+  const [formData, setFormData] = useState(initialFormData);
   const [loading, setLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false); // State for payment popup
   const [showThankYou, setShowThankYou] = useState(false);
-  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
-  
+
     if (type === 'checkbox') {
       const checked = (e.target as HTMLInputElement).checked;
       setFormData({
@@ -51,7 +51,7 @@ const ChessRegistration = () => {
       alert("You must accept the terms and conditions to proceed.");
       return;
     }
-    if (!formData.email && !formData.phone  && !formData.program ) {
+    if (!formData.email && !formData.phone && !formData.program) {
       alert("Please Fill Required Fields");
       return;
     }
@@ -64,16 +64,12 @@ const ChessRegistration = () => {
         const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
         if (response2.status === 201) {
           setShowPopup(true);
-         }
+        }
       }
     } catch (error) {
       console.error('There was an error requesting financial assistance or submitting the form!', error);
-    } finally {
     }
   };
-  useEffect(() => {
-    console.log('showThankYou updated:', showThankYou);
-  }, [showThankYou]);
 
   const handleFinancialAssistance = async (e: React.FormEvent) => {
     if (!formData.email) {
@@ -98,10 +94,7 @@ const ChessRegistration = () => {
         const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
 
         if (response2.status === 201) {
-          
-          
           setShowThankYou(true);
-          console.log(response2.status==201,showThankYou)
           setTimeout(() => {
             setShowThankYou(false);
           }, 6000);
@@ -113,15 +106,21 @@ const ChessRegistration = () => {
       setLoading(false);
     }
   };
+
   const closePopup = () => {
     setShowPopup(false); // Close popup
   };
 
+  // Effect to refresh form data
+  useEffect(() => {
+    if (showThankYou || showPopup) {
+      setFormData(initialFormData);
+    }
+  }, [showThankYou, showPopup]);
+
   return (
     <div className="registration-container">
-{loading && (
-        <Loading />
-      )}
+      {loading && <Loading />}
       {showPopup && (
         <div className="popup-overlay">
           <div className="popup-box">
@@ -137,17 +136,17 @@ const ChessRegistration = () => {
                 <strong>Zelle:</strong> Transfer $150 to <em style={{ textDecoration: 'underline', color: 'blue' }}>+1 302-256-4141</em>
               </li>
               <li>
-  <strong>Stripe:</strong>{' '}
-  <a 
-    href="https://buy.stripe.com/5kA03g15wazq0rS8wE" 
-    target="_blank" 
-    rel="noopener noreferrer"
-    className="payment-link"
-    style={{ textDecoration: 'underline', color: 'blue' }}
-  >
-    Pay using Credit/Debit Card: $150 (Program fees) + $5 (Payment processing charges)
-  </a>
-</li>
+                <strong>Stripe:</strong>{' '}
+                <a
+                  href="https://buy.stripe.com/5kA03g15wazq0rS8wE"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="payment-link"
+                  style={{ textDecoration: 'underline', color: 'blue' }}
+                >
+                  Pay using Credit/Debit Card: $150 (Program fees) + $5 (Payment processing charges)
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -330,7 +329,7 @@ const ChessRegistration = () => {
           <button type="button" className="assistance-button" onClick={handleFinancialAssistance}>Request Financial Assistance</button>
         </div>
       </form>
-      </>
+        </>
       )}
     </div>
   );
