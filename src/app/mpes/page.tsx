@@ -24,6 +24,7 @@ const ChessRegistration = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [showPopup, setShowPopup] = useState(false); // State for payment popup
   const [showThankYou, setShowThankYou] = useState(false);
   
 
@@ -50,8 +51,11 @@ const ChessRegistration = () => {
       alert("You must accept the terms and conditions to proceed.");
       return;
     }
+    if (!formData.email && !formData.phone  && !formData.program ) {
+      alert("Please Fill Required Fields");
+      return;
+    }
 
-    setLoading(true);
     formData.RequestFinancialAssistance = false;
 
     try {
@@ -59,13 +63,12 @@ const ChessRegistration = () => {
       if (response1.status === 200) {
         const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
         if (response2.status === 201) {
-          window.location.href = 'https://buy.stripe.com/4gw17k3dE8ri8Yo8wB';
-        }
+          setShowPopup(true);
+         }
       }
     } catch (error) {
       console.error('There was an error requesting financial assistance or submitting the form!', error);
     } finally {
-      setLoading(false);
     }
   };
   useEffect(() => {
@@ -110,12 +113,46 @@ const ChessRegistration = () => {
       setLoading(false);
     }
   };
+  const closePopup = () => {
+    setShowPopup(false); // Close popup
+  };
 
   return (
     <div className="registration-container">
 {loading && (
         <Loading />
       )}
+      {showPopup && (
+        <div className="popup-overlay">
+          <div className="popup-box">
+            <button className="close-button" onClick={closePopup}>
+              ✖
+            </button>
+            <h3>Payment Options</h3>
+            <ul>
+              <li>
+                <strong>PayPal:</strong> Transfer $150 to <em>Sumit.compliance@gmail.com</em>
+              </li>
+              <li>
+                <strong>Zelle:</strong> Transfer $150 to <em>+1 302-256-4141</em>
+              </li>
+              <li>
+  <strong>Stripe:</strong>{' '}
+  <a 
+    href="https://buy.stripe.com/5kA03g15wazq0rS8wE" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="payment-link"
+    style={{ textDecoration: 'underline', color: 'blue' }}
+  >
+    Pay using Credit/Debit Card: $150 (Program fees) + $5 (Payment processing charges)
+  </a>
+</li>
+            </ul>
+          </div>
+        </div>
+      )}
+
 
       {showThankYou && (
         <div className="thank-you-overlay">
@@ -276,11 +313,14 @@ const ChessRegistration = () => {
         </div>
 
         <div className="button-group">
-        <Link href="https://buy.stripe.com/5kA03g15wazq0rS8wE">
-          <button type="button" className="payment-button" disabled={loading}>
-            Make Payment
-          </button>
-        </Link>
+        <button
+              type="submit"
+              className="payment-button"
+              onClick={handleSubmit}
+              disabled={loading}
+            >
+              Make Payment
+            </button>
           <button type="button" className="assistance-button" onClick={handleFinancialAssistance}>Request Financial Assistance</button>
         </div>
       </form>
