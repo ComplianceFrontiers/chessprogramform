@@ -117,16 +117,22 @@ const ChessRegistration = () => {
         <Loading />
       )}
 
-      {showThankYou && (
-        <div className="thank-you-overlay">
-          <p className="thank-you-message">
-            <span>Thank you!</span> We’re excited about your interest in enrolling your child in our chess program. We understand that you are seeking financial assistance, and we appreciate your inquiry. Please allow us some time to review your request, and we will get back to you shortly.
-            <br />
-            <br />
-            Rest assured, we are fully committed to supporting your child's development and helping them explore the many benefits that chess offers during these formative years. We look forward to providing a fun, enriching experience that will help nurture their skills and growth.
-          </p>
-        </div>
-      )}
+{showThankYou && (
+  <div className="thank-you-overlay">
+    <p className="thank-you-message">
+      <span>Thank you!</span> We’re excited about your interest in enrolling your child in our chess program. We understand that you are seeking financial assistance, and we appreciate your inquiry. Please allow us some time to review your request, and we will get back to you shortly.
+      <br />
+      <br />
+      Rest assured, we are fully committed to supporting your child's development and helping them explore the many benefits that chess offers during these formative years. We look forward to providing a fun, enriching experience that will help nurture their skills and growth.
+    </p>
+    <button
+      className="close-button"
+      onClick={() => setShowThankYou(false)}
+    >
+      Close
+    </button>
+  </div>
+)}
        {!loading && !showThankYou && (
         <>
          <div className="header">

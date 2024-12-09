@@ -12,8 +12,9 @@
 }
 
 .loading-gif {
-  width: 550px;
-  height: 550px;
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
   @media (max-width: 768px) {
     width: auto;
     height: 300px;
