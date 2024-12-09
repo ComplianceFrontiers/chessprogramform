@@ -137,7 +137,7 @@ const ChessRegistration = () => {
               rel="noopener noreferrer"
               className="chess-champs-link"
             >
-              Chess Champs
+              https://chesschamps.us
             </a>
             <img
               src="/images/schoolname.png"
@@ -156,8 +156,8 @@ const ChessRegistration = () => {
 
       <div className="training-info">
         <p><strong>10 Weeks Training on Tuesdays [K-5 Students]</strong></p>
-        <p>Program Dates: 7-Jan 2025 to 11-Mar-2025</p>
-        <p>[Classes on 01/7, 01/14, 01/21, 01/28, 02/04, 02/11, 02/18, 02/25, 04/04 and 03/11]</p>
+        <p>Program Dates: 14-Jan 2025 to 18-Mar-2025</p>
+        <p>[Classes on 01/14, 01/21, 01/28, 02/04, 02/11, 02/18, 02/25, 03/04, 03/11 and 03/18]</p>
         <p>Time: 3:30 PM – 04:30 PM. [Student Pick Up Time: 4:35 PM from Main Entrance | The children in the Y Program will be escorted by us after the session]</p>
       </div>
 
@@ -260,7 +260,7 @@ const ChessRegistration = () => {
         </div>
         
         <div className="training-info">
-          <p><strong>10 Week Program $150.00</strong></p>
+          <p><strong>10 Week Program $150.00 *</strong></p>
           </div>
           <div className="terms-container">
               <input 
@@ -276,7 +276,11 @@ const ChessRegistration = () => {
         </div>
 
         <div className="button-group">
-          <button type="submit" className="payment-button"disabled={loading}>Make Payment</button>
+        <Link href="https://buy.stripe.com/5kA03g15wazq0rS8wE">
+          <button type="button" className="payment-button" disabled={loading}>
+            Make Payment
+          </button>
+        </Link>
           <button type="button" className="assistance-button" onClick={handleFinancialAssistance}>Request Financial Assistance</button>
         </div>
       </form>
