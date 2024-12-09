@@ -46,6 +46,7 @@ const ChessRegistration = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
+    setLoading(true);
     e.preventDefault();
     if (!formData.acceptTerms) {
       alert("You must accept the terms and conditions to proceed.");
@@ -63,6 +64,7 @@ const ChessRegistration = () => {
       if (response1.status === 200) {
         const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
         if (response2.status === 201) {
+          setLoading(false);
           setShowPopup(true);
         }
       }
@@ -119,6 +121,7 @@ const ChessRegistration = () => {
     <div className="registration-container">
       {loading && <Loading />}
       {showPopup && (
+        
         <div className="popup-overlay">
           <div className="popup-box">
             <button className="close-button" onClick={closePopup}>
