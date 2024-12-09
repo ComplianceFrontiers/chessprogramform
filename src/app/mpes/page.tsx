@@ -49,10 +49,12 @@ const ChessRegistration = () => {
     setLoading(true);
     e.preventDefault();
     if (!formData.acceptTerms) {
+      setLoading(false);
       alert("You must accept the terms and conditions to proceed.");
       return;
     }
     if (!formData.email && !formData.phone && !formData.program) {
+      setLoading(false);
       alert("Please Fill Required Fields");
       return;
     }
@@ -70,6 +72,9 @@ const ChessRegistration = () => {
       }
     } catch (error) {
       console.error('There was an error requesting financial assistance or submitting the form!', error);
+    }
+    finally{
+      setLoading(false);
     }
   };
 
