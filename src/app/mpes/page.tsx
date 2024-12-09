@@ -95,9 +95,6 @@ const ChessRegistration = () => {
 
         if (response2.status === 201) {
           setShowThankYou(true);
-          setTimeout(() => {
-            setShowThankYou(false);
-          }, 6000);
         }
       }
     } catch (error) {
