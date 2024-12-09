@@ -165,7 +165,7 @@ const ChessRegistration = () => {
       className="close-button"
       onClick={() => setShowThankYou(false)}
     >
-      Close
+      X
     </button>
   </div>
 )}
