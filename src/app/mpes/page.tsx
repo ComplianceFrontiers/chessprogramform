@@ -311,6 +311,7 @@ const ChessRegistration = () => {
         
         <div className="training-info">
           <p><strong>10 Week Program $150.00 *</strong></p>
+          <p>*Program fee is non-refundable either partially or fully after 07-Jan-2025 | Processing charges apply if using Payment Gateway | Please read the Terms & Conditions*</p>
           </div>
           <div className="terms-container">
               <input 
@@ -321,7 +322,7 @@ const ChessRegistration = () => {
                 onChange={handleChange} 
               />
               <label htmlFor="terms">
-                I accept the <Link href="/terms-and-conditions">terms and conditions</Link>
+                I accept the <Link href="/terms-and-conditions">Terms and Conditions and Privacy Policy</Link>
               </label>
         </div>
 
@@ -334,7 +335,7 @@ const ChessRegistration = () => {
             >
               Make Payment
             </button>
-          <button type="button" className="assistance-button" onClick={handleFinancialAssistance}>Request Financial Assistance</button>
+         <button type="button" className="payment-button1" onClick={handleFinancialAssistance}>Request Financial Assistance</button>
         </div>
       </form>
         </>
