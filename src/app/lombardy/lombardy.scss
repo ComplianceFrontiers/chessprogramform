@@ -6,16 +6,141 @@
   border: 2px solid #000;
   font-family: 'Arial', sans-serif;
   color: #000;
-
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Use vh to ensure it takes the full viewport height */
+    background: rgba(0, 0, 0, 0.6); /* Slightly darker for better focus */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow: hidden; /* Prevent scrolling if needed */
+  }
+  
+   
+  .popup-box {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    width: 420px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    position: relative;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .popup-box h3 {
+    margin: 0 0 20px;
+    font-size: 22px;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #555;
+    transition: color 0.3s ease;
+  }
+  .payment-button {
+    background: #0066cc;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .payment-button:hover {
+    background: #004a99;
+  }
+  
+  .payment-link {
+    text-decoration: none; /* Ensure the link doesn’t get underlined */
+  }
+  
+  
+  .close-button:hover {
+    color: #e63946;
+  }
+  
+  .popup-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .popup-box li {
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #444;
+    line-height: 1.5;
+  }
+  
+  .payment-link {
+    text-decoration: underline;
+    color: #0066cc;
+    transition: color 0.3s ease;
+  }
+  
+  .payment-link:hover {
+    color: #004a99;
+  }
+  
+  .header {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align items horizontally */
+    text-align: center; /* Center text content */
+    gap: 15px; /* Add spacing between items */
+    margin: 20px auto; /* Center the header container itself */
+  }
+  
+  .logo {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .school-title {
+    width: 200px;
+    height: 150px;
+  }
+  
+  .chess-champs-link {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff; /* Blue color */
+    text-decoration: none;
+  }
+  
+  .chess-champs-link:hover {
+    text-decoration: underline;
+    color: blue; /* Darker blue on hover */
+  }
+  
   .header {
     display: block;
+    align-items: center;
     margin-bottom: 20px;
 
     .logo {
       display: block;
       margin: 0 auto;
       height: 250px;
-      width: 200px;
+      width: 250px;
     }
 
     .school-title {
@@ -88,32 +213,42 @@
 
     .button-group {
       display: flex;
-      flex-wrap: wrap; /* Allow buttons to wrap if they don't fit */
-      justify-content: center; /* Center align buttons */
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 10px;
       margin-top: 20px;
-
-      button {
-        padding: 10px 20px;
-        font-size: 14px;
+    
+      .payment-button {
+        background: #F05727;
+        color: white;
+        padding: 20px 20px;
         border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
         cursor: pointer;
-        border-radius: 5px;
-        width: 100%; /* Full width on small screens */
-        max-width: 200px;
-        text-align: center;
-
-        &.payment-button {
-          background-color: #F05727;
-          color: white;
-        }
-
-        &.assistance-button {
-          background-color: #FFCC00;
-          color: #000;
-        }
+        margin-top: 10px;
+        transition: background-color 0.3s ease;
+      }
+    
+      .payment-button1 {
+        background: #FFCC00;
+        color: rgb(27, 24, 24);
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s ease;
+      }
+    
+      .payment-link {
+        text-decoration: none; /* Ensure the link doesn’t get underlined */
       }
     }
+    
 
     @media screen and (max-width: 768px) {
       .button-group {
@@ -147,7 +282,7 @@
     
       .logo {
         height: 200px;
-        width: 160px; /* Set the width of the logo to 100px */
+        width: 200px; /* Set the width of the logo to 100px */
       }
     
       .school-title {
@@ -222,13 +357,16 @@
   
 }
 
+
 .thank-you-overlay {
   text-align: center; /* Center-align the content */
-  padding: 2rem; /* Increased padding for a more spacious layout */
+  padding: 1rem; /* Increased padding for a more spacious layout */
+  height: 100vh; 
   background-color: #fef9e7; /* Soft pastel background */
   border: 1px solid #f0c0c0; /* Soft pink border for a playful touch */
   border-radius: 12px; /* Slightly larger rounded corners for a modern look */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  
 }
 
 .thank-you-image {
@@ -239,6 +377,7 @@
 
 .thank-you-message {
   margin-top: 1.5rem; /* Increased space between the image and message */
+  margin-bottom: 1.5rem;
   padding: 1.5rem; /* Added padding for a more spacious message box */
   background-color: #fff5e6; /* Light orange background for a warm feel */
   border: 2px solid #ffcc99; /* Border in a playful color */
