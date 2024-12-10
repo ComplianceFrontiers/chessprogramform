@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import './SendEmail.scss';
-import image1 from "../app/image.png";
 
 interface SendEmailProps {
   selectedRecords: { name: string; email: string }[];
@@ -65,8 +64,7 @@ const SendEmail: React.FC<SendEmailProps> = ({ selectedRecords, onBack }) => {
       <p>SIEGEL JCC, 101 Garden of Eden Road, Wilmington, DE 19803 | 302-478-5660</p>
     </footer>
   </div>
-  `;
-
+`;
 
   const handleSendEmail = async () => {
     if (!subject || !message || !apiLink) {
@@ -80,15 +78,11 @@ const SendEmail: React.FC<SendEmailProps> = ({ selectedRecords, onBack }) => {
 
     const bccEmails = selectedRecords.map(record => record.email).join(', ');
 
-    // Construct the email message body with the design
-    
-
     const formData = new FormData();
-    formData.append(
-      'name','Default Name');
-      formData.append('bcc', bccEmails);
+    formData.append('name', 'Default Name');
+    formData.append('bcc', bccEmails);
     formData.append('subject', subject);
-    formData.append('message', emailBody); // Send the formatted message with the image and link
+    formData.append('message', emailBody); 
     if (image) {
       formData.append('image', image);
     }
@@ -106,10 +100,10 @@ const SendEmail: React.FC<SendEmailProps> = ({ selectedRecords, onBack }) => {
 
       const data = await response.json();
       setSuccessMessage(data.message);
-      setShowPopup(true); // Show popup on success
+      setShowPopup(true);
     } catch (error) {
       setErrorMessage('Error sending email: ' + error);
-      setShowPopup(true); // Show popup on error
+      setShowPopup(true);
     } finally {
       setLoading(false);
     }
@@ -117,51 +111,57 @@ const SendEmail: React.FC<SendEmailProps> = ({ selectedRecords, onBack }) => {
 
   return (
     <div className="containerSendEmail">
-      <h1 className="title">Send Email</h1>
-      <label className="label">
-        Subject:
-        <input
-          type="text"
-          value={subject}
-          onChange={(e) => setSubject(e.target.value)}
-          required
-          className="input"
-        />
-      </label>
-      <label className="label">
-        Message:
-        <textarea
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          required
-          className="textarea"
-        />
-      </label>
-      <label className="label">
-        API Link:
-        <input
-          type="url"
-          value={apiLink}
-          onChange={(e) => setApiLink(e.target.value)}
-          required
-          className="input"
-        />
-      </label>
-      <label className="label">
-        Upload Image (Optional):
-        <input
-          type="file"
-          accept="image/*"
-          onChange={(e) => setImage(e.target.files![0])}
-          className="input"
-        />
-      </label>
-      <button onClick={handleSendEmail} disabled={loading} className="button">
-        {loading ? 'Sending...' : 'Send Email'}
-      </button>
-      <button onClick={onBack} className="backButton">Back</button>
-      <div className="emailPreview">
-        <div dangerouslySetInnerHTML={{ __html: emailBody }} />
+      <div className="formSection">
+        <h2 >Send Email</h2>
+        <label className="label">
+          Subject:
+          <input
+            type="text"
+            value={subject}
+            onChange={e => setSubject(e.target.value)}
+            required
+            className="input"
+          />
+        </label>
+        <label className="label">
+          Message:
+          <textarea
+            value={message}
+            onChange={e => setMessage(e.target.value)}
+            required
+            className="textarea"
+          />
+        </label>
+        <label className="label">
+          API Link:
+          <input
+            type="url"
+            value={apiLink}
+            onChange={e => setApiLink(e.target.value)}
+            required
+            className="input"
+          />
+        </label>
+        <label className="label">
+          Upload Image (Optional):
+          <input
+            type="file"
+            accept="image/*"
+            onChange={e => setImage(e.target.files![0])}
+            className="input"
+          />
+        </label>
+        <div className="buttonContainer">
+  <button onClick={handleSendEmail} disabled={loading} className="button">
+    {loading ? 'Sending...' : 'Send Email'}
+  </button>
+  <button onClick={onBack} className="backButton">Back</button>
+</div>
+
+      </div>
+      <div className="previewSection">
+        <h2 className="previewTitle">Email Preview</h2>
+        <div className="emailPreview" dangerouslySetInnerHTML={{ __html: emailBody }} />
       </div>
     </div>
   );

@@ -1,20 +1,14 @@
 /* SendEmail.module.scss */
 
 .containerSendEmail {
-  max-width: 850px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  max-width: auto;
   margin: auto;
   padding: 1rem;
   width: 90%;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #f9f9f9, #eaeaea);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
 
-  &:hover {
-      transform: scale(1.02); /* Subtle hover zoom */
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  }
 }
 
 .title {
@@ -23,10 +17,36 @@
   text-align: center;
   color: #333;
   background: linear-gradient(to right, #0070f3, #005bb5);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; /* Gradient text */
-  animation: fadeIn 1s ease-in-out;
 }
+
+
+.formSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.previewSection {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-left: 1px solid #ccc;
+}
+
+.previewTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.emailPreview {
+  border: 1px solid #ddd;
+  padding: 15px;
+  background-color: white;
+  overflow-y: auto;
+  max-height: 500px;
+}
+
 .emailPreview {
   margin-top: 20px;
   padding: 20px;
@@ -80,12 +100,7 @@
       outline: none;
   }
 }
-
-.textarea {
-  height: 120px;
-  resize: vertical;
-}
-
+ 
 .button, .backButton {
   display: inline-block;
   padding: 0.75rem 1.5rem;
