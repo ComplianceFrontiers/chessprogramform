@@ -36,13 +36,19 @@ body {
   margin-bottom: 20px; /* Adjusted margin to clear the gap */
 }
 
-.terms-and-conditions h1, .terms-and-conditions h2, .terms-and-conditions p {
+.terms-and-conditions h1,.terms-and-conditions h3, .terms-and-conditions h2, .terms-and-conditions p {
   text-align: left;
   width: 100%;
 }
 
 .terms-and-conditions h1 {
   margin-bottom: 20px;
+  color: #0b0b0b;
+  font-weight: bold;
+}
+
+.terms-and-conditions h3 {
+  margin-top: 20px;
   color: #0b0b0b;
   font-weight: bold;
 }
