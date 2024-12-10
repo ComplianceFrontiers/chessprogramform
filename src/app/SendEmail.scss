@@ -27,6 +27,21 @@
   -webkit-text-fill-color: transparent; /* Gradient text */
   animation: fadeIn 1s ease-in-out;
 }
+.emailPreview {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  overflow: auto;
+  max-height: 500px;
+}
+
+.previewButton {
+  margin-right: 10px;
+  background-color: #007bff;
+  color: white;
+}
 
 @keyframes fadeIn {
   from {
