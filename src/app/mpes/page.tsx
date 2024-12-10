@@ -322,7 +322,7 @@ const ChessRegistration = () => {
                 onChange={handleChange} 
               />
               <label htmlFor="terms">
-                I accept the <Link href="/terms-and-conditions">Terms and Conditions and Privacy Policy</Link>
+                I accept the <Link href="/terms-and-conditions">Terms and Conditions</Link> and <Link href="/terms-and-conditions1">Privacy Policy</Link>
               </label>
         </div>
 
