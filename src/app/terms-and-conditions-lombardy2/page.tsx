@@ -11,7 +11,7 @@ const TermsAndConditions = () => {
   };
   return (
     <div className="terms-and-conditions">
-              <img src='/images/chessproo1.png' alt="Delaware Chess Champs Logo" className="logo" />
+              <img src='/images/lombardy.png' alt="Delaware Chess Champs Logo" className="logo" />
 
       <h1>Terms and Conditions for Participation in the Chess Champs LLC After-School Chess Program at Mount Pleasant Elementary School</h1>
       <p>Welcome to Chess Champs LLC’s after-school chess program. By registering your child for this program, you acknowledge and agree to the following terms and conditions.</p>

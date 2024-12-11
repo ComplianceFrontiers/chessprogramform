@@ -11,7 +11,7 @@ const TermsAndConditions = () => {
   };
   return (
     <div className="terms-and-conditions">
-              <img src='/images/chessproo.png' alt="Chess Champs Logo" className="logo" />
+              <img src='/images/chessproo1.png' alt="Chess Champs Logo" className="logo" />
 
       <h1>Disclaimer and Liability Waiver for Chess Champs</h1>
       <p>By participating in the Chess Champs activities, you acknowledge and agree to the following terms:</p>

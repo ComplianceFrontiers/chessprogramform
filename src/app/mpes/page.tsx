@@ -180,7 +180,7 @@ const ChessRegistration = () => {
        {!loading && !showThankYou && (
         <>
          <div className="header">
-            <img src="/images/chessproo.png" alt="Delaware Chess Champs Logo" className="logo" width="200" height="150" />
+            <img src="/images/chessproo1.png" alt="Delaware Chess Champs Logo" className="logo" width="200" height="150" />
             <a
               href="https://chesschamps.us"
               target="_blank"

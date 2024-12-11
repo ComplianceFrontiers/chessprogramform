@@ -180,7 +180,7 @@ const ChessRegistration = () => {
        {!loading && !showThankYou && (
         <>
          <div className="header">
-            <img src="/images/chessproo.png" alt="Delaware Chess Champs Logo" className="logo" width="200" height="150" />
+            <img src="/images/lombardy.png" alt="Delaware Chess Champs Logo" className="logo" width="200" height="150" />
             <a
               href="https://chesschamps.us"
               target="_blank"
@@ -322,7 +322,7 @@ const ChessRegistration = () => {
                 onChange={handleChange} 
               />
               <label htmlFor="terms">
-                I accept the <Link href="/terms-and-conditions">Terms and Conditions</Link> and <Link href="/terms-and-conditions1">Privacy Policy</Link>
+                I accept the <Link href="/terms-and-conditions-lombardy2">Terms and Conditions</Link> and <Link href="/terms-and-conditions-lombardy">Privacy Policy</Link>
               </label>
         </div>
 

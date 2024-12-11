@@ -1,0 +1,82 @@
+body {
+  background-color: lavender;
+}
+.terms-and-conditions {
+  max-width: 800px;
+  margin: 50px auto 50px;
+  padding: 40px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  color: #333;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* Required for pseudo-element positioning */
+}
+
+.terms-and-conditions::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  right: 20px;
+  bottom: 30px;
+  border: 1px solid rgb(150, 142, 142);
+  border-radius: 6px; /* Adjust to match the border-radius of the parent */
+  pointer-events: none; /* Prevent the pseudo-element from blocking clicks */
+}
+
+.terms-and-conditions .logo {
+  width: 200px;
+  margin-bottom: 20px; /* Adjusted margin to clear the gap */
+}
+
+.terms-and-conditions h1,.terms-and-conditions h3, .terms-and-conditions h2, .terms-and-conditions p {
+  text-align: left;
+  width: 100%;
+}
+
+.terms-and-conditions h1 {
+  margin-bottom: 20px;
+  color: #0b0b0b;
+  font-weight: bold;
+}
+
+.terms-and-conditions h3 {
+  margin-top: 20px;
+  color: #0b0b0b;
+  font-weight: bold;
+}
+
+.terms-and-conditions h2 {
+  margin-top: 20px;
+  color: #0c0c0c;
+  font-weight: bold;
+}
+
+.terms-and-conditions p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.terms-and-conditions .go-back-button {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
+
+.terms-and-conditions .go-back-button:hover {
+  background-color: #0056b3;
+}

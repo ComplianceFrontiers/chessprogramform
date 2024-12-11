@@ -110,7 +110,7 @@ const ChessRegistration = () => {
       {!loading && !showThankYou && (
         <>
           <div className="header">
-            <img src="/images/chesspro.png" alt="Delaware Chess Champs Logo" className="logo" width="150" height="150" />
+            <img src="/images/chessproo1.png" alt="Delaware Chess Champs Logo" className="logo" width="150" height="150" />
             <img src="/images/schoolname.png" alt="Mount Pleasant Elementary School" className="school-title" width="200" height="150" />
           </div>
 
