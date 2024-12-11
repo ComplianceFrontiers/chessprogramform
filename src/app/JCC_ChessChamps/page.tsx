@@ -80,7 +80,7 @@ const ChessRegistration = () => {
       {!loading && !showThankYou && (
         <>
           <div className="header">
-            <img src="/images/chessproo1.png" alt="Logo" className="logo" />
+            <img src="/images/chessproo.png" alt="Logo" className="logo" />
           </div>
 
           <h2>Chess Program For Kids</h2>
