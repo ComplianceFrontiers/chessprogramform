@@ -48,12 +48,17 @@ const ChessRegistration = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     setLoading(true);
     e.preventDefault();
+    if (!formData.program) {
+      alert("Select Your Program to proceed.");
+      return;
+    }
+    
     if (!formData.acceptTerms) {
       setLoading(false);
       alert("You must accept the terms and conditions to proceed.");
       return;
     }
-    if (!formData.email && !formData.phone && !formData.program) {
+    if (!formData.email && !formData.phone) {
       setLoading(false);
       alert("Please Fill Required Fields");
       return;
