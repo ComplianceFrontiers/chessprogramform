@@ -49,6 +49,7 @@ const ChessRegistration = () => {
     setLoading(true);
     e.preventDefault();
     if (!formData.program) {
+      setLoading(false);
       alert("Select Your Program to proceed.");
       return;
     }
