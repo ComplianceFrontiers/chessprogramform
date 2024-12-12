@@ -29,6 +29,7 @@ const ChessRegistration = () => {
     acceptTerms: false,
     RequestFinancialAssistance: false,
     SchoolName: "Mount Pleasant Elementary School",
+    mpes:true
   });
 
   const [loading, setLoading] = useState(false);

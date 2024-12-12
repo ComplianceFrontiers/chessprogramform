@@ -21,6 +21,7 @@ const ChessRegistration = () => {
     acceptTerms: false,
     RequestFinancialAssistance: false,
     SchoolName: "lombardy Elementary School",
+    lombardy:true
   };
 
   const [formData, setFormData] = useState(initialFormData);

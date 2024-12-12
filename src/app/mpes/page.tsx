@@ -21,6 +21,7 @@ const ChessRegistration = () => {
     acceptTerms: false,
     RequestFinancialAssistance: false,
     SchoolName: "Mount Pleasant Elementary School",
+    mpes:true,
   };
 
   const [formData, setFormData] = useState(initialFormData);
