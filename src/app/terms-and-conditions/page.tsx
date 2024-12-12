@@ -24,26 +24,42 @@ const TermsAndConditions = () => {
       <h2>2. Proprietary Program Materials</h2>
       <p>The program, including its design and materials, is the intellectual property of Chess Champs LLC.</p>
       <p>The program, including its design and materials, is the intellectual property of Chess Champs LLC.</p>
+
+      <h2>3. Expectations for Participants</h2>
+        <p>Chess Champs LLC is committed to creating a positive and respectful environment for all participants.</p>
+
+        <p><strong>Behavioral Expectations:</strong> Participants are expected to be respectful, cooperative, and mindful of their peers, instructors, and the learning environment.</p>
+
+        <p><strong>Disruptive Behavior:</strong> If a participant engages in behavior that is deemed disruptive, harmful, or detrimental to the progress of the class or the well-being of others, Chess Champs LLC reserves the right to take appropriate disciplinary action. This includes, but is not limited to:</p>
+          <p>Temporary removal from a class.</p>
+          <p>Expulsion from the program altogether.</p>
+
+        <p><strong>Authority and Decision:</strong> The decision of Chess Champs LLC regarding such matters will be final and binding.</p>
+
+        <p><strong>Refund Policy for Expulsions:</strong> No refunds will be issued if a participant is removed from the program due to disruptive behavior or failure to adhere to these expectations.</p>
+
+        <p><strong>Legal Recourse:</strong> By registering for our program, parents/guardians agree that no legal claims or consequences will be pursued against Chess Champs LLC in such cases.</p>
+
       
-      <h2>3. Software Access</h2>
+      <h2>4. Software Access</h2>
       <p>Chess Champs LLC may, at its discretion, provide access to proprietary software to enhance the learning experience.</p>
       <p>Login credentials provided are for individual use only and must not be shared with others.</p>
       
-      <h2>4. Candies and Merchandise</h2>
+      <h2>5. Candies and Merchandise</h2>
       <p>During the program, Chess Champs LLC may distribute items such as candies, stickers, or T-shirts.</p>
       <p>Parents/guardians must notify Chess Champs LLC in writing of any objections regarding these distributions.</p>
       <p>Chess Champs LLC assumes no liability for issues arising from the distribution of these items.</p>
       
-      <h2>5. Photograph and Video Usage</h2>
+      <h2>6. Photograph and Video Usage</h2>
       <p>Photographs and videos may be taken during the program and shared on Chess Champs LLC’s social media or promotional materials.</p>
       <p>Parents/guardians should notify Chess Champs LLC in writing if they object to their child’s inclusion in such media.</p>
 
-      <h2>6. Fees and Refund Policy</h2>
+      <h2>7. Fees and Refund Policy</h2>
       <p>Program fees are non-refundable after one week before the program start date.</p>
       <p>Fees are for the entire program duration and cover all sessions, irrespective of attendance.</p>
       <p>In rare cases of class cancellation or postponement, efforts will be made to schedule substitute classes. No refunds will be issued if a student cannot attend the rescheduled session.</p>
 
-      <h2>7. Disclaimer and Liability Waiver</h2>
+      <h2>8. Disclaimer and Liability Waiver</h2>
       <h3>Acknowledgment of Risk</h3>
       <p>Participation in the program involves inherent risks, including potential injury. These risks cannot be entirely eliminated.</p>
 
@@ -59,15 +75,15 @@ const TermsAndConditions = () => {
       <h3>Medical Consent</h3>
       <p>In case of injury or illness, emergency medical treatment may be administered, and parents/guardians will be responsible for associated costs.</p>
 
-      <h2>8. Attendance and Punctuality</h2>
+      <h2>9. Attendance and Punctuality</h2>
       <p>Parents/guardians are responsible for ensuring timely attendance and pick-up.</p>
       <p>Late pick-ups may incur additional charges.</p>
 
-      <h2>9. Communication</h2>
+      <h2>10. Communication</h2>
       <p>Program updates will be shared via email or phone. Parents/guardians must ensure contact details are accurate and up-to-date.</p>
       <p>Parents/guardians consent to receive program-related communications, which may include promotional materials.</p>
 
-      <h2>10. Publicity Disclaimer</h2>
+      <h2>11. Publicity Disclaimer</h2>
       <p>By providing email addresses and phone numbers, parents/guardians consent to receive updates and promotional materials from Chess Champs LLC.</p>
       <p>Contact information will be handled in accordance with Chess Champs LLC’s privacy policy.</p>
 
