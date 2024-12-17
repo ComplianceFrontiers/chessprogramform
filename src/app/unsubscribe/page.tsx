@@ -1,15 +1,17 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import React, { useState } from 'react';
-import './unsubscribe.scss';
+import React, { useState } from "react";
+import "./unsubscribe.scss";
 
 const Unsubscribe = () => {
-  const [email, setEmail] = useState('');
-  const [userData, setUserData] = useState<any>(null); // To store user data fetched from the API
-  const [appChecked, setAppChecked] = useState(false);
-  const [tournamentChecked, setTournamentChecked] = useState(false);
-  const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [userData, setUserData] = useState<any>(null);
+  const [websiteChecked, setWebsiteChecked] = useState(false);
+  const [message, setMessage] = useState("");
+  const [fetchLoading, setFetchLoading] = useState(false); // For fetch button
+  const [unsubscribeLoading, setUnsubscribeLoading] = useState(false); // For unsubscribe button
+  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -17,78 +19,80 @@ const Unsubscribe = () => {
 
   const handleFetchUserData = async () => {
     if (!email) {
-      setMessage('Please enter a valid email.');
+      setMessage("Please enter a valid email.");
       return;
     }
 
-    setLoading(true);
-    setMessage('');
+    setFetchLoading(true);
+    setMessage("");
 
     try {
-      const response = await fetch(`https://backend-chess-tau.vercel.app/get_forms_byemail?email=${email}`);
+      const response = await fetch(
+        `https://backend-chess-tau.vercel.app/get_forms_byemail?email=${email}`
+      );
       if (response.ok) {
         const data = await response.json();
         setUserData(data);
-
-        // Set checkbox status based on the user data
-        setAppChecked(data.app || false);
-        setTournamentChecked(data.tournament || false);
+        setWebsiteChecked(!data.Website); // Reverse logic
       } else {
         const errorData = await response.json();
-        setMessage(errorData.error || 'No record found for this email.');
+        setMessage(errorData.error || "No record found for this email.");
       }
     } catch (error) {
-      setMessage('Failed to fetch data. Please try again.');
+      setMessage("Failed to fetch data. Please try again.");
     } finally {
-      setLoading(false);
+      setFetchLoading(false);
     }
   };
 
   const handleSaveChanges = async () => {
     if (!email || !userData) {
-      setMessage('Please enter a valid email and fetch the data.');
+      setMessage("Please enter a valid email and fetch the data.");
       return;
     }
 
-    setLoading(true);
-    setMessage('');
+    setUnsubscribeLoading(true);
+    setMessage("");
 
     try {
-      const response = await fetch('https://backend-chess-tau.vercel.app/signup_bulk_email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          name:userData.name,
-          phone: userData.phone,  // Pass the phone number from the fetched data
-          app: appChecked,
-          tournament: tournamentChecked,
-        }),
-      });
+      const response = await fetch(
+        "https://backend-chess-tau.vercel.app/signup_bulk_email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            name: userData.name,
+            phone: userData.phone,
+            Website: websiteChecked ? false : userData.Website,
+          }),
+        }
+      );
 
       if (response.ok) {
-        const data = await response.json();
-        setMessage(data.message || 'Changes saved successfully.');
+        setIsModalOpen(true); // Open the modal on success
+        setMessage("");
       } else {
         const errorData = await response.json();
-        setMessage(errorData.error || 'Failed to save changes.');
+        setMessage(errorData.error || "Failed to save changes.");
       }
     } catch (error) {
-      setMessage('Failed to save changes. Please try again.');
+      setMessage("Failed to save changes. Please try again.");
     } finally {
-      setLoading(false);
+      setUnsubscribeLoading(false);
     }
   };
 
   return (
     <div className="unsubscribe-container">
       <div className="header">
-            <img src="/images/chessproo.png" alt="Logo" className="logo" />
-          </div>
-      <h2>Unsubscribe</h2>
-      
+        <img src="/images/chessproo.png" alt="Logo" className="logo" />
+        <h2 className="unsubscribe-title">Unsubscribe</h2>
+        <p className="farewell-message">We Were Sorry To See You Go</p>
+      </div>
+
       <div className="email-section">
         <input
           type="email"
@@ -97,40 +101,49 @@ const Unsubscribe = () => {
           placeholder="Enter your email"
           required
         />
-        <button onClick={handleFetchUserData} disabled={loading}>
-          {loading ? 'Fetching Data...' : 'Fetch Subscription Data'}
+        <button onClick={handleFetchUserData} disabled={fetchLoading}>
+          {fetchLoading ? "Fetching Data..." : "Fetch Subscription Data"}
         </button>
       </div>
 
       {userData && (
         <div className="subscription-section">
-          <p>If you want to unsubscribe, check the boxes below:</p>
-
-          <label>
-            <input
-              type="checkbox"
-              checked={appChecked}
-              onChange={() => setAppChecked(!appChecked)}
-            />
-            Subscribe to App Notifications
-          </label>
-
-          <label>
-            <input
-              type="checkbox"
-              checked={tournamentChecked}
-              onChange={() => setTournamentChecked(!tournamentChecked)}
-            />
-            Subscribe to Tournament Updates
-          </label>
-
-          <button onClick={handleSaveChanges} disabled={loading}>
-            {loading ? 'Saving...' : 'Save Changes'}
-          </button>
+          {userData.Website && (
+            <>
+              <p>If you want to unsubscribe, check the box below:</p>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={websiteChecked}
+                  onChange={() => setWebsiteChecked(!websiteChecked)}
+                />
+                Unsubscribe from Website
+              </label>
+            </>
+          )}
+          {!userData.Website && (
+            <label>You Have Not Subscribed To Our Services</label>
+          )}
+          {userData.Website && (
+            <button onClick={handleSaveChanges} disabled={unsubscribeLoading}>
+              {unsubscribeLoading ? "Un-Subscribing..." : "Un-Subscribe"}
+            </button>
+          )}
         </div>
       )}
 
       {message && <p className="message">{message}</p>}
+
+      {/* Custom Modal */}
+      {isModalOpen && (
+        <div className="custom-modal-overlay">
+          <div className="custom-modal">
+            <h2>Unsubscribed Successfully</h2>
+            <p>You have been successfully unsubscribed from our service.</p>
+            <button onClick={() => setIsModalOpen(false)}>Ok</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

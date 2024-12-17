@@ -7,66 +7,59 @@
 
 h2 {
   text-align: center;
-  
-    font-size: 34px;
-  
+  font-size: 34px;
 }
+
 .header {
   display: flex;
-  justify-content: center; /* Center aligns the logo */
+  justify-content: center;
   align-items: center;
-  flex-direction: column; /* Stack images and text vertically if there’s more than one */
+  flex-direction: column;
+
+  .unsubscribe-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .farewell-message {
+    font-size: 18px;
+    font-style: italic;
+    color: #666;
+    margin-bottom: 20px;
+  }
 
   .logo {
     height: 250px;
     width: 300px;
-    margin: 0 auto; /* Ensures the logo centers within the header */
-  }
-
-  .school-title {
-    height: 150px;
-    width: 700px;
-  }
-  h2 {
-    font-size: 24px;
+    margin: 0 auto;
   }
 }
-@media screen and (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    align-items: center;
-
-    .logo, .school-title {
-      height: 150px;
-      width: auto;
-    }
-  }
-
-  h2 {
-    font-size: 24px;
-  }
-}
-
 
 .email-section {
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
 
-.email-section input {
-  padding: 10px;
-  font-size: 16px;
-  width: 100%;
-  margin: 5px 0;
-}
+  input {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    margin: 5px 0;
+  }
 
-.email-section button {
-  padding: 10px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
+  button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #45a049;
+    }
+  }
 }
 
 .subscription-section {
@@ -74,27 +67,76 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 15px;
-}
 
-.subscription-section label {
-  font-size: 16px;
-  color: #333;
-}
+  label {
+    font-size: 16px;
+    color: #333;
+  }
 
-.subscription-section button {
-  padding: 10px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
+  button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #45a049;
+    }
+  }
 }
 
 .message {
   margin-top: 20px;
   text-align: center;
-  color: #f44336; /* Red for error messages */
+  color: #f44336;
+
+  &.success {
+    color: #4caf50;
+  }
 }
 
-.message.success {
-  color: #4CAF50; /* Green for success messages */
+/* Custom Modal */
+.custom-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+  h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+  }
+
+  p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #45a049;
+    }
+  }
 }
