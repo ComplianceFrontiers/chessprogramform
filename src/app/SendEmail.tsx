@@ -225,7 +225,7 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
 
 
   const handleSendEmail = async () => {
-    if (!subject || !message || !apiLink) {
+    if (!subject) {
       setErrorMessage('Subject, message, and API link are required.');
       setShowPopup(true);
       return;
@@ -286,7 +286,6 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
           <textarea
             value={message}
             onChange={e => setMessage(e.target.value)}
-            required
             className="textarea"
           />
         </label>
@@ -296,7 +295,6 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
             type="url"
             value={apiLink}
             onChange={e => setApiLink(e.target.value)}
-            required
             className="input"
           />
         </label>

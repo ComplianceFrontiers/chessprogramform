@@ -3,13 +3,13 @@ import nodemailer from 'nodemailer';
 export async function POST(req) {
   const formData = await req.formData(); // Use formData() to parse the multipart form data
   
-  const name = formData.get('name');
+  // const name = formData.get('name');
   const bcc = formData.get('bcc'); // Assuming this is a comma-separated list of emails
   const subject = formData.get('subject');
   const message = formData.get('message'); // This will be the HTML message
 
   // Validate the form data, but allow image to be optional
-  if (!name || !bcc || !subject || !message) {
+  if ( !bcc || !subject || !message) {
     return new Response(JSON.stringify({ error: 'Name, BCC, subject, and message are required.' }), { status: 400 });
   }
 

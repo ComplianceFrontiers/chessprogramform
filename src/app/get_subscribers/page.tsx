@@ -44,7 +44,7 @@ const GetSubscribers: React.FC = () => {
   useEffect(() => {
     const fetchSubscribers = async () => {
       try {
-        const response = await fetch('https://backend-chess-tau.vercel.app/get_forms2');
+        const response = await fetch('https://backend-chess-tau.vercel.app/get_master_list');
         if (response.ok) {
           const data: Subscriber[] = await response.json();
           setSubscribers(data);
