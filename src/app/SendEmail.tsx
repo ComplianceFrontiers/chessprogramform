@@ -175,16 +175,15 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
 
     <!-- Footer -->
     <div style="color: white; padding: 20px; margin-top: 30px;">   
-
-    <div  >
+ 
         <div style="background-color: #343a40; color: #fff; padding: 20px; border-radius: 5px 5px 0 0;">
             <h1 style="margin-bottom: 5px;">About the Chess Champs</h1>
             <p style="margin-bottom: 0px; font-size:10px">The Siegel JCC is a non-profit Jewish community center where people of all faiths and backgrounds come together to learn, share, play, and celebrate. Our 32-acre campus houses an Early Childhood Center, Youth & Teen Programs, and Summer Camp, as well as a state-of-the-art Fitness Center, Indoor & Outdoor Pools, Sports, and Community Events.</p>
         </div>
-
-        <div style="background-color: #007BFF; color: #fff; padding: 20px; border-radius: 0 0 5px 5px; text-align: center;">
+    <div >
            <div style="background-color: #007BFF; padding: 20px; border-radius: 5px; text-align: center;">
-    <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+           
+    <div style="display: flex;margin: 0; justify-content: center; align-items: center; gap: 10px;">
         <a href="https://www.facebook.com" target="_blank">
             <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/radiw6odgmhlnh82bxcz.png" alt="Facebook" style="width: 20px; height: 20px;" />
         </a>
@@ -203,9 +202,9 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
 " alt="LinkedIn" style="width: 20px; height: 20px;" />
         </a>
     </div>
-</div>
+ 
 
-            <div>
+           
                 <p style="margin: 0;">SIEGEL JCC</p>
                <p style="margin: 0;font-size:10px">
   <a href="https://www.google.com/maps?q=101+Garden+of+Eden+Road,+Wilmington,+DE+19803" target="_blank" style="text-decoration: underline;">101 Garden of Eden Road</a> | 
