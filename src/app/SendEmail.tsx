@@ -186,19 +186,21 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
            <div style="background-color: #007BFF; padding: 20px; border-radius: 5px; text-align: center;">
     <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
         <a href="https://www.facebook.com" target="_blank">
-            <img src="./images/image copy.png" alt="Facebook" style="width: 20px; height: 20px;" />
+            <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/radiw6odgmhlnh82bxcz.png" alt="Facebook" style="width: 20px; height: 20px;" />
         </a>
         <a href="https://www.youtube.com" target="_blank">
-            <img src="./images/image copy 2.png" alt="YouTube" style="width: 20px; height: 20px;" />
+            <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/weqk53gu7f0km5fq1mo2.png" alt="YouTube" style="width: 20px; height: 20px;" />
         </a>
         <a href="https://www.instagram.com" target="_blank">
-            <img src="./images/image copy 3.png" alt="Twitter" style="width: 20px; height: 20px;" />
+            <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/mssyh3o9t8pigtiumszb.png
+" alt="Twitter" style="width: 20px; height: 20px;" />
         </a>
         <a href="https://www.chesschamps.us/" target="_blank">
-            <img src="./images/image copy 4.png" alt="Instagram" style="width: 20px; height: 20px;" />
+            <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/gsdc2rxtvnjw7nqs4m4r.png" alt="Instagram" style="width: 20px; height: 20px;" />
         </a>
         <a href="#" target="_blank">
-            <img src="./images/image copy 5.png" alt="LinkedIn" style="width: 20px; height: 20px;" />
+            <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/qnazc8aquouxkwensstj.png
+" alt="LinkedIn" style="width: 20px; height: 20px;" />
         </a>
     </div>
 </div>
