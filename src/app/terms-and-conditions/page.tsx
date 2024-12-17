@@ -10,8 +10,9 @@ const TermsAndConditions = () => {
     window.history.back();
   };
   return (
+
     <div className="terms-and-conditions">
-              <img src='/images/chessproo1.png' alt="Delaware Chess Champs Logo" className="logo" />
+      <img src='/images/chessproo1.png' alt="Delaware Chess Champs Logo" className="logo" />
 
       <h1>Terms and Conditions for Participation in the Chess Champs LLC After-School Chess Program at Mount Pleasant Elementary School</h1>
       <p>Welcome to Chess Champs LLC’s after-school chess program. By registering your child for this program, you acknowledge and agree to the following terms and conditions.</p>
@@ -26,21 +27,17 @@ const TermsAndConditions = () => {
       <p>The program, including its design and materials, is the intellectual property of Chess Champs LLC.</p>
 
       <h2>3. Expectations for Participants</h2>
+
         <p>Chess Champs LLC is committed to creating a positive and respectful environment for all participants.</p>
 
         <p><strong>Behavioral Expectations:</strong> Participants are expected to be respectful, cooperative, and mindful of their peers, instructors, and the learning environment.</p>
-
         <p><strong>Disruptive Behavior:</strong> If a participant engages in behavior that is deemed disruptive, harmful, or detrimental to the progress of the class or the well-being of others, Chess Champs LLC reserves the right to take appropriate disciplinary action. This includes, but is not limited to:</p>
-          <p>Temporary removal from a class.</p>
-          <p>Expulsion from the program altogether.</p>
-
+        <p>Temporary removal from a class.</p>
+        <p>Expulsion from the program altogether.</p>
         <p><strong>Authority and Decision:</strong> The decision of Chess Champs LLC regarding such matters will be final and binding.</p>
-
         <p><strong>Refund Policy for Expulsions:</strong> No refunds will be issued if a participant is removed from the program due to disruptive behavior or failure to adhere to these expectations.</p>
-
         <p><strong>Legal Recourse:</strong> By registering for our program, parents/guardians agree that no legal claims or consequences will be pursued against Chess Champs LLC in such cases.</p>
 
-      
       <h2>4. Software Access</h2>
       <p>Chess Champs LLC may, at its discretion, provide access to proprietary software to enhance the learning experience.</p>
       <p>Login credentials provided are for individual use only and must not be shared with others.</p>
@@ -90,7 +87,7 @@ const TermsAndConditions = () => {
       <p>Thank you for enrolling your child in Chess Champs LLC’s after-school chess program. We are excited to provide a fun and educational experience!</p>
       <p>For questions or concerns, please contact us at [insert contact information].</p>
 
-      
+
       <p>By submitting this form, I agree to the terms and conditions outlined in the Disclaimer and Liability Waiver. By providing your email address and phone number, you acknowledge that you have read and understood the terms of this publicity disclaimer and consent to receive communications from Delaware Chess Champs and Chess Champs LLC.</p>
       <button className="go-back-button" onClick={handleGoBack}>Go Back</button>
 
