@@ -30,10 +30,10 @@ const SendEmail: React.FC<SendEmailProps> = ({ selectedRecords, onBack }) => {
   const emailBody = `
   <div style="font-family: Arial, sans-serif; color: #333; padding: 20px; text-align: center;">
     <div style="text-align: center;">
-      <img src="./images/image.png" alt="J Dance Banner" style="max-width: 100%; height: auto;">
+      <img src="./images/image.png" alt="Chess Champs Banner" style="max-width: 100%; height: auto;">
     </div>
     <h1 style="color: #000; text-align: left; font-size: 14px; font-weight: bold; margin-bottom: 20px;margin-top: 20px;">
-      Now enrolling for the 2025 Winter/Spring Session of J DANCE, beginning January 21, 2025, and concluding with a showcase on Sunday, April 27, 2025, at 3 PM.
+      Now enrolling for the 2025 Winter/Spring Session of Chess Champs, beginning January 21, 2025, and concluding with a showcase on Sunday, April 27, 2025, at 3 PM.
     </h1>
     <p style="font-size: 14px; line-height: 1.6; margin-top: 20px; margin-bottom: 10px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto;">
       This program, run by our talented JCoaches, is designed to inspire dancers of all levels. Whether you're just starting out or looking to build upon your existing skills, our classes offer something for everyone.
