@@ -84,6 +84,9 @@ const Unsubscribe = () => {
 
   return (
     <div className="unsubscribe-container">
+      <div className="header">
+            <img src="/images/chessproo.png" alt="Logo" className="logo" />
+          </div>
       <h2>Unsubscribe</h2>
       
       <div className="email-section">
@@ -101,7 +104,7 @@ const Unsubscribe = () => {
 
       {userData && (
         <div className="subscription-section">
-          <p>If you want to unsubscribe, uncheck the boxes below:</p>
+          <p>If you want to unsubscribe, check the boxes below:</p>
 
           <label>
             <input

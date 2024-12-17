@@ -7,8 +7,46 @@
 
 h2 {
   text-align: center;
-  color: #333;
+  
+    font-size: 34px;
+  
 }
+.header {
+  display: flex;
+  justify-content: center; /* Center aligns the logo */
+  align-items: center;
+  flex-direction: column; /* Stack images and text vertically if there’s more than one */
+
+  .logo {
+    height: 250px;
+    width: 300px;
+    margin: 0 auto; /* Ensures the logo centers within the header */
+  }
+
+  .school-title {
+    height: 150px;
+    width: 700px;
+  }
+  h2 {
+    font-size: 24px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+
+    .logo, .school-title {
+      height: 150px;
+      width: auto;
+    }
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+}
+
 
 .email-section {
   display: flex;
