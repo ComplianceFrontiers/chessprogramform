@@ -143,7 +143,7 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
 
     <!-- Descriptions -->
 <h2 style="text-align: left; color: #ffffff; padding:10px; margin-top: 20px; margin-bottom: 10px; background-color: #000000;">Class Descriptions:</h2>    <ul style="text-align: left; padding-left: 20px; font-size: 14px; line-height: 1.6;">
-     <ul style="text-align: left;   font-size: 14px; line-height: 1.6; list-style-type: disc;>
+   <ul style="text-align: left; font-size: 14px; line-height: 1.6; list-style-type: disc; padding-left: 0px;">
   <li>
     <strong>Creative Movement (Ages 4 - 6):</strong> A prerequisite dance class. Students learn basics of stretching, foundational dance steps, and musical phrasing through a series of guided "imagination games." A great way to learn the foundations of dance that apply for any future dance classes.
   </li>
@@ -164,6 +164,7 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
   </li>
 </ul>
 
+
 <p style="text-align:center; margin-top:10px;">
   For more info, please contact 
   <a href="#" style="text-decoration: underline; color: blue;">
@@ -177,13 +178,13 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
     <div style="color: white; padding: 20px; margin-top: 30px;">   
  
         <div style="background-color: #343a40; color: #fff; padding: 20px; border-radius: 5px 5px 0 0;">
-            <h1 style="margin-bottom: 5px;">About the Chess Champs</h1>
+            <h1 style="margin-bottom: 5px; font-size: 12px">About the Chess Champs</h1>
             <p style="margin-bottom: 0px; font-size:10px">The Siegel JCC is a non-profit Jewish community center where people of all faiths and backgrounds come together to learn, share, play, and celebrate. Our 32-acre campus houses an Early Childhood Center, Youth & Teen Programs, and Summer Camp, as well as a state-of-the-art Fitness Center, Indoor & Outdoor Pools, Sports, and Community Events.</p>
         </div>
     <div >
-           <div style="background-color: #007BFF; padding: 20px; border-radius: 5px; text-align: center;">
-           
-    <div style="display: flex;margin: 0; justify-content: center; align-items: center; gap: 10px;">
+         <div style="background-color: #007BFF; padding: 20px; border-radius: 5px; text-align: center;">
+    <p style="margin: 0;">SIEGEL JCC</p>
+    <p style="display: flex; justify-content: center; align-items: center; gap: 10px; margin: 0;">
         <a href="https://www.facebook.com" target="_blank">
             <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/radiw6odgmhlnh82bxcz.png" alt="Facebook" style="width: 20px; height: 20px;" />
         </a>
@@ -191,21 +192,16 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
             <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/weqk53gu7f0km5fq1mo2.png" alt="YouTube" style="width: 20px; height: 20px;" />
         </a>
         <a href="https://www.instagram.com" target="_blank">
-            <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/mssyh3o9t8pigtiumszb.png
-" alt="Twitter" style="width: 20px; height: 20px;" />
+            <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/mssyh3o9t8pigtiumszb.png" alt="Instagram" style="width: 20px; height: 20px;" />
         </a>
         <a href="https://www.chesschamps.us/" target="_blank">
-            <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/gsdc2rxtvnjw7nqs4m4r.png" alt="Instagram" style="width: 20px; height: 20px;" />
+            <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/gsdc2rxtvnjw7nqs4m4r.png" alt="Chess Champs" style="width: 20px; height: 20px;" />
         </a>
         <a href="#" target="_blank">
-            <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/qnazc8aquouxkwensstj.png
-" alt="LinkedIn" style="width: 20px; height: 20px;" />
+            <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/qnazc8aquouxkwensstj.png" alt="LinkedIn" style="width: 20px; height: 20px;" />
         </a>
-    </div>
- 
+    </p>
 
-           
-                <p style="margin: 0;">SIEGEL JCC</p>
                <p style="margin: 0;font-size:10px">
   <a href="https://www.google.com/maps?q=101+Garden+of+Eden+Road,+Wilmington,+DE+19803" target="_blank" style="text-decoration: underline;">101 Garden of Eden Road</a> | 
   <a href="tel:+13024785660" style="text-decoration: underline;font-size:10px">Wilmington, DE 19803</a> | 
