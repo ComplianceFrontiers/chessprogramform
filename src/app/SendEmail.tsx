@@ -184,24 +184,7 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
     <div >
          <div style="background-color: #007BFF; padding: 20px; border-radius: 5px; text-align: center;">
     <p style="margin: 0;">SIEGEL JCC</p>
-    <p style="display: flex; justify-content: center; align-items: center; gap: 10px; margin: 0;">
-        <a href="https://www.facebook.com" target="_blank">
-            <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/radiw6odgmhlnh82bxcz.png" alt="Facebook" style="width: 20px; height: 20px;" />
-        </a>
-        <a href="https://www.youtube.com" target="_blank">
-            <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/weqk53gu7f0km5fq1mo2.png" alt="YouTube" style="width: 20px; height: 20px;" />
-        </a>
-        <a href="https://www.instagram.com" target="_blank">
-            <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/mssyh3o9t8pigtiumszb.png" alt="Instagram" style="width: 20px; height: 20px;" />
-        </a>
-        <a href="https://www.chesschamps.us/" target="_blank">
-            <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/gsdc2rxtvnjw7nqs4m4r.png" alt="Chess Champs" style="width: 20px; height: 20px;" />
-        </a>
-        <a href="#" target="_blank">
-            <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/qnazc8aquouxkwensstj.png" alt="LinkedIn" style="width: 20px; height: 20px;" />
-        </a>
-    </p>
-
+  
                <p style="margin: 0;font-size:10px">
   <a href="https://www.google.com/maps?q=101+Garden+of+Eden+Road,+Wilmington,+DE+19803" target="_blank" style="text-decoration: underline;">101 Garden of Eden Road</a> | 
   <a href="tel:+13024785660" style="text-decoration: underline;font-size:10px">Wilmington, DE 19803</a> | 
@@ -221,6 +204,23 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
   </div>
 `;
 
+// <p style="display: flex; justify-content: center; align-items: center; gap: 10px; margin: 0;">
+// <a href="https://www.facebook.com" target="_blank">
+//     <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/radiw6odgmhlnh82bxcz.png" alt="Facebook" style="width: 20px; height: 20px;" />
+// </a>
+// <a href="https://www.youtube.com" target="_blank">
+//     <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/weqk53gu7f0km5fq1mo2.png" alt="YouTube" style="width: 20px; height: 20px;" />
+// </a>
+// <a href="https://www.instagram.com" target="_blank">
+//     <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/mssyh3o9t8pigtiumszb.png" alt="Instagram" style="width: 20px; height: 20px;" />
+// </a>
+// <a href="https://www.chesschamps.us/" target="_blank">
+//     <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/gsdc2rxtvnjw7nqs4m4r.png" alt="Chess Champs" style="width: 20px; height: 20px;" />
+// </a>
+// <a href="#" target="_blank">
+//     <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734435408/qnazc8aquouxkwensstj.png" alt="LinkedIn" style="width: 20px; height: 20px;" />
+// </a>
+// </p>
 
   const handleSendEmail = async () => {
     if (!subject) {
