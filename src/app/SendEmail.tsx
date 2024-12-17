@@ -41,7 +41,7 @@ const SendEmail: React.FC<SendEmailProps> = ({ selectedRecords, onBack }) => {
 
     <!-- Programs -->
     <h2 style="text-align: left; color: #f53db8; margin-bottom: 10px;">Programs:</h2>
-   <ul style="text-align: left; padding-left: 50px; font-size: 14px; line-height: 1.6; list-style-type: disc;">
+   <ul style="text-align: left;   font-size: 14px; line-height: 1.6; list-style-type: disc;">
   <li><strong>Creative Movement</strong> (Ages 4 - 6)</li>
   <li><strong>Ballet 1</strong> (Ages 7 - 9)</li>
   <li><strong>Ballet 2</strong> (Ages 10 - 12)</li>
@@ -143,7 +143,7 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
 
     <!-- Descriptions -->
 <h2 style="text-align: left; color: #ffffff; padding:10px; margin-top: 20px; margin-bottom: 10px; background-color: #000000;">Class Descriptions:</h2>    <ul style="text-align: left; padding-left: 20px; font-size: 14px; line-height: 1.6;">
-     <ul style="text-align: left; padding-left: 20px; font-size: 14px; line-height: 1.6; list-style-type: disc;>
+     <ul style="text-align: left;   font-size: 14px; line-height: 1.6; list-style-type: disc;>
   <li>
     <strong>Creative Movement (Ages 4 - 6):</strong> A prerequisite dance class. Students learn basics of stretching, foundational dance steps, and musical phrasing through a series of guided "imagination games." A great way to learn the foundations of dance that apply for any future dance classes.
   </li>
@@ -185,19 +185,19 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
         <div style="background-color: #007BFF; color: #fff; padding: 20px; border-radius: 0 0 5px 5px; text-align: center;">
             <div style="margin-bottom: 5px; font-size:10px">
                 <a href="#" target="_blank" style={{ margin: '0 10px' }}>
-  <FontAwesomeIcon icon={faFacebook} style={{ fontSize: '20px', color: 'white' }} />
+ { <FontAwesomeIcon icon="${faFacebook}" style={{ fontSize: '20px', color: 'white' }} />
 </a>
 <a href="#" target="_blank" style={{ margin: '0 10px' }}>
-  <FontAwesomeIcon icon={faYoutube} style={{ fontSize: '10px', color: 'white' }} />
+  <FontAwesomeIcon icon=${faYoutube} style={{ fontSize: '10px', color: 'white' }} />
 </a>
 <a href="#" target="_blank" style={{ margin: '0 10px' }}>
-  <FontAwesomeIcon icon={faTwitter} style={{ fontSize: '10px', color: 'white' }} />
+  <FontAwesomeIcon icon=${faTwitter} style={{ fontSize: '10px', color: 'white' }} />
 </a>
 <a href="#" target="_blank" style={{ margin: '0 10px' }}>
-  <FontAwesomeIcon icon={faInstagram} style={{ fontSize: '10px', color: 'white' }} />
+  <FontAwesomeIcon icon=${faInstagram} style={{ fontSize: '10px', color: 'white' }} />
 </a>
 <a href="#" target="_blank" style={{ margin: '0 10px' }}>
-  <FontAwesomeIcon icon={faLinkedin} style={{ fontSize: '20px', color: 'white' }} />
+  <FontAwesomeIcon icon=${faLinkedin} style={{ fontSize: '20px', color: 'white' }} />
 </a>
             </div>
 
@@ -213,7 +213,7 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
             </div>
 
             <div>
-                <p style="font-size: 11px; margin-top: 10px;">We like to connect in ways that work for you: <a href="#" style="color: #fff; text-decoration: none;">Update Profile</a></p>
+                <p style="font-size: 11px;  ">We like to connect in ways that work for you: <a href="#" style="color: #fff; text-decoration: none;">Update Profile</a></p>
             </div>
         </div>
     </div>
