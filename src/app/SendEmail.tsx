@@ -28,14 +28,14 @@ const SendEmail: React.FC<SendEmailProps> = ({ selectedRecords, onBack }) => {
   const [apiLink, setApiLink] = useState('');
 
   const emailBody = `
-  <div style="font-family: Arial, sans-serif; color: #333; padding: 20px; text-align: center;display: block;">
+<div style="font-family: Arial, sans-serif; color: #333; padding: 20px; text-align: center; display: block;">
     <div style="text-align: center;">
       <img src="https://res.cloudinary.com/dtgje24ez/image/upload/v1734427370/zianrqdokutklmiibvg0.png" alt="Chess Champs Banner" style="max-width: 100%; height: auto;">
     </div>
     <h1 style="color: #000; text-align: left; font-size: 14px; font-weight: bold; margin-bottom: 20px;margin-top: 20px;">
       Now enrolling for the 2025 Winter/Spring Session of Chess Champs, beginning January 21, 2025, and concluding with a showcase on Sunday, April 27, 2025, at 3 PM.
     </h1>
-    <p style="font-size: 14px; line-height: 1.6; margin-top: 20px; margin-bottom: 10px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto;">
+    <p style="font-size: 14px; line-height: 1.6; margin-top: 20px; margin-bottom: 10px; text-align: left; max-width: 800px;   margin-right: auto;">
       This program, run by our talented JCoaches, is designed to inspire dancers of all levels. Whether you're just starting out or looking to build upon your existing skills, our classes offer something for everyone.
     </p>
 
@@ -50,7 +50,7 @@ const SendEmail: React.FC<SendEmailProps> = ({ selectedRecords, onBack }) => {
   <li><strong>Adult Intermediate Ballet</strong> (Ages 18+)</li>
 </ul>
 
-    <p style="font-size: 14px; line-height: 1.6; margin-top: 20px; margin-bottom: 10px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto;">
+    <p style="font-size: 14px; line-height: 1.6; margin-top: 20px; margin-bottom: 10px; text-align: left; max-width: 800px;  margin-right: auto;">
    Check out our schedule & class descriptions below. Join us and discover the joy of dance in a supportive and creative environment. We can’t wait to see you there!
     </p>
 
@@ -67,7 +67,7 @@ const SendEmail: React.FC<SendEmailProps> = ({ selectedRecords, onBack }) => {
     </div>
 
     <h2 style="text-align: left; color: #f53db8; margin-top: 20px; margin-bottom: 10px;">SHOWCASE:</h2>
-    <p style="font-size: 14px; line-height: 1.6; margin-top: 20px; margin-bottom: 10px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto;">
+    <p style="font-size: 14px; line-height: 1.6; margin-top: 20px; margin-bottom: 10px; text-align: left; max-width: 800px;  margin-right: auto;">
 Interested in getting a sneak peek at our program? Come check out the Showcase for the current session! It will be held on <strong>Sunday, December 22 at 3 PM</strong> in the <strong>Auditorium</strong>.
 </p>
 
@@ -176,14 +176,14 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
     <!-- Footer -->
     <div style="color: white; padding: 20px; margin-top: 30px;">   
 
-    <div style="margin-top: 20px;">
+    <div  >
         <div style="background-color: #343a40; color: #fff; padding: 20px; border-radius: 5px 5px 0 0;">
-            <h1 style="margin-bottom: 10px;">About the J</h1>
-            <p style="margin-bottom: 10px; font-size:10px">The Siegel JCC is a non-profit Jewish community center where people of all faiths and backgrounds come together to learn, share, play, and celebrate. Our 32-acre campus houses an Early Childhood Center, Youth & Teen Programs, and Summer Camp, as well as a state-of-the-art Fitness Center, Indoor & Outdoor Pools, Sports, and Community Events.</p>
+            <h1 style="margin-bottom: 5px;">About the Chess Champs</h1>
+            <p style="margin-bottom: 0px; font-size:10px">The Siegel JCC is a non-profit Jewish community center where people of all faiths and backgrounds come together to learn, share, play, and celebrate. Our 32-acre campus houses an Early Childhood Center, Youth & Teen Programs, and Summer Camp, as well as a state-of-the-art Fitness Center, Indoor & Outdoor Pools, Sports, and Community Events.</p>
         </div>
 
         <div style="background-color: #007BFF; color: #fff; padding: 20px; border-radius: 0 0 5px 5px; text-align: center;">
-            <div style="margin-bottom: 15px; font-size:10px">
+            <div style="margin-bottom: 5px; font-size:10px">
                 <a href="#" target="_blank" style={{ margin: '0 10px' }}>
   <FontAwesomeIcon icon={faFacebook} style={{ fontSize: '20px', color: 'white' }} />
 </a>
