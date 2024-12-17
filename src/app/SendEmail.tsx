@@ -175,19 +175,19 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
 
 
     <!-- Footer -->
-    <div style="color: white; padding: 20px; margin-top: 30px;">   
+    <div style="color: white; padding: 0px; margin-top: 30px;">   
  
         <div style="background-color: #343a40; color: #fff; padding: 20px; border-radius: 5px 5px 0 0;">
-            <h1 style="margin-bottom: 5px; font-size: 12px">About the Chess Champs</h1>
-            <p style="margin-bottom: 0px; font-size:10px">The Siegel JCC is a non-profit Jewish community center where people of all faiths and backgrounds come together to learn, share, play, and celebrate. Our 32-acre campus houses an Early Childhood Center, Youth & Teen Programs, and Summer Camp, as well as a state-of-the-art Fitness Center, Indoor & Outdoor Pools, Sports, and Community Events.</p>
+            <h1 style="margin-bottom: 5px; font-size: 14px">About the Chess Champs</h1>
+            <p style="margin-bottom: 0px; font-size:12px">The Siegel JCC is a non-profit Jewish community center where people of all faiths and backgrounds come together to learn, share, play, and celebrate. Our 32-acre campus houses an Early Childhood Center, Youth & Teen Programs, and Summer Camp, as well as a state-of-the-art Fitness Center, Indoor & Outdoor Pools, Sports, and Community Events.</p>
         </div>
     <div >
          <div style="background-color: #007BFF; padding: 20px; border-radius: 5px; text-align: center;">
     <p style="margin: 0;">SIEGEL JCC</p>
   
                <p style="margin: 0;font-size:10px">
-  <a href="https://www.google.com/maps?q=101+Garden+of+Eden+Road,+Wilmington,+DE+19803" target="_blank" style="text-decoration: underline;">101 Garden of Eden Road</a> | 
-  <a href="tel:+13024785660" style="text-decoration: underline;font-size:10px">Wilmington, DE 19803</a> | 
+  <a  href="https://www.google.com/maps?q=101+Garden+of+Eden+Road,+Wilmington,+DE+19803" target="_blank" style="text-decoration: underline;font-size:12px; color:#ffff00;">101 Garden of Eden Road</a> | 
+  <a href="tel:+13024785660" style="text-decoration: underline;font-size:12px; color:#ffff00;">Wilmington, DE 19803</a> | 
   <a href="tel:+13024785660">302-478-5660</a>
 </p>
 
