@@ -183,25 +183,23 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
         </div>
 
         <div style="background-color: #007BFF; color: #fff; padding: 20px; border-radius: 0 0 5px 5px; text-align: center;">
-            <div style="margin-bottom: 5px; font-size:10px">
-                <a href="#" target="_blank" style={{ margin: '0 10px' }}>
-              
-   <FontAwesomeIcon icon=${faFacebook} style={{ fontSize: '20px', color: 'white' }} />
-</a>
-<a href="#" target="_blank" style={{ margin: '0 10px' }}>
-  <FontAwesomeIcon icon=${faYoutube} style={{ fontSize: '10px', color: 'white' }} />
-</a>
-<a href="#" target="_blank" style={{ margin: '0 10px' }}>
-  <FontAwesomeIcon icon=${faTwitter} style={{ fontSize: '10px', color: 'white' }} />
-</a>
-<a href="#" target="_blank" style={{ margin: '0 10px' }}>
-  <FontAwesomeIcon icon=${faInstagram} style={{ fontSize: '10px', color: 'white' }} />
-</a>
-<a href="#" target="_blank" style={{ margin: '0 10px' }}>
-  <FontAwesomeIcon icon=${faLinkedin} style={{ fontSize: '20px', color: 'white' }} />
-</a>
-            </div>
-
+            <div style={{ marginBottom: '5px', fontSize: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  <a href="#" target="_blank" style={{ margin: '0 10px' }}>
+                      <img src="./images/image copy.png" alt="Facebook" style={{ width: '20px', height: '20px' }} />
+                  </a>
+                  <a href="#" target="_blank" style={{ margin: '0 10px' }}>
+                      <img src="./images/image copy 2.png" alt="YouTube" style={{ width: '20px', height: '20px' }} />
+                  </a>
+                  <a href="#" target="_blank" style={{ margin: '0 10px' }}>
+                      <img src="./images/image copy 3.png" alt="Twitter" style={{ width: '20px', height: '20px' }} />
+                  </a>
+                  <a href="#" target="_blank" style={{ margin: '0 10px' }}>
+                      <img src="./images/image copy 4.png" alt="Instagram" style={{ width: '20px', height: '20px' }} />
+                  </a>
+                  <a href="#" target="_blank" style={{ margin: '0 10px' }}>
+                      <img src="./images/image copy 5.png" alt="LinkedIn" style={{ width: '20px', height: '20px' }} />
+                  </a>
+              </div>
             <div>
                 <p style="margin: 0;">SIEGEL JCC</p>
                <p style="margin: 0;font-size:10px">
