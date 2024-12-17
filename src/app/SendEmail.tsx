@@ -61,7 +61,7 @@ const SendEmail: React.FC<SendEmailProps> = ({ selectedRecords, onBack }) => {
     </ul>
 
     <div style="text-align: center; margin-top: 30px;">
-      <a href="${apiLink}" style="display: inline-block; padding: 12px 25px; background-color: #f53db8; color: white; text-align: center; border-radius: 5px; text-decoration: none; font-size: 16px;">
+      <a href="https://chesschampsus.vercel.app/unsubscribe" style="display: inline-block; padding: 12px 25px; background-color: #f53db8; color: white; text-align: center; border-radius: 5px; text-decoration: none; font-size: 16px;">
         REGISTER HERE
       </a>
     </div>
@@ -135,7 +135,7 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
   </li>
 </ul>
 <div style="text-align: center; margin-top: 30px;">
-      <a href="${apiLink}" style="display: inline-block; padding: 12px 25px; background-color: #f53db8; color: white; text-align: center; border-radius: 5px; text-decoration: none; font-size: 16px;">
+      <a href="https://chesschampsus.vercel.app/unsubscribe" style="display: inline-block; padding: 12px 25px; background-color: #f53db8; color: white; text-align: center; border-radius: 5px; text-decoration: none; font-size: 16px;">
         REGISTER HERE
       </a>
     </div>
@@ -185,16 +185,16 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
         <div style="background-color: #007BFF; color: #fff; padding: 20px; border-radius: 0 0 5px 5px; text-align: center;">
            <div style="background-color: #007BFF; padding: 20px; border-radius: 5px; text-align: center;">
     <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-        <a href="#" target="_blank">
+        <a href="https://www.facebook.com" target="_blank">
             <img src="./images/image copy.png" alt="Facebook" style="width: 20px; height: 20px;" />
         </a>
-        <a href="#" target="_blank">
+        <a href="https://www.youtube.com" target="_blank">
             <img src="./images/image copy 2.png" alt="YouTube" style="width: 20px; height: 20px;" />
         </a>
-        <a href="#" target="_blank">
+        <a href="https://www.instagram.com" target="_blank">
             <img src="./images/image copy 3.png" alt="Twitter" style="width: 20px; height: 20px;" />
         </a>
-        <a href="#" target="_blank">
+        <a href="https://www.chesschamps.us/" target="_blank">
             <img src="./images/image copy 4.png" alt="Instagram" style="width: 20px; height: 20px;" />
         </a>
         <a href="#" target="_blank">
