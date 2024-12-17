@@ -185,7 +185,8 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
         <div style="background-color: #007BFF; color: #fff; padding: 20px; border-radius: 0 0 5px 5px; text-align: center;">
             <div style="margin-bottom: 5px; font-size:10px">
                 <a href="#" target="_blank" style={{ margin: '0 10px' }}>
- { <FontAwesomeIcon icon="${faFacebook}" style={{ fontSize: '20px', color: 'white' }} />
+              
+   <FontAwesomeIcon icon=${faFacebook} style={{ fontSize: '20px', color: 'white' }} />
 </a>
 <a href="#" target="_blank" style={{ margin: '0 10px' }}>
   <FontAwesomeIcon icon=${faYoutube} style={{ fontSize: '10px', color: 'white' }} />
