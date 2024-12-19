@@ -200,7 +200,9 @@ Interested in getting a sneak peek at our program? Come check out the Showcase f
         </div>
     </div>
 </div>
-
+<p style="font-size: 14px; color: #666; text-align: center; margin-top: 0px;">
+      You are receiving this email because <a href="mailto:sumit.compliance@gmail.com" style="color: #f53db8; text-decoration: none;">sumit.compliance@gmail.com</a> is signed up to receive Whitney Apartments communications. To <a href="https://chesschampsus.vercel.app/unsubscribe" style="color: #f53db8; text-decoration: none;">unsubscribe, click here</a>.
+    </p>
   </div>
 `;
 
