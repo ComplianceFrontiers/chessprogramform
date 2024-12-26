@@ -228,7 +228,7 @@ const ChessRegistration = () => {
             onChange={handleChange}
             required
           >
-            <option value="">Dropdown</option>
+            <option value="">select</option>
             <option value="beginner">Beginner [New Students Only]</option>
             <option value="intermediate">Intermediate [Returning Students]</option>
           </select>
@@ -282,7 +282,7 @@ const ChessRegistration = () => {
             onChange={handleChange}
                 required
           >
-            <option value="">Dropdown</option>
+            <option value="">select</option>
             <option value="K">K</option>
             <option value="1">1st Grade</option>
             <option value="2">2nd Grade</option>

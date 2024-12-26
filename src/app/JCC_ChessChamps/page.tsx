@@ -84,9 +84,9 @@ const ChessRegistration = () => {
             <img src="/images/chessproo.png" alt="Logo" className="logo" />
           </div>
 
-          <h2>Chess Program For Kids</h2>
+          <h2>Chess Coaching in Wilmington</h2>
           <p className="program-description">
-            The Chess Champs Program gives students a fun and engaging way to learn the game while building critical thinking and problem-solving skills.
+          The Chess Champs Program gives students a fun and engaging way to learn the game while building critical thinking and problem-solving skills.
            <p>Through interactive lessons and games, students will master key strategies, improve focus, and boost confidence, all in a supportive environment.
           </p></p>
 
@@ -144,6 +144,32 @@ const ChessRegistration = () => {
                 value={formData.child_grade}
                 onChange={handleChange}
                 placeholder="Enter child's grade"
+              />
+            </div>
+
+            <div className="input-group">
+         <label>Player Level<span className="required">*</span></label>
+          <select
+            name="program"
+            value=""
+            onChange={handleChange}
+            required
+          >
+            <option value="">select</option>
+            <option value="beginner">Absolute Beginner</option>
+            <option value="intermediate">Intermediate Player</option>
+          </select>
+        </div>
+
+            <div className="input-group">
+              <label>USFC Rating<span className="required"></span></label>
+              <input 
+                type="email" 
+                name="email" 
+                placeholder="Enter Email" 
+                value={formData.email} 
+                onChange={handleChange}
+                required
               />
             </div>
 
