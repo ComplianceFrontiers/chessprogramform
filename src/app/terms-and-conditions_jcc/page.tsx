@@ -11,7 +11,7 @@ const TermsAndConditions = () => {
   };
   return (
     <div className="terms-and-conditions">
-      <img src='/images/chessproo1.png' alt="Chess Champs Logo" className="logo" />
+              <img src='/images/jcc.png' alt="Chess Champs Logo" className="logo" />
 
       <h1>Terms and Conditions for Participation in the Chess Champs LLC Chess Coaching Program at Bellevue Community Center</h1>
 
