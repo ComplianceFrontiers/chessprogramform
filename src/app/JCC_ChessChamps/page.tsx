@@ -13,12 +13,14 @@ const ChessRegistration = () => {
     child_first_name: '',
     child_last_name: '',
     child_grade: '',
+    program: '',
+    USCF_Rating: '',
     email: '',
     phone: '',
     acceptTerms: false,
     RequestFinancialAssistance: false,
-    SchoolName: "JCC_Chess_champs",
-    jcc:true
+    SchoolName: "",
+    WilmingtonChessCoaching: true,
   };
 
   const [formData, setFormData] = useState(initialFormData);
@@ -55,7 +57,7 @@ const ChessRegistration = () => {
           setShowThankYou(true);
           setTimeout(() => {
             setShowThankYou(false);
-            resetForm(); // Reset the form after the thank-you message
+            resetForm();
           }, 5000);
         }
       }
@@ -86,27 +88,29 @@ const ChessRegistration = () => {
 
           <h2>Chess Coaching in Wilmington</h2>
           <p className="program-description">
-          The Chess Champs Program gives students a fun and engaging way to learn the game while building critical thinking and problem-solving skills.
-           <p>Through interactive lessons and games, students will master key strategies, improve focus, and boost confidence, all in a supportive environment.
-          </p></p>
+            The Chess Champs Program gives students a fun and engaging way to learn the game while building critical thinking and problem-solving skills.
+            <p>
+              Through interactive lessons and games, students will master key strategies, improve focus, and boost confidence, all in a supportive environment.
+            </p>
+          </p>
 
           <form className="registration-form" onSubmit={handleSubmit}>
             <div className="input-group">
               <label>Parent's Name <span className="required">*</span></label>
               <div className="input-row">
-                <input 
-                  type="text" 
-                  name="parent_first_name" 
-                  placeholder="First" 
-                  value={formData.parent_first_name} 
+                <input
+                  type="text"
+                  name="parent_first_name"
+                  placeholder="First"
+                  value={formData.parent_first_name}
                   onChange={handleChange}
                   required
                 />
-                <input 
-                  type="text" 
-                  name="parent_last_name" 
-                  placeholder="Last" 
-                  value={formData.parent_last_name} 
+                <input
+                  type="text"
+                  name="parent_last_name"
+                  placeholder="Last"
+                  value={formData.parent_last_name}
                   onChange={handleChange}
                   required
                 />
@@ -116,19 +120,19 @@ const ChessRegistration = () => {
             <div className="input-group">
               <label>Child's Name <span className="required">*</span></label>
               <div className="input-row">
-                <input 
-                  type="text" 
-                  name="child_first_name" 
-                  placeholder="First" 
-                  value={formData.child_first_name} 
+                <input
+                  type="text"
+                  name="child_first_name"
+                  placeholder="First"
+                  value={formData.child_first_name}
                   onChange={handleChange}
                   required
                 />
-                <input 
-                  type="text" 
-                  name="child_last_name" 
-                  placeholder="Last" 
-                  value={formData.child_last_name} 
+                <input
+                  type="text"
+                  name="child_last_name"
+                  placeholder="Last"
+                  value={formData.child_last_name}
                   onChange={handleChange}
                   required
                 />
@@ -148,38 +152,37 @@ const ChessRegistration = () => {
             </div>
 
             <div className="input-group">
-         <label>Player Level<span className="required">*</span></label>
-          <select
-            name="program"
-            value=""
-            onChange={handleChange}
-            required
-          >
-            <option value="">select</option>
-            <option value="beginner">Absolute Beginner</option>
-            <option value="intermediate">Intermediate Player</option>
-          </select>
-        </div>
-
-            <div className="input-group">
-              <label>USFC Rating<span className="required"></span></label>
-              <input 
-                type="email" 
-                name="email" 
-                placeholder="Enter Email" 
-                value={formData.email} 
+              <label>Player Level <span className="required">*</span></label>
+              <select
+                name="program"
+                value={formData.program}
                 onChange={handleChange}
                 required
+              >
+                <option value="">Select</option>
+                <option value="beginner">Absolute Beginner</option>
+                <option value="intermediate">Intermediate Player</option>
+              </select>
+            </div>
+
+            <div className="input-group">
+              <label>USCF Rating</label>
+              <input
+                type="text"
+                name="USCF_Rating"
+                placeholder="Enter USCF Rating"
+                value={formData.USCF_Rating}
+                onChange={handleChange}
               />
             </div>
 
             <div className="input-group">
               <label>Email <span className="required">*</span></label>
-              <input 
-                type="email" 
-                name="email" 
-                placeholder="Enter Email" 
-                value={formData.email} 
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter Email"
+                value={formData.email}
                 onChange={handleChange}
                 required
               />
@@ -187,22 +190,22 @@ const ChessRegistration = () => {
 
             <div className="input-group">
               <label>Phone</label>
-              <input 
-                type="tel" 
-                name="phone" 
-                placeholder="Enter Phone Number" 
-                value={formData.phone} 
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Enter Phone Number"
+                value={formData.phone}
                 onChange={handleChange}
               />
             </div>
 
             <div className="terms-container">
-              <input 
-                type="checkbox" 
-                id="terms" 
-                name="acceptTerms" 
-                checked={formData.acceptTerms} 
-                onChange={handleChange} 
+              <input
+                type="checkbox"
+                id="terms"
+                name="acceptTerms"
+                checked={formData.acceptTerms}
+                onChange={handleChange}
               />
               <label htmlFor="terms">
                 I accept the <Link href="/terms-and-conditions_jcc">terms and conditions</Link>
@@ -210,7 +213,9 @@ const ChessRegistration = () => {
             </div>
 
             <div className="button-group">
-              <button type="submit" className="payment-button" disabled={loading}>Submit</button>
+              <button type="submit" className="payment-button" disabled={loading}>
+                Submit
+              </button>
             </div>
           </form>
         </>

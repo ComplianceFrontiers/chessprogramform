@@ -68,7 +68,8 @@ const TermsAndConditions = () => {
       <p>By providing email addresses and phone numbers, parents/guardians consent to receive updates and promotional materials from Chess Champs LLC. Contact information will be handled in accordance with Chess Champs LLC’s privacy policy.</p>
 
       <p>Thank you for enrolling your child in Chess Champs LLC’s after-school chess program. We are excited to provide a fun and educational experience!</p>
-      <p>For questions or concerns, please contact us at [insert contact information].</p>
+      <p>For questions or concerns, please contact us at connect@chesschamps.us.</p>
+      <p>By submitting this form, I agree to the terms and conditions outlined in the Disclaimer and Liability Waiver. By providing your email address and phone number, you acknowledge that you have read and understood the terms of this publicity disclaimer and consent to receive communications from Delaware Chess Champs and Chess Champs LLC</p>
 
       <button className="go-back-button" onClick={handleGoBack}>Go Back</button>
     </div>
