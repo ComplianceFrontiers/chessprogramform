@@ -25,7 +25,6 @@ const ChessRegistration = () => {
 
   const [formData, setFormData] = useState(initialFormData);
   const [loading, setLoading] = useState(false);
-  const [showThankYou, setShowThankYou] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -35,9 +34,7 @@ const ChessRegistration = () => {
     });
   };
 
-  const resetForm = () => {
-    setFormData(initialFormData);
-  };
+ 
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -68,15 +65,9 @@ const ChessRegistration = () => {
     <div className="registration-container">
       {loading && <Loading />}
 
-      {showThankYou && (
-        <div className="thank-you-overlay">
-          <p className="thank-you-message">
-            <span>Thank you!</span> We’re excited about your interest in enrolling your child in our chess program. Please expect to hear back from <a>connect@chesschamps.us</a> on the next step.
-          </p>
-        </div>
-      )}
+     
 
-      {!loading && !showThankYou && (
+      {!loading  && (
         <>
           <div className="header">
             <img src="/images/chessproo.png" alt="Logo" className="logo" />
