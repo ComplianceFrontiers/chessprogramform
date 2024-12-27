@@ -39,7 +39,7 @@ const ChessRegistration = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formData.acceptTerms) {
-      alert("You must accept the terms and conditions to proceed.");
+      alert("You must accept the Terms and Conditions to proceed.");
       return;
     }
 
@@ -191,7 +191,7 @@ const ChessRegistration = () => {
                 onChange={handleChange}
               />
               <label htmlFor="terms">
-                I accept the <Link href="/terms-and-conditions_B&A">terms and conditions  </Link> and <Link href="/privacy_policy_B&A"> privacy Policy</Link>
+                I accept the <Link href="/terms-and-conditions_B&A">Terms and Conditions  </Link> and <Link href="/privacy_policy_B&A"> Privacy Policy</Link>
               </label>
             </div>
 
