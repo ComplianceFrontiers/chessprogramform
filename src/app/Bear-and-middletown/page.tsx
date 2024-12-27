@@ -20,7 +20,7 @@ const ChessRegistration = () => {
     acceptTerms: false,
     RequestFinancialAssistance: false,
     SchoolName: "",
-    WilmingtonChessCoaching: true,
+    Bear_Middletown_Chess_Tournament: true,
   };
 
   const [formData, setFormData] = useState(initialFormData);
@@ -47,13 +47,10 @@ const ChessRegistration = () => {
     formData.RequestFinancialAssistance = false;
 
     try {
-      const response1 = await axios.post('https://backend-chess-tau.vercel.app/send-email-form-jcc', formData);
-      if (response1.status === 200) {
         const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
         if (response2.status === 201) {
-          window.location.href = 'https://buy.stripe.com/5kA8zMdSi36Ya2s8wJ';
+          window.location.href = 'https://buy.stripe.com/6oE8zMbKa7ne2A07sG';
         }
-      }
     } catch (error) {
       console.error('Error submitting the form!', error);
     } finally {

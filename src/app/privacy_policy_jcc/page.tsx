@@ -105,6 +105,7 @@ const TermsAndConditions = () => {
       </p>
       <p>Chess Champs LLC</p>
       <p>Email: connect@chesschamps.us</p>
+      <p>By submitting this form, I agree to the Privacy Policy outlined in the Disclaimer and Liability Waiver. By providing your email address and phone number, you acknowledge that you have read and understood the terms of this publicity disclaimer and consent to receive communications from Chess Champs LLC.</p>
 
       <button className="go-back-button" onClick={handleGoBack}>Go Back</button>
     </div>
