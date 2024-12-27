@@ -20,7 +20,7 @@ const ChessRegistration = () => {
     acceptTerms: false,
     RequestFinancialAssistance: false,
     SchoolName: "",
-    Bear_Middletown_Chess_Tournament: true,
+    Bear_Chess_Coaching: true,
   };
 
   const [formData, setFormData] = useState(initialFormData);
