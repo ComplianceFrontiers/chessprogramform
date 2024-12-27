@@ -51,7 +51,7 @@ const ChessRegistration = () => {
       if (response1.status === 200) {
         const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
         if (response2.status === 201) {
-          window.location.href = 'https://buy.stripe.com/bIYeYa5lM9vmcaAfZ7';
+          window.location.href = 'https://buy.stripe.com/5kA8zMdSi36Ya2s8wJ';
         }
       }
     } catch (error) {
@@ -73,12 +73,11 @@ const ChessRegistration = () => {
             <img src="/images/chessproo.png" alt="Logo" className="logo" />
           </div>
 
-          <h2>Chess Coaching in Wilmington</h2>
+          <h2>Chess Champs Academy - Wilmington</h2>
           <p className="program-description">
-            The Chess Champs Program gives students a fun and engaging way to learn the game while building critical thinking and problem-solving skills.
-            <p>
-              Through interactive lessons and games, students will master key strategies, improve focus, and boost confidence, all in a supportive environment.
-            </p>
+          The Chess Coaching Program offered by Champs Champs Academy gives students a fun and engaging way to learn the game while building critical thinking and problem-solving skills. Through interactive lessons and games, students will master key strategies, improve focus, and boost confidence, all in a supportive environment.
+
+           
           </p>
 
           <form className="registration-form" onSubmit={handleSubmit}>
@@ -176,13 +175,14 @@ const ChessRegistration = () => {
             </div>
 
             <div className="input-group">
-              <label>Phone</label>
+              <label>Phone <span className="required">*</span></label>
               <input
                 type="tel"
                 name="phone"
                 placeholder="Enter Phone Number"
                 value={formData.phone}
                 onChange={handleChange}
+                required
               />
             </div>
 
@@ -195,7 +195,7 @@ const ChessRegistration = () => {
                 onChange={handleChange}
               />
               <label htmlFor="terms">
-                I accept the <Link href="/terms-and-conditions_jcc">terms and conditions</Link>
+                I accept the <Link href="/terms-and-conditions_jcc">terms and conditions  </Link> and <Link href="/privacy_policy_jcc"> privacy Policy</Link>
               </label>
             </div>
 

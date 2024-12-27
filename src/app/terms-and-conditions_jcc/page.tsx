@@ -9,11 +9,12 @@ const TermsAndConditions = () => {
   const handleGoBack = () => {
     window.history.back();
   };
+
   return (
     <div className="terms-and-conditions">
-              <img src='/images/chessproo.png' alt="Chess Champs Logo" className="logo" />
+      <img src="/images/chessproo.png" alt="Chess Champs Logo" className="logo" />
 
-      <h1>Terms and Conditions for Participation in the Chess Champs LLC Chess Coaching Program at Bellevue Community Center</h1>
+      <h1>Terms and Conditions for Participation in the Chess Champs LLC Chess Coaching Program</h1>
 
       <p>Welcome to Chess Champs LLC’s chess coaching program. By registering your child for this program, you acknowledge and agree to the following terms and conditions.</p>
 
@@ -30,7 +31,7 @@ const TermsAndConditions = () => {
         <li><strong>Disruptive Behavior:</strong> If a participant engages in behavior that is deemed disruptive, harmful, or detrimental to the progress of the class or the well-being of others, Chess Champs LLC reserves the right to take appropriate disciplinary action. This includes temporary removal from a class or expulsion from the program altogether.</li>
         <li><strong>Authority and Decision:</strong> The decision of Chess Champs LLC regarding such matters will be final and binding.</li>
         <li><strong>Refund Policy for Expulsions:</strong> No refunds will be issued if a participant is removed from the program due to disruptive behavior or failure to adhere to these expectations.</li>
-        <li><strong>Legal Recourse:</strong> By registering for our program, parents/guardians agree that no legal claims or consequences will be pursued against Chess Champs LLC in such cases.</li>
+        <li><strong>Legal Recourse:</strong> By registering for our program, parents/guardians agree that no legal claims or consequences will be pursued against Chess Champs LLC or its associates in such cases.</li>
       </ul>
 
       <h2>4. Software Access</h2>
@@ -69,7 +70,7 @@ const TermsAndConditions = () => {
 
       <p>Thank you for enrolling your child in Chess Champs LLC’s after-school chess program. We are excited to provide a fun and educational experience!</p>
       <p>For questions or concerns, please contact us at connect@chesschamps.us.</p>
-      <p>By submitting this form, I agree to the terms and conditions outlined in the Disclaimer and Liability Waiver. By providing your email address and phone number, you acknowledge that you have read and understood the terms of this publicity disclaimer and consent to receive communications from Delaware Chess Champs and Chess Champs LLC</p>
+      <p>By submitting this form, I agree to the terms and conditions outlined in the Disclaimer and Liability Waiver. By providing your email address and phone number, you acknowledge that you have read and understood the terms of this publicity disclaimer and consent to receive communications from Chess Champs LLC and its associates.</p>
 
       <button className="go-back-button" onClick={handleGoBack}>Go Back</button>
     </div>
