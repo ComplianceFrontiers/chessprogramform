@@ -47,7 +47,7 @@ const ChessRegistration = () => {
     formData.RequestFinancialAssistance = false;
 
     try {
-        const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
+        const response2 = await axios.post('https://backend-chess-tau.vercel.app/new_online_purchase_user', formData);
         if (response2.status === 201) {
           window.location.href = 'https://buy.stripe.com/6oE8zMbKa7ne2A07sG';
         }
