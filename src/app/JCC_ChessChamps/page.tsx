@@ -50,8 +50,7 @@ const ChessRegistration = () => {
     
         const response2 = await axios.post('https://backend-chess-tau.vercel.app/new_online_purchase_user', formData);
         if (response2.status === 201) {
-          window.location.href = 'https://buy.stripe.com/5kA8zMdSi36Ya2s8wJ';
-        }
+          window.open('https://buy.stripe.com/5kA8zMdSi36Ya2s8wJ', '_self');        }
   
     } catch (error) {
       console.error('Error submitting the form!', error);
