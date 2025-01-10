@@ -17,7 +17,7 @@ const ChessRegistration = () => {
     phone: '',
     acceptTerms: false,
     RequestFinancialAssistance: false,
-    SchoolName: "JCC_Chess_champs",
+    SchoolName: "JCC_KP",
     jcc_kp:true,
   };
 
