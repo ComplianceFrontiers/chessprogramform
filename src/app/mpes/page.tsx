@@ -161,7 +161,7 @@ const ChessRegistration = () => {
     </button>
   </a>
 </li>
-
+ 
             </ul>
           </div>
         </div>
