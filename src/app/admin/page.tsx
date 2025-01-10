@@ -62,6 +62,8 @@ const Admin: React.FC = () => {
     program: '',
     year: 0,
   });
+  const [emailSearch, setEmailSearch] = useState(''); // State for email search
+
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
   const [selectAll, setSelectAll] = useState(false);
   const router = useRouter();
@@ -85,11 +87,15 @@ const Admin: React.FC = () => {
 
     fetchData();
   }, []);
-
   useEffect(() => {
-    // Filter data based on selected filters
     const filtered = formData.filter((item) => {
-      return (
+      // Apply email filter
+      const matchesEmail =
+        item.email &&
+        item.email.toLowerCase().includes(emailSearch.toLowerCase()); // Case-insensitive match
+  
+      // Apply other filters
+      const matchesOtherFilters =
         (!filters.sno || item.profile_id.includes(filters.sno)) &&
         (!filters.profile_id || item.profile_id.includes(filters.profile_id)) &&
         (!filters.group || item.group === filters.group) &&
@@ -100,19 +106,21 @@ const Admin: React.FC = () => {
         (!filters.school_name || item.SchoolName === filters.school_name) &&
         (!filters.level || item.level === filters.level) &&
         (!filters.program || item.program === filters.program) &&
-        // Ensure that both values are treated as numbers for year comparison
-        (filters.year === 0 || item.year === Number(filters.year))
-      );
-    });
-    setFilteredData(filtered);
-  }, [filters, formData]);
+        (filters.year === 0 || item.year === Number(filters.year));
   
+      return matchesEmail && matchesOtherFilters; // Both conditions must match
+    });
+  
+    setFilteredData(filtered);
+  }, [emailSearch, formData, filters]); // Ensure that the filter is recalculated when emailSearch, formData, or any other filters change
+  
+ 
 
   const handleUpdate = (index: number, field: string, value: string) => {
     const originalIndex = formData.findIndex(
       (item) => item.profile_id === filteredData[index].profile_id
     );
-
+  
     if (originalIndex !== -1) {
       const updatedFormData = [...formData];
       updatedFormData[originalIndex] = {
@@ -122,6 +130,7 @@ const Admin: React.FC = () => {
       setFormData(updatedFormData);
     }
   };
+  
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -188,10 +197,10 @@ const Admin: React.FC = () => {
   const handleExportToExcel = () => {
     const dataToExport = filteredData.map((form) => ({
       profile_id: form.profile_id,
-      "Parent's First Name": form.parent_name.first,
-      "Parent's Last Name": form.parent_name.last,
-      "Child's First Name": form.child_name.first,
-      "Child's Last Name": form.child_name.last,
+      "Parent's First Name": form.parent_name?.first,
+      "Parent's Last Name": form.parent_name?.last,
+      "Child's First Name": form.child_name?.first,
+      "Child's Last Name": form.child_name?.last,
       "Child's Grade": form.child_grade,
       Email: form.email,
       Phone: form.phone,
@@ -282,6 +291,14 @@ const Admin: React.FC = () => {
               </th>
               <th>
                 Email
+                {/* Add Search Input for Email */}
+                <input
+                  type="text"
+                  placeholder="Search email"
+                  value={emailSearch}
+                  onChange={(e) => setEmailSearch(e.target.value)}
+                  className="email-search-input"
+                />
               </th>
               <th>
                 Phone
@@ -428,8 +445,8 @@ const Admin: React.FC = () => {
                 </td>
                 <td>{index + 1}</td>
                 <td>{form.profile_id}</td>
-                <td>{form.parent_name.first} {form.parent_name.last}</td>
-                <td>{form.child_name.first} {form.child_name.last}</td>
+                <td>{form.parent_name?.first} {form.parent_name?.last}</td>
+                <td>{form.child_name?.first} {form.child_name?.last}</td>
                 <td>{form.child_grade}</td>
                 <td>{form.email}</td>
                 <td>{form.phone}</td>
