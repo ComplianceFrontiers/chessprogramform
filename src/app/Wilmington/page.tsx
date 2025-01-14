@@ -17,10 +17,7 @@ const ChessRegistration = () => {
     USCF_Rating: '',
     email: '',
     phone: '',
-    acceptTerms: false,
-    RequestFinancialAssistance: false,
-    SchoolName: "",
-    WilmingtonChessCoaching: true,
+    acceptTerms: true,
   };
 
   const [formData, setFormData] = useState(initialFormData);
@@ -44,11 +41,10 @@ const ChessRegistration = () => {
     }
 
     setLoading(true);
-    formData.RequestFinancialAssistance = false;
 
     try {
     
-        const response2 = await axios.post('https://backend-chess-tau.vercel.app/new_online_purchase_user', formData);
+        const response2 = await axios.post('https://backend-chess-tau.vercel.app/form_Wilmington_Chess_Coaching_bp_submit', formData);
         if (response2.status === 201||response2.status === 200) {
           window.location.href = 'https://buy.stripe.com/5kA8zMdSi36Ya2s8wJ';
         }
