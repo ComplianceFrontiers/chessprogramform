@@ -44,7 +44,7 @@ const ChessRegistration = () => {
 
     try {
     
-        const response2 = await axios.post('https://backend-chess-tau.vercel.app/form_Bear_Middletown_Chess_Tournament_bp_submit', formData);
+        const response2 = await axios.post('https://backend-chess-tau.vercel.app/form_Bear_Middletown_Chess_Coaching_bp_submit', formData);
         if (response2.status === 201||response2.status === 200) {
           window.location.replace('https://buy.stripe.com/6oE8zMbKa7ne2A07sG');        }
     } catch (error) {
