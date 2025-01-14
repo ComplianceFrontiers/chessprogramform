@@ -41,7 +41,6 @@ const ChessRegistration = () => {
     }
 
     setLoading(true);
-    formData.RequestFinancialAssistance = false;
 
     try {
     
