@@ -8,7 +8,7 @@ import * as XLSX from 'xlsx';
 import withadminAuth from '../withadminAuth';
 import Loading from '../../../Loading';
 
-type FilterField = 'sno' | 'profile_id' | 'group' | 'payment_status' | 'financial_assistance' | 'school_name' | 'level' | 'program' | 'year';
+type FilterField = 'sno' | 'profile_id' | 'group' | 'payment_status' | 'financial_assistance' | 'school_name' | 'level' | 'program' | 'year'|'New_Jersey_Masterclass';
 
 interface ParentName {
   first: string;
@@ -34,6 +34,7 @@ interface FormData {
   level: string;
   program: string | '';
   year: number;
+  New_Jersey_Masterclass:boolean;
 }
 
 const Admin: React.FC = () => {
@@ -50,6 +51,7 @@ const Admin: React.FC = () => {
     level: false, // Added filter for level
     program: false,
     year: false,
+    New_Jersey_Masterclass:false,
   });
   const [filters, setFilters] = useState({
     sno: '',
@@ -61,6 +63,7 @@ const Admin: React.FC = () => {
     level: '', // Added filter for level
     program: '',
     year: 0,
+    New_Jersey_Masterclass:'',
   });
   const [emailSearch, setEmailSearch] = useState(''); // State for email search
 
@@ -138,6 +141,9 @@ const Admin: React.FC = () => {
         (!filters.school_name || item.SchoolName === filters.school_name) &&
         (!filters.level || item.level === filters.level) &&
         (!filters.program || item.program === filters.program) &&
+        (!filters.New_Jersey_Masterclass ||
+        (filters.New_Jersey_Masterclass === 'Yes' && item.New_Jersey_Masterclass) ||
+        (filters.New_Jersey_Masterclass === 'No' && !item.New_Jersey_Masterclass)) &&
         (filters.year === 0 || item.year === Number(filters.year));
   
       return matchesEmail && matchesOtherFilters; // Both conditions must match
@@ -242,6 +248,7 @@ const Admin: React.FC = () => {
       Level: form.level,
       Program: form.program,
       Year: form.year,
+      New_Jersey_Masterclass:form.New_Jersey_Masterclass,
     }));
 
     const worksheet = XLSX.utils.json_to_sheet(dataToExport);
@@ -461,6 +468,23 @@ const Admin: React.FC = () => {
         </select>
       )}
     </th>
+    <th>
+    New Jersey Masterclass
+                <button className='filter-icon' onClick={() => toggleFilterVisibility('New_Jersey_Masterclass')}>
+  <i className="fas fa-filter"></i>
+</button>
+
+                {filterVisibility.New_Jersey_Masterclass && (
+                  <select
+                    value={filters.New_Jersey_Masterclass}
+                    onChange={(e) => handleFilterChange('New_Jersey_Masterclass', e.target.value)}
+                  >
+  <option value="">All</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+                  </select>
+                )}
+              </th>
     <th>Actions</th>
 
             </tr>
@@ -530,6 +554,7 @@ const Admin: React.FC = () => {
                 </td>
                 <td>{form.program}</td>
                 <td>{form.year}</td>
+                <td>{form.New_Jersey_Masterclass ? 'Yes' : 'No'}</td>
                 <td>
                   <button
                     className="delete-button"
