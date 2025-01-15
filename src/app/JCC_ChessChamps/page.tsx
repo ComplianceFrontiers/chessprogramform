@@ -18,6 +18,7 @@ const ChessRegistration = () => {
     acceptTerms: false,
     RequestFinancialAssistance: false,
     SchoolName: "JCC_Chess_champs",
+    jcc:true,
   };
 
   const [formData, setFormData] = useState(initialFormData);
