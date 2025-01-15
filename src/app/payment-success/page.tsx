@@ -67,7 +67,7 @@ export default function PaymentSuccess({
           setResponseStatus(response2.status);
 
           // Only set loading to false after getting the response
-          if (response2.status === 201) {
+          if (response2.status === 200) {
             setLoading(false);
           }
         } catch (error) {
