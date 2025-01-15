@@ -73,6 +73,37 @@ const Admin: React.FC = () => {
     localStorage.removeItem('password');
     router.push('/adminsignin');
   };
+  const handleDelete = async (profile_id: string) => {
+    if (window.confirm("Are you sure you want to delete this record?")) {
+      setLoading(true);
+      try {
+        const response = await axios.delete(
+          'https://backend-chess-tau.vercel.app/form_Basics_Of_Chess_bp_delete_records_by_profile_ids',
+          {
+            data: { profile_ids: [profile_id] },
+          }
+        );
+
+        if (response.status === 200) {
+          const deletedProfiles = response.data.deleted_profiles || [];
+          if (deletedProfiles.includes(profile_id)) {
+            setFormData((prevData) =>
+              prevData.filter((record) => record.profile_id !== profile_id)
+            );
+            alert('Record deleted successfully.');
+          } else {
+            alert('Record not found or already deleted.');
+          }
+        }
+      } catch (error) {
+        console.error('Error deleting record:', error);
+        alert('An error occurred while deleting the record.');
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -87,6 +118,7 @@ const Admin: React.FC = () => {
 
     fetchData();
   }, []);
+  
   useEffect(() => {
     const filtered = formData.filter((item) => {
       // Apply email filter
@@ -429,6 +461,7 @@ const Admin: React.FC = () => {
         </select>
       )}
     </th>
+    <th>Actions</th>
 
             </tr>
           </thead>
@@ -497,6 +530,14 @@ const Admin: React.FC = () => {
                 </td>
                 <td>{form.program}</td>
                 <td>{form.year}</td>
+                <td>
+                  <button
+                    className="delete-button"
+                    onClick={() => handleDelete(form.profile_id)}
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
