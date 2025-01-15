@@ -33,7 +33,7 @@ const ChessRegistration = () => {
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
+      const response = await axios.post('https://backend-chess-tau.vercel.app/form_Basics_Of_Chess_bp_submit', formData);
       alert(response.data.message);
     } catch (error) {
       console.error('There was an error submitting the form!', error);

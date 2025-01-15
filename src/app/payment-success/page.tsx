@@ -63,7 +63,7 @@ export default function PaymentSuccess({
           await axios.post('https://backend-chess-tau.vercel.app/send-email-form-mpes', formData);
 
           // Send second request and track response status
-          const response2 = await axios.post('https://backend-chess-tau.vercel.app/submit_form', formData);
+          const response2 = await axios.post('https://backend-chess-tau.vercel.app/form_Basics_Of_Chess_bp_submit', formData);
           setResponseStatus(response2.status);
 
           // Only set loading to false after getting the response
