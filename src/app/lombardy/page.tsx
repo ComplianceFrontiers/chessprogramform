@@ -66,7 +66,7 @@ const ChessRegistration = () => {
       const response1 = await axios.post('https://backend-chess-tau.vercel.app/send-email-form-lombardy', formData);
       if (response1.status === 200) {
         const response2 = await axios.post('https://backend-chess-tau.vercel.app/form_Basics_Of_Chess_bp_submit', formData);
-        if (response2.status === 201) {
+        if (response2.status === 200) {
           setLoading(false);
           setShowPopup(true);
         }
@@ -101,7 +101,7 @@ const ChessRegistration = () => {
       if (response1.status === 200) {
         const response2 = await axios.post('https://backend-chess-tau.vercel.app/form_Basics_Of_Chess_bp_submit', formData);
 
-        if (response2.status === 201) {
+        if (response2.status === 200) {
           setShowThankYou(true);
         }
       }
