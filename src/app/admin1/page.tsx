@@ -138,14 +138,13 @@ const Admin: React.FC = () => {
       const selectedData = formData.filter((form) => selectedRows.includes(form.profile_id));
       const updatePayload1 = {
         updates: selectedData.map((form) => ({
-          profile_id: form.profile_id,
+          email: form.email,
           payment_status: form.payment_status,
           group: form.group,
           level: form.level,
-          email: form.email || '', // Ensure email is present or default to empty string
         })),
       };
-      await axios.post('https://backend-chess-tau.vercel.app/update_forms', updatePayload1);
+      await axios.post('https://backend-chess-tau.vercel.app/form_Basics_Of_Chess_update_forms', updatePayload1);
 
       // Helper function to send batches of 4
       const sendBatch = async (batch: { profile_id: string; payment_status: string; group: string; level: string; email: string }[]) => {
