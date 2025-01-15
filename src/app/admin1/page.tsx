@@ -147,7 +147,7 @@ const Admin: React.FC = () => {
       await axios.post('https://backend-chess-tau.vercel.app/form_Basics_Of_Chess_update_forms', updatePayload1);
 
       // Helper function to send batches of 4
-      const sendBatch = async (batch: { profile_id: string; payment_status: string; group: string; level: string; email: string }[]) => {
+      const sendBatch = async (batch: {  payment_status: string; group: string; level: string; email: string }[]) => {
         try {
           const response = await axios.post('https://backend-chess-tau.vercel.app/send_mails_for_updated_records', {
             updates: batch,
