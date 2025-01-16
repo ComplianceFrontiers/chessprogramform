@@ -374,7 +374,7 @@ const Admin: React.FC = () => {
       <option value="Mount Pleasant Elementary School">Mount Pleasant Elementary School</option>
       <option value="JCC_Chess_champs">JCC_ChessChamps</option>
       <option value="JCC_KP">JCC KP</option>
-      <option value="">Online</option>
+      <option value="online">online</option>
     </select>
   )}
 </th>
