@@ -274,7 +274,7 @@ const Admin: React.FC = () => {
   return (
     <div className="admin-container">
       <div className="button-container">
-        <h2>School Form Submissions</h2>
+        <h2>Chess Champs Academy Access Details</h2>
         <div className="button-group">
           <button className="logout-button" onClick={handleLogout}>Log Out</button>
           <button className="export-button" onClick={handleExportToExcel}>Export to Excel</button>
@@ -373,6 +373,8 @@ const Admin: React.FC = () => {
       <option value="Lombardy Elementary School">Lombardy Elementary School</option>
       <option value="Mount Pleasant Elementary School">Mount Pleasant Elementary School</option>
       <option value="JCC_Chess_champs">JCC_ChessChamps</option>
+      <option value="JCC_KP">JCC KP</option>
+      <option value="">Online</option>
     </select>
   )}
 </th>
