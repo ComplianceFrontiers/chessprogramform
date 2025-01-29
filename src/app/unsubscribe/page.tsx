@@ -138,7 +138,7 @@ const Unsubscribe = () => {
         <div className="custom-modal-overlay">
           <div className="custom-modal">
             <h2>Unsubscribed Successfully</h2>
-            <p>You have been successfully unsubscribed from our service.</p>
+            <p>You have unsubscribed from our services ,You can close this window.</p>
             <button onClick={() => setIsModalOpen(false)}>Ok</button>
           </div>
         </div>
