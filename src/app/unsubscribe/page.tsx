@@ -7,7 +7,7 @@ import "./unsubscribe.scss";
 const Unsubscribe = () => {
   const [email, setEmail] = useState("");
   const [userData, setUserData] = useState<any>(null);
-  const [websiteChecked, setWebsiteChecked] = useState(false);
+  const [email_requestChecked, setemail_requestChecked] = useState(false);
   const [message, setMessage] = useState("");
   const [fetchLoading, setFetchLoading] = useState(false); // For fetch button
   const [unsubscribeLoading, setUnsubscribeLoading] = useState(false); // For unsubscribe button
@@ -28,12 +28,12 @@ const Unsubscribe = () => {
 
     try {
       const response = await fetch(
-        `https://backend-chess-tau.vercel.app/get_forms_byemail?email=${email}`
+        `https://backend-chess-tau.vercel.app/get_masterlist_by_email?email=${email}`
       );
       if (response.ok) {
         const data = await response.json();
         setUserData(data);
-        setWebsiteChecked(!data.Website); // Reverse logic
+        setemail_requestChecked(!data.email_request); // Reverse logic
       } else {
         const errorData = await response.json();
         setMessage(errorData.error || "No record found for this email.");
@@ -56,17 +56,15 @@ const Unsubscribe = () => {
 
     try {
       const response = await fetch(
-        "https://backend-chess-tau.vercel.app/signup_bulk_email",
+        "https://backend-chess-tau.vercel.app/update_masterlist_by_email",
         {
-          method: "POST",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
             email,
-            name: userData.name,
-            phone: userData.phone,
-            Website: websiteChecked ? false : userData.Website,
+            email_request: email_requestChecked ? false : userData.email_request,
           }),
         }
       );
@@ -108,23 +106,23 @@ const Unsubscribe = () => {
 
       {userData && (
         <div className="subscription-section">
-          {userData.Website && (
+          {userData.email_request && (
             <>
               <p>If you want to unsubscribe, check the box below:</p>
               <label>
                 <input
                   type="checkbox"
-                  checked={websiteChecked}
-                  onChange={() => setWebsiteChecked(!websiteChecked)}
+                  checked={email_requestChecked}
+                  onChange={() => setemail_requestChecked(!email_requestChecked)}
                 />
-                Unsubscribe from Website
+                Unsubscribe from Chess Champs
               </label>
             </>
           )}
-          {!userData.Website && (
+          {!userData.email_request && (
             <label>You Have Not Subscribed To Our Services</label>
           )}
-          {userData.Website && (
+          {userData.email_request && (
             <button onClick={handleSaveChanges} disabled={unsubscribeLoading}>
               {unsubscribeLoading ? "Un-Subscribing..." : "Un-Subscribe"}
             </button>
