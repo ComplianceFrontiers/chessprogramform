@@ -22,14 +22,15 @@ const Unsubscribe = () => {
       setMessage("Please enter a valid email.");
       return;
     }
-
+  
     setFetchLoading(true);
     setMessage("");
-
+  
     try {
       const response = await fetch(
-        `https://backend-chess-tau.vercel.app/get_masterlist_by_email?email=${email}`
+        `https://backend-chess-tau.vercel.app/get_masterlist_by_email?email=${encodeURIComponent(email)}`
       );
+  
       if (response.ok) {
         const data = await response.json();
         setUserData(data);
@@ -44,7 +45,7 @@ const Unsubscribe = () => {
       setFetchLoading(false);
     }
   };
-
+  
   const handleSaveChanges = async () => {
     if (!email || !userData) {
       setMessage("Please enter a valid email and fetch the data.");
