@@ -89,7 +89,7 @@ const Unsubscribe = () => {
       <div className="header">
         <img src="/images/chessproo.png" alt="Logo" className="logo" />
         <h2 className="unsubscribe-title">Unsubscribe</h2>
-        <p className="farewell-message">We Were Sorry To See You Go</p>
+        <p className="farewell-message">We are Sorry To See You Go</p>
       </div>
 
       <div className="email-section">
