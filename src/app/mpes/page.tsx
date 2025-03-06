@@ -150,11 +150,11 @@ const ChessRegistration = () => {
               <li>
   <strong>Stripe:</strong>{' '}
   <a
-    href="https://buy.stripe.com/5kA03g15wazq0rS8wE"
+    href="https://buy.stripe.com/4gw8zM6pQcHy3E48wO"
     target="_blank"
     rel="noopener noreferrer"
     className="payment-link"
-    style={{ textDecoration: 'none' }}  // Removes the underline from the link itself
+    style={{ textDecoration: 'none' }}
   >
     <button className="payment-button">
       Pay using Credit/Debit Card: $150 (Program fees) + $5 (Payment processing charges)
@@ -204,7 +204,7 @@ const ChessRegistration = () => {
               height="150"
             />
           </div>
-      <h2>Chess Program: Winter 2025</h2>
+      <h2>Chess Program: Spring 2025</h2>
 
       <p className="program-description">
         The Chess After-School Program gives students a fun and engaging way to learn the game while building critical thinking and problem-solving skills.
@@ -212,9 +212,9 @@ const ChessRegistration = () => {
       </p>
 
       <div className="training-info">
-        <p><strong>10 Weeks Training on Tuesdays [K-5 Students]</strong></p>
-        <p>Program Dates: 14-Jan 2025 to 18-Mar-2025</p>
-        <p>[Classes on 01/14, 01/21, 01/28, 02/04, 02/11, 02/18, 02/25, 03/04, 03/11 and 03/18]</p>
+        <p><strong>08 Weeks Training on Tuesdays [K-5 Students]</strong></p>
+        <p>Program Dates: 1-Apr 2025 to 27-May-2025</p>
+        <p>[Meeting on 04/01, 04/08, 04/15, 04/29, 05/06, 05/13, 05/20 and 05/27]</p>
         <p>Time: 3:30 PM – 04:30 PM. [Student Pick Up Time: 4:35 PM from Main Entrance | The children in the Y Program will be escorted by us after the session]</p>
       </div>
 
@@ -317,8 +317,8 @@ const ChessRegistration = () => {
         </div>
         
         <div className="training-info">
-          <p><strong>10 Week Program $150.00 *</strong></p>
-          <p>*Program fee is non-refundable either partially or fully after 07-Jan-2025 | Processing charges apply if using Payment Gateway | Please read the Terms & Conditions*</p>
+          <p><strong>08 Week Program $120.00 + $5 Payment Gateway Charges *</strong></p>
+          <p>*Program fee is non-refundable either partially or fully after 20-Mar-2025 | Processing charges apply | Please read the Terms & Conditions*</p>
           </div>
           <div className="terms-container">
               <input 
