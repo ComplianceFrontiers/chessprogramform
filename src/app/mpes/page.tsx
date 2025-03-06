@@ -337,11 +337,15 @@ const ChessRegistration = () => {
         <button
               type="submit"
               className="payment-button"
-              onClick={handleSubmit}
+              onClick={() => {
+                window.location.href = "https://buy.stripe.com/4gw8zM6pQcHy3E48wO";
+              }}
               disabled={loading}
             >
               Make Payment
             </button>
+           
+
          <button type="button" className="payment-button1" onClick={handleFinancialAssistance}>Request Financial Assistance</button>
         </div>
       </form>
