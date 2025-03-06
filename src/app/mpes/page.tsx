@@ -123,9 +123,9 @@ const ChessRegistration = () => {
     }
   };
 
-  const closePopup = () => {
-    setShowPopup(false); // Close popup
-  };
+  // const closePopup = () => {
+  //   setShowPopup(false); // Close popup
+  // };
 
   // Effect to refresh form data
   useEffect(() => {
