@@ -49,25 +49,27 @@ const ChessRegistration = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     setLoading(true);
     e.preventDefault();
+  
     if (!formData.program) {
       setLoading(false);
       alert("Select Your Program to proceed.");
       return;
     }
-    
+  
     if (!formData.acceptTerms) {
       setLoading(false);
       alert("You must accept the terms and conditions to proceed.");
       return;
     }
+  
     if (!formData.email && !formData.phone) {
       setLoading(false);
       alert("Please Fill Required Fields");
       return;
     }
-
+  
     formData.RequestFinancialAssistance = false;
-
+  
     try {
       const response1 = await axios.post('https://backend-chess-tau.vercel.app/send-email-form-mpes', formData);
       if (response1.status === 200) {
@@ -75,15 +77,18 @@ const ChessRegistration = () => {
         if (response2.status === 200) {
           setLoading(false);
           setShowPopup(true);
+  
+          // ✅ Redirect to Stripe AFTER successful API calls
+          window.location.href = "https://buy.stripe.com/4gw8zM6pQcHy3E48wO";
         }
       }
     } catch (error) {
       console.error('There was an error requesting financial assistance or submitting the form!', error);
-    }
-    finally{
+    } finally {
       setLoading(false);
     }
   };
+  
 
   const handleFinancialAssistance = async (e: React.FormEvent) => {
     if (!formData.email) {
@@ -135,7 +140,7 @@ const ChessRegistration = () => {
       {showPopup && (
         
         <div className="popup-overlay">
-          <div className="popup-box">
+          {/* <div className="popup-box">
             <button className="close-button" onClick={closePopup}>
               ✖
             </button>
@@ -163,7 +168,7 @@ const ChessRegistration = () => {
 </li>
  
             </ul>
-          </div>
+          </div> */}
         </div>
       )}
 
@@ -337,15 +342,11 @@ const ChessRegistration = () => {
         <button
               type="submit"
               className="payment-button"
-              onClick={() => {
-                window.location.href = "https://buy.stripe.com/4gw8zM6pQcHy3E48wO";
-              }}
+              onClick={handleSubmit}
               disabled={loading}
             >
               Make Payment
             </button>
-           
-
          <button type="button" className="payment-button1" onClick={handleFinancialAssistance}>Request Financial Assistance</button>
         </div>
       </form>
